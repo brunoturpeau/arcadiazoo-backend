@@ -26,7 +26,7 @@
         - le nom de l'animal
         - la date de passage
         - l'état de santé de l'animal
-        - l'alimentation préconisé et son grammage
+        * l'alimentation préconisé et son grammage
     [-] pouvoir créer un RAPPORT à l'aide d'un formulaire [flash] 
         - la date de passage
         - le détail du rapport

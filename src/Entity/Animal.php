@@ -55,11 +55,18 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Habitat $habitat = null;
 
+    /**
+     * @var Collection<int, Food>
+     */
+    #[ORM\OneToMany(targetEntity: Food::class, mappedBy: 'animal')]
+    private Collection $food;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->reports = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->food = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -182,6 +189,36 @@ class Animal
     public function setHabitat(?Habitat $habitat): static
     {
         $this->habitat = $habitat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Food>
+     */
+    public function getFood(): Collection
+    {
+        return $this->food;
+    }
+
+    public function addFood(Food $food): static
+    {
+        if (!$this->food->contains($food)) {
+            $this->food->add($food);
+            $food->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFood(Food $food): static
+    {
+        if ($this->food->removeElement($food)) {
+            // set the owning side to null (unless already changed)
+            if ($food->getAnimal() === $this) {
+                $food->setAnimal(null);
+            }
+        }
 
         return $this;
     }
