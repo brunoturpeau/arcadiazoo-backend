@@ -92,6 +92,7 @@
     [X] voir la liste des REPAS avec, pour chaque item :
         - le numéro du repas, la date, l'heure
         - un lien vers l'animal concerné
+        - le nombre d'items nourriture inclus
         - un btn-icon Voir, un btn-icon Modifier, un btn-icon Supprimer
         - un bouton Créer un repas
     [-] voir un REPAS sléctionné avec, pour chaque item :

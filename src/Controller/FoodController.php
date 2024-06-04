@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Food;
 use App\Form\FoodType;
+use App\Repository\EatingRepository;
 use App\Repository\FoodRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,10 +16,16 @@ use Symfony\Component\Routing\Attribute\Route;
 class FoodController extends AbstractController
 {
     #[Route('/', name: 'app_food_index', methods: ['GET'])]
-    public function index(FoodRepository $foodRepository): Response
+    public function index(FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
+        $food = $foodRepository->findBy([],['id' => 'desc']);
+
+        $eatings = $eatingRepository->findAll();
+
+
         return $this->render('admin/food/index.html.twig', [
-            'food' => $foodRepository->findAll(),
+            'food' => $food,
+            'eatings' => $eatings,
         ]);
     }
 
@@ -45,10 +52,14 @@ class FoodController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_food_show', methods: ['GET'])]
-    public function show(Food $food): Response
+    public function show(Food $food, EatingRepository $eatingRepository): Response
     {
+        $eatings = $eatingRepository->findOneBy([], ['categoryOrder' => 'asc']);
+
+        dd($eatings);
         return $this->render('admin/food/show.html.twig', [
             'food' => $food,
+            'eatings' => $eating,
         ]);
     }
 

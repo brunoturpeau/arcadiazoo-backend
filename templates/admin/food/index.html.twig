@@ -56,5 +56,11 @@
             {% endfor %}
             </tbody>
         </table>
+        <div class="hidden">
+            {% for eating in eatings %}
+                {{ eating.id }}
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}
