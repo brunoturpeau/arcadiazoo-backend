@@ -48,7 +48,7 @@
         }
     }
     .table-sm{
-        @apply sm:w-3/4 lg:w-1/2;
+        @apply sm:w-3/4 lg:w-1/2 mx-auto;
     }
 }
 
