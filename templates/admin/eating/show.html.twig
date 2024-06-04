@@ -1,34 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eating{% endblock %}
+{% block title %}Nourriture{% endblock %}
 
 {% block body %}
-    <h1>Eating</h1>
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_eating_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                <a class="btn" href="{{ path('app_eating_edit', {'id': eating.id}) }}">
+                    Modifier la nourriture
+                </a>
+                <div>{{ include('admin/eating/_delete_form.html.twig') }}</div>
+            </div>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
+    <div class="cont">
+        <h1>Nourriture</h1>
+        <table class="table table-sm">
+            <tbody>
             <tr>
-                <th>Id</th>
+                <th>N°</th>
                 <td>{{ eating.id }}</td>
             </tr>
             <tr>
-                <th>Feeding</th>
+                <th>Nourriture</th>
                 <td>{{ eating.feeding }}</td>
             </tr>
             <tr>
-                <th>Quantity</th>
+                <th>Quantité</th>
                 <td>{{ eating.quantity }}</td>
             </tr>
             <tr>
-                <th>Created_at</th>
-                <td>{{ eating.createdAt ? eating.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Date</th>
+                <td>{{ eating.createdAt ? eating.createdAt|date('m-d-Y') : '' }}</td>
             </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_eating_index') }}">back to list</a>
-
-    <a href="{{ path('app_eating_edit', {'id': eating.id}) }}">edit</a>
-
-    {{ include('admin/eating/_delete_form.html.twig') }}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
