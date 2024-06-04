@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Food{% endblock %}
+
+{% block body %}
+    <h1>Food</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ food.id }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{ food.time ? food.time|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ food.createdAt ? food.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_food_index') }}">back to list</a>
+
+    <a href="{{ path('app_food_edit', {'id': food.id}) }}">edit</a>
+
+    {{ include('admin/food/_delete_form.html.twig') }}
+{% endblock %}
