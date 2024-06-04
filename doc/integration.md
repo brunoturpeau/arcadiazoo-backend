@@ -122,6 +122,16 @@
 
     [X] avoir les mêmes fonctionnalités que les employé(e)s
 
+> _La NOURRITURE_
+
+    [X] voir la liste lignes NOURRITURE avec, pour chaque item :
+        - le numéro
+        - la nourriture
+        - la quantité
+        - un lien vers le repas correspondant
+        - un lien vers l'animal concerné
+
+
 > _Les ANIMAUX_
 
     [X] avoir les mêmes fonctionnalités que les employé(e)s
@@ -199,7 +209,10 @@
         * les horaires
         * une description
 
----
+> _STATISTIQUES_
+
+    [-] voir les statistiques de fréquentation par animal
+ ---
 
 [-] [largeur champ date](https://starswebcommunication.tinytake.com/msc/OTY4NzU2N18yMzMxOTA5NQ)
 [-] refaction td.actions
