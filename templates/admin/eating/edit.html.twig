@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Eating{% endblock %}
+{% block title %}Modifier la nourriture{% endblock %}
 
 {% block body %}
-    <h1>Edit Eating</h1>
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_eating_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                <div class="ms-3">
+                    {{ include('admin/eating/_delete_icon.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {{ include('admin/eating/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_eating_index') }}">back to list</a>
-
-    {{ include('admin/eating/_delete_form.html.twig') }}
+    <div class="cont">
+        <h1>Modifier la nourriture</h1>
+        <div class="flex flex-col justify-center items-center">
+            <div class="bg-slate-200 p-10 lg:w-1/2">
+                {{ include('admin/eating/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

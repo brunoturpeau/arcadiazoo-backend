@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_eating_delete', {'id': eating.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ eating.id) }}">
+    <button>
+        {{ include('_partials/icons/_trash.html.twig') }}
+    </button>
+</form>
