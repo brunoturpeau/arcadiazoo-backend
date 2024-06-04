@@ -89,13 +89,20 @@
 
 > _Les REPAS_
 
-    [&] voir la liste des REPAS avec, pour chaque item :
+    [X] voir la liste des REPAS avec, pour chaque item :
         - le numéro du repas, la date, l'heure
         - un lien vers l'animal concerné
         - un btn-icon Voir, un btn-icon Modifier, un btn-icon Supprimer
         - un bouton Créer un repas
     [-] voir un REPAS sléctionné avec, pour chaque item :
         - le numéro du repas, la date, l'heure
+        - voir la liste nourriture avec, pour chaque item :
+            - la nourriture, la quantité
+            - un btn-icon Modifier
+            - un btn-icon Supprimer
+    [-] ajouter un REPAS
+    [-] modifier un REPAS
+    [-] supprimer un REPAS
 
 
 > _Les HABITATS_
