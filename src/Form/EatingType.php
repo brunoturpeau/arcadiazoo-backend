@@ -16,9 +16,6 @@ class EatingType extends AbstractType
         $builder
             ->add('feeding')
             ->add('quantity')
-            ->add('created_at', null, [
-                'widget' => 'single_text',
-            ])
             ->add('food', EntityType::class, [
                 'class' => Food::class,
                 'choice_label' => 'id',
