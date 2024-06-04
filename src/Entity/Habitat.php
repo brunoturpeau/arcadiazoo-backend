@@ -42,9 +42,16 @@ class Habitat
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'habitat_id')]
     private Collection $images;
 
+    /**
+     * @var Collection<int, Animal>
+     */
+    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat')]
+    private Collection $animals;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->animals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,6 +119,36 @@ class Habitat
             // set the owning side to null (unless already changed)
             if ($image->getHabitatId() === $this) {
                 $image->setHabitatId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animal>
+     */
+    public function getAnimals(): Collection
+    {
+        return $this->animals;
+    }
+
+    public function addAnimal(Animal $animal): static
+    {
+        if (!$this->animals->contains($animal)) {
+            $this->animals->add($animal);
+            $animal->setHabitat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimal(Animal $animal): static
+    {
+        if ($this->animals->removeElement($animal)) {
+            // set the owning side to null (unless already changed)
+            if ($animal->getHabitat() === $this) {
+                $animal->setHabitat(null);
             }
         }
 

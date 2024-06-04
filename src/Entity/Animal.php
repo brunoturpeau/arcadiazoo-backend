@@ -52,6 +52,9 @@ class Animal
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    private ?Habitat $habitat = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -167,6 +170,18 @@ class Animal
     public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getHabitat(): ?Habitat
+    {
+        return $this->habitat;
+    }
+
+    public function setHabitat(?Habitat $habitat): static
+    {
+        $this->habitat = $habitat;
 
         return $this;
     }
