@@ -6,14 +6,6 @@
     <div class="nav-context">
         <div class="parent">
             <div></div>
-            <div class="container mx-auto p-5 flex justify-end">
-
-            </div>
-        </div>
-    </div>
-    <div class="nav-context">
-        <div class="parent">
-            <div></div>
             <div id="btn-create">
                 <a class="btn" href="{{ path('app_emp_register') }}">Créer un employé</a>
                 <a class="btn" href="{{ path('app_veto_register') }}">Créer un vétérinaire</a>
@@ -23,42 +15,46 @@
 
     <div class="cont">
         <h1>Utilisateurs</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <table class="tw-table">
+            <thead>
+            <tr>
+                <th>Nom et prénom</th>
+                <th>E-mail</th>
+                <th>Rôle</th>
+                <th>Statut</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
             {% for user in users %}
-                <div class="card">
-                    <div class="card-body">
-                        <span class="hidden">{{ user.id }}</span>
-                        <span class="hidden">{{ user.password }}</span>
-                        <span class="hidden">{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</span>
-
-                        <h2>{{ user.firstname }} {{ user.lastname }}</h2>
-                        <hr class="hr">
+                <tr>
+                    <td>{{ user.lastname }} {{ user.firstname }}</td>
+                    <td>{{  user.email }}</td>
+                    <td>
                         {% if 'ROLE_ADMIN' in user.roles %}
                             <b>Administrateur</b>
                         {% elseif 'ROLE_VETERINAIRE' in user.roles %}
                             <b>Vétérinaire</b>
                         {% elseif 'ROLE_EMPLOYE' in user.roles %}
                             <b>Employé(e)</b>
-                        {% else %}
-                            <b>Utilisateur non défini</b>
                         {% endif %}
-                        <p class="my-5">{{ user.isVerified ? 'Vérifié' : 'Non vérifié' }}</p>
-                    </div>
-                    <div class="card-footer">
+                    </td>
+                    <td>
+                        {{ user.isVerified ? 'Vérifié' : 'Non vérifié' }}
+                    </td>
+                    <td class="actions">
                         <a href="{{ path('app_user_show', {'id': user.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
                         </a>
                         <a href="{{ path('app_user_edit', {'id': user.id}) }}">
                             {{ include('_partials/icons/_edit.html.twig') }}
                         </a>
-                    </div>
-                </div>
-
+                    </td>
+                </tr>
             {% else %}
-                <div class="cover">
-                    Aucun compte
-                </div>
+                <tr class="empty" colspan="3"><h2>Aucun résultat</h2></tr>
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

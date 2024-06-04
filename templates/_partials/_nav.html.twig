@@ -13,18 +13,18 @@
             <ul id="navigation">
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/admin/animal">Animaux</a></li>
-                {% if is_granted('ROLE_ADMIN')  %}
-                    <li><a href="/admin/race">Races</a></li>
-                    <li><a href="/admin/utilisateur">Comptes</a></li>
-                {% endif %}
-
+                <li><a href="/admin/habitat">Habitats</a></li>
                 {% if is_granted('ROLE_EMPLOYE') %}
+                    <li><a href="/admin/food">Repas</a></li>
                     <li><a href="/admin/service">Services</a></li>
                     <li><a href="/admin/avis">Avis</a></li>
                 {% endif %}
-
+                {% if is_granted('ROLE_ADMIN')  %}
+                    <li><a href="/admin/race">Races</a></li>
+                    <li><a href="/admin/utilisateur">Comptes</a></li>
+                    <li><a href="/admin/image">Images</a></li>
+                {% endif %}
                 {% if is_granted('ROLE_VETERINAIRE') %}
-                    <li><a href="/admin/habitat">Habitats</a></li>
                     <li><a href="/admin/rapport">Rapports</a></li>
                 {% endif %}
             </ul>

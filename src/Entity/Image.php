@@ -33,6 +33,9 @@ class Image
     #[ORM\ManyToOne(inversedBy: 'images')]
     private ?Habitat $habitat = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -75,6 +78,18 @@ class Image
     public function setHabitatId(?Habitat $habitat_id): static
     {
         $this->habitat = $habitat_id;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }

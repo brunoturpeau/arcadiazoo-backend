@@ -160,7 +160,7 @@
     [-] pouvoir créer un repas depuis le liste des Repas (animal sélectionné)
     [-] pouvoir créer une race 
     [-] pouvoir modifier une race 
-    [X] pouvoir supprimer une race il elle ne contient pas d'animaux associé [flash]
+    [&] pouvoir supprimer une race il elle ne contient pas d'animaux associé [flash]
 
 > _Les COMPTES_
 
@@ -178,13 +178,13 @@
 
 > _Les IMAGES_
 
-    [X] voir la liste des IMAGES avec, pour chaque item :
+    [&] voir la liste des IMAGES avec, pour chaque item :
         - une miniature
         - le titre de l'image
         - le nom de l'animal correspondant
         - un lien vers la fiche de l'animal
         - un btn-icon Supprimer
-    [X] pouvoir supprimer une image [flash]
+    [&] pouvoir supprimer une image [flash]
 
 > _La SOCIETE_
 

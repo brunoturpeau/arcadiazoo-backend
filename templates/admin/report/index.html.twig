@@ -3,7 +3,6 @@
 {% block title %}Rapports{% endblock %}
 
 {% block body %}
-
     <div class="nav-context">
         <div class="parent">
             <div></div>
@@ -16,30 +15,47 @@
     </div>
     <div class="cont">
         <h1>Les Rapports</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <table class="tw-table">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Date</th>
+                <th>Animal</th>
+                <th>&Eacute;tat de santé</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="w-full">
             {% for report in reports %}
-            <div class="card">
-                <div class="card-body h-full">
-                    <p><b>{{ report.date ? report.date|date('d-m-Y') : '' }}</b></p>
-                    <hr class="hr">
-                    <p>{{ report.detail }}</p>
-                </div>
-                <div class="card-footer w-full">
-                    {% if is_granted('ROLE_VETERINAIRE') %}
+                <tr class="item">
+                    <td>#{{ report.id }}</td>
+                    <td>{{ report.date|date('d-m-Y') }}</td>
+                    <td>
+                        <a href="{{ path('app_animal_show', { 'id': report.animal.id }) }}">
+                            <b>{{ report.animal.name }}</b>
+                            {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                    <td>{{ report.animal.health }}</td>
+                    <td class="actions">
                         <a href="{{ path('app_report_show', {'id': report.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
                         </a>
-                    {% endif %}
-                    {% if is_granted('ROLE_VETERINAIRE') %}
-                        <a href="{{ path('app_report_edit', {'id': report.id}) }}">
-                            {{ include('_partials/icons/_edit.html.twig') }}
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
+                        {% if is_granted('ROLE_VETERINAIRE') %}
+                            <a href="{{ path('app_report_edit', {'id': report.id}) }}">
+                                {{ include('_partials/icons/_edit.html.twig') }}
+                            </a>
+
+                            <div>
+                                {{ include('admin/report/_delete_icon.html.twig') }}
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
             {% else %}
-                <div class="cover">Aucun rapport</div>
+                <tr class="empty" colspan="5"><h2>Aucun rapport</h2></tr>
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

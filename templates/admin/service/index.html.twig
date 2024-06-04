@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les services - Arcadia Dashboard{% endblock %}
+{% block title %}Les services{% endblock %}
 
 {% block body %}
     <div class="nav-context">
@@ -16,33 +16,38 @@
 
     <div class="cont">
         <h1>Les services</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <table class="tw-table">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Service</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
             {% for service in services %}
-                <div class="card">
-                    <div class="card-body h-full">
-                        <h2>{{ service.name }}</h2>
-                        <hr class="hr">
-                        <p>{{ service.description }}</p>
-                        <p class="hidden">{{ service.createdAt ? service.createdAt|date('Y-m-d') : '' }}</p>
-                        <p class="hidden">{{ service.slug }}</p>
-                    </div>
-                    <div class="card-footer">
-                        {% if is_granted('ROLE_EMPLOYE') %}
-                            <a href="{{ path('app_service_show', {'id': service.id}) }}">
-                                {{ include ('_partials/icons/_eye.html.twig') }}
-                            </a>
-                        {% endif %}
+                <tr class="item">
+                    <td>#S-{{ service.id }}</td>
+                    <td>{{ service.name }}</td>
+                    <td class="actions">
+                        <a href="{{ path('app_service_show', {'id': service.id}) }}">
+                            {{ include ('_partials/icons/_eye.html.twig') }}
+                        </a>
+                        <a href="{{ path('app_service_edit', {'id': service.id}) }}">
+                            {{ include ('_partials/icons/_edit.html.twig') }}
+                        </a>
 
-                        {% if is_granted('ROLE_EMPLOYE') %}
-                            <a href="{{ path('app_service_edit', {'id': service.id}) }}">
-                                {{ include ('_partials/icons/_edit.html.twig') }}
-                            </a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div>
+                                {{ include('admin/service/_delete_icon.html.twig') }}
+                            </div>
                         {% endif %}
-                    </div>
-                </div>
+                    </td>
+                </tr>
             {% else %}
-                    <div class="cover">Aucun service</div>
+                <tr class="empty"><h2>Aucun service</h2></tr>
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}
