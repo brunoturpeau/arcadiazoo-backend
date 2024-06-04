@@ -58,7 +58,7 @@ class FoodController extends AbstractController
 
         return $this->render('admin/food/show.html.twig', [
             'food' => $food,
-            'eatings' => $eating,
+            'eatings' => $eatings,
         ]);
     }
 
