@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/admin/food')]
+#[Route('/admin/repas')]
 class FoodController extends AbstractController
 {
     #[Route('/', name: 'app_food_index', methods: ['GET'])]

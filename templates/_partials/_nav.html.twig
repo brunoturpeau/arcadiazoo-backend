@@ -12,21 +12,21 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul id="navigation">
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/admin/animal">Animaux</a></li>
-                <li><a href="/admin/habitat">Habitats</a></li>
+                <li><a href="{{ path('app_animal_index') }}">Animaux</a></li>
+                <li><a href="{{ path('app_habitat_index') }}">Habitats</a></li>
                 {% if is_granted('ROLE_EMPLOYE') %}
-                    <li><a href="/admin/food">Repas</a></li>
-                    <li><a href="/admin/nourriture">Nourriture</a></li>
-                    <li><a href="/admin/service">Services</a></li>
-                    <li><a href="/admin/avis">Avis</a></li>
+                    <li><a href="{{ path('app_food_index') }}">Repas</a></li>
+                    <li><a href="{{ path('app_eating_index') }}">Nourriture</a></li>
+                    <li><a href="{{ path('app_service_index') }}">Services</a></li>
+                    <li><a href="{{ path('app_comment_index') }}">Avis</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN')  %}
-                    <li><a href="/admin/race">Races</a></li>
-                    <li><a href="/admin/utilisateur">Comptes</a></li>
-                    <li><a href="/admin/image">Images</a></li>
+                    <li><a href="{{ path('app_breed_index') }}">Races</a></li>
+                    <li><a href="{{ path('app_user_index') }}">Comptes</a></li>
+                    <li><a href="{{ path('app_image_index') }}">Images</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_VETERINAIRE') %}
-                    <li><a href="/admin/rapport">Rapports</a></li>
+                    <li><a href="{{ path('app_report_index') }}">Rapports</a></li>
                 {% endif %}
             </ul>
         </div>
