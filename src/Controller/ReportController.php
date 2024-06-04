@@ -35,6 +35,8 @@ class ReportController extends AbstractController
             $entityManager->persist($report);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Rapport ajouté avec succès');
+
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -63,6 +65,8 @@ class ReportController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'Rapport modifié avec succès');
+
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,6 +85,8 @@ class ReportController extends AbstractController
             $entityManager->remove($report);
             $entityManager->flush();
         }
+
+        $this->addFlash('success', 'Rapport supprimé avec succès');
 
         return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
     }
