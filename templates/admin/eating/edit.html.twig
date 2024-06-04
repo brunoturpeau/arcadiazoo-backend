@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Eating{% endblock %}
+
+{% block body %}
+    <h1>Edit Eating</h1>
+
+    {{ include('admin/eating/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_eating_index') }}">back to list</a>
+
+    {{ include('admin/eating/_delete_form.html.twig') }}
+{% endblock %}
