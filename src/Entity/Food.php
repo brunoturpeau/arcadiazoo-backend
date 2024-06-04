@@ -31,6 +31,9 @@ class Food
     #[ORM\OneToMany(targetEntity: Eating::class, mappedBy: 'food')]
     private Collection $eatings;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updated_at = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -91,6 +94,18 @@ class Food
                 $eating->setFood(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
