@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un repas{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_food_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                <div>{{ include('admin/food/_delete_icon.html.twig') }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Modifier un repas</h1>
+        <div class="flex flex-col justify-center items-center">
+            <div class="bg-slate-200 p-10 lg:w-1/2">
+                {{ include('admin/food/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

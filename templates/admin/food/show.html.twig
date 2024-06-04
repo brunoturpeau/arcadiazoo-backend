@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Repas{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_food_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                <a class="btn" href="{{ path('app_food_edit', {'id': food.id}) }}">
+                    Modifier le repas
+                </a>
+                <div>{{ include('admin/food/_delete_form.html.twig') }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="cont">
+        <h1>Repas</h1>
+        <table class="table table-sm">
+            <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ food.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ food.createdAt ? food.createdAt|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ food.time ? food.time|date('H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Animal</th>
+                <td>{{ food.animal.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
