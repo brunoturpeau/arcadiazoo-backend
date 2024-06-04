@@ -89,7 +89,7 @@
 
 > _Les REPAS_
 
-    [X] voir la liste des REPAS avec, pour chaque item :
+    [X] voir la liste des REPAS en chronologie inversée, avec, pour chaque item :
         - le numéro du repas, la date, l'heure
         - un lien vers l'animal concerné
         - le nombre d'items nourriture inclus

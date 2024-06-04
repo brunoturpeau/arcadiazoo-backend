@@ -18,7 +18,7 @@ class FoodController extends AbstractController
     #[Route('/', name: 'app_food_index', methods: ['GET'])]
     public function index(FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
-        $food = $foodRepository->findBy([],['id' => 'desc']);
+        $food = $foodRepository->findBy([],['created_at' => 'desc']);
 
         $eatings = $eatingRepository->findAll();
 
@@ -54,9 +54,8 @@ class FoodController extends AbstractController
     #[Route('/{id}', name: 'app_food_show', methods: ['GET'])]
     public function show(Food $food, EatingRepository $eatingRepository): Response
     {
-        $eatings = $eatingRepository->findOneBy([], ['categoryOrder' => 'asc']);
+        $eatings = $eatingRepository->findAll();
 
-        dd($eatings);
         return $this->render('admin/food/show.html.twig', [
             'food' => $food,
             'eatings' => $eating,
