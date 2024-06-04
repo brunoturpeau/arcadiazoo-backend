@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les services - Arcadia Dashboard{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <div></div>
+            <div id="btn-create">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn" href="{{ path('app_service_new') }}">Créer un service</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Les services</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {% for service in services %}
+                <div class="card">
+                    <div class="card-body h-full">
+                        <h2>{{ service.name }}</h2>
+                        <hr class="hr">
+                        <p>{{ service.description }}</p>
+                        <p class="hidden">{{ service.createdAt ? service.createdAt|date('Y-m-d') : '' }}</p>
+                        <p class="hidden">{{ service.slug }}</p>
+                    </div>
+                    <div class="card-footer">
+                        {% if is_granted('ROLE_EMPLOYE') %}
+                            <a href="{{ path('app_service_show', {'id': service.id}) }}">
+                                {{ include ('_partials/icons/_eye.html.twig') }}
+                            </a>
+                        {% endif %}
+
+                        {% if is_granted('ROLE_EMPLOYE') %}
+                            <a href="{{ path('app_service_edit', {'id': service.id}) }}">
+                                {{ include ('_partials/icons/_edit.html.twig') }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                    <div class="cover">Aucun service</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

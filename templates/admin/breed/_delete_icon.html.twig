@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_breed_delete', {'id': breed.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette race ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ breed.id) }}">
+    <button>
+        {{ include('_partials/icons/_trash.html.twig') }}
+    </button>
+</form>

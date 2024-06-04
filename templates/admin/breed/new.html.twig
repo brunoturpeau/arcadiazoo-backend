@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une race{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <a href="{{ path('app_breed_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right"></div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Créer une race</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+                {{ include('admin/breed/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

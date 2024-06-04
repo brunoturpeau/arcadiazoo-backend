@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_user_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <span class="ms-3">
+                        {{ include('admin/user/_delete_icon.html.twig') }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Modifier un utilisateur</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 p-10 lg:w-1/2">
+                {{ include('admin/user/_form.html.twig', {'button_label': 'Modifier'}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

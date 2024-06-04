@@ -1,0 +1,17 @@
+{% extends "cover.html.twig" %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+
+    <div class="h-screen flex flex-col items-center justify-center">
+        {{ include('/_partials/_nav.html.twig') }}
+        <main class="w-full flex flex-col items-center justify-center h-full">
+            <h1>Page non trouvée</h1>
+            <p>La page que vous recherchez n'a pas été trouvée.</p>
+        </main>
+        <footer>
+            Arcadia Zoo
+        </footer>
+    </div>
+{% endblock %}

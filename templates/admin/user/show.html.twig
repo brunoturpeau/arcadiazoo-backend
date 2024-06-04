@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_user_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right">
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}">
+                    {{ include('_partials/icons/_edit.html.twig') }}
+                </a>
+                <div>
+                    {{ include('admin/user/_delete_icon.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>
+            {% if 'ROLE_ADMIN' in user.roles %}
+                Administrateur
+            {% elseif 'ROLE_VETERINAIRE' in user.roles %}
+                Vétérinaire
+            {% elseif 'ROLE_EMPLOYE' in user.roles %}
+                Employé(e)
+            {% else %}
+                Utilisateur non défini
+            {% endif %}
+        </h1>
+
+        <div class="flex justify-center">
+
+            <div class="card-show">
+                <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+                <hr>
+                <p><b>ID</b> : {{ user.id }}</p>
+                <p><b>E-mail</b> : {{ user.email }}</p>
+                <p class="hidden"><b>Rôle</b> :
+                {% if 'ROLE_ADMIN' in user.roles %}
+                    Administrateur
+                {% elseif 'ROLE_VETERINAIRE' in user.roles %}
+                    Vétérinaire
+                {% elseif 'ROLE_EMPLOYE' in user.roles %}
+                    Employé(e)
+                {% else %}
+                    Utilisateur non défini
+                {% endif %}
+                </p>
+                <p class="hidden"><b>Mot de passe</b> : {{ user.password }}</p>
+                <p><b>Statut</b> : {{ user.isVerified ? 'Vérifié' : 'Non vérifié' }}</p>
+                <p><b>Date de création</b> : {{ user.createdAt ? user.createdAt|date('d/m/Y') : '' }}</p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

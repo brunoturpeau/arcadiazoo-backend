@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un service{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            {% if is_granted('ROLE_EMPLOYE') %}
+                <a  href="{{ path('app_service_index') }}">
+                    {{ include('_partials/icons/_left-circle.html.twig') }}
+                </a>
+            {% endif %}
+            <div class="right"></div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Créer un service</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+                {{ include('admin/service/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
