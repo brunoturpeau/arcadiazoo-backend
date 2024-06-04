@@ -1,39 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eating index{% endblock %}
+{% block title %}Nourriture{% endblock %}
 
 {% block body %}
-    <h1>Eating index</h1>
+    <div class="nav-context">
+        <div class="parent">
+            <div></div>
+            <div id="btn-create">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn" href="{{ path('app_eating_new') }}">Créer un repas</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="cont">
+        <h1>Nourriture</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Feeding</th>
-                <th>Quantity</th>
-                <th>Created_at</th>
-                <th>actions</th>
+                <th>N°</th>
+                <th>Nourriture</th>
+                <th>Quantité</th>
+                <th>Rapport</th>
+                <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for eating in eatings %}
-            <tr>
-                <td>{{ eating.id }}</td>
-                <td>{{ eating.feeding }}</td>
-                <td>{{ eating.quantity }}</td>
-                <td>{{ eating.createdAt ? eating.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_eating_show', {'id': eating.id}) }}">show</a>
-                    <a href="{{ path('app_eating_edit', {'id': eating.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_eating_new') }}">Create new</a>
+            </thead>
+            <tbody>
+            {% for eating in eatings %}
+                <tr>
+                    <td>{{ eating.id }}</td>
+                    <td>{{ eating.feeding }}</td>
+                    <td>{{ eating.quantity }}</td>
+                    <td>{{ eating.food.id }} - {{ eating.food.createdAt }} - {{ eating.food.animal }}</td>
+                    <td>
+                        <a href="{{ path('app_eating_show', {'id': eating.id}) }}">show</a>
+                        <a href="{{ path('app_eating_edit', {'id': eating.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun résultat</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
