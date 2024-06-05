@@ -31,7 +31,14 @@ class ReportController extends AbstractController
         $form = $this->createForm(ReportType::class, $report);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //$currentUser = $this->getUser()->getId();
+            //dd($currentUser);
+            //$report->setUser($currentUser);
+
             $entityManager->persist($report);
             $entityManager->flush();
 

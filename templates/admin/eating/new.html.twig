@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Eating{% endblock %}
+{% block title %}New EatingAjouter de la nourriture{% endblock %}
 
 {% block body %}
-    <h1>Create new Eating</h1>
-
-    {{ include('admin/eating/_form.html.twig') }}
+    <div class="nav-context">
+        <div class="parent">
+            <a  href="{{ path('app_eating_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
+            <div class="right"></div>
+        </div>
+    </div>
+    <div class="cont">
+        <h1>Ajouter de la nourriture</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+                {{ include('admin/eating/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
     <a href="{{ path('app_eating_index') }}">back to list</a>
 {% endblock %}

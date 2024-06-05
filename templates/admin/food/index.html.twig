@@ -22,6 +22,8 @@
                 <th>N°</th>
                 <th>Heure</th>
                 <th>Date</th>
+                <th>Animal</th>
+                <th>Items</th>
                 <th></th>
             </tr>
             </thead>
@@ -31,6 +33,12 @@
                     <td>{{ food.id }}</td>
                     <td>{{ food.createdAt ? food.createdAt|date('d-m-Y') : '' }}</td>
                     <td>{{ food.time ? food.time|date('H:i') : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_animal_show', {'id': food.animal.id}) }}">
+                            {{ food.animal.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                    <td>{{ food.eatings.count }}</td>
                     <td class="actions">
                         <a href="{{ path('app_food_show', {'id': food.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
@@ -38,14 +46,21 @@
                         <a href="{{ path('app_food_edit', {'id': food.id}) }}">
                             {{ include('_partials/icons/_edit.html.twig') }}
                         </a>
+                        <div>{{ include('admin/food/_delete_icon.html.twig') }}</div>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4"><h2>Aucun résultat</h2></td>
+                    <td colspan="6"><h2>Aucun résultat</h2></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        <div class="hidden">
+            {% for eating in eatings %}
+                {{ eating.id }}
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}
