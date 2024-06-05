@@ -8,20 +8,10 @@
 
 > _Les ANIMAUX_
 
-    [-] voir la liste des animaux avec, pour chaque item :
-        * une miniature  animal.images[0].name 
-        - le nom de l'animal
-        - la race
-        - un btn-icon Voir
-        * un btn-icon Rapport
-    [-] voir la fiche d'un animal avec :
-        - identifiant, nom, race, habitat
-        - état de santé
-        - photo(s)
-        - les repas donnés par l'employé(e)
-        - l'alimentation préconisée par le vétérinaire
-        - les rapports
-        - un bouton Créer un compte-rendu
+    [-] voir la liste des animaux
+    [-] voir la fiche d'un animal
+    [-] voir la liste des rapports sur la fiche animal
+    [-] voir les images sous forme de slideshow sur la fiche animal
     [-] pouvoir créer un rapport depuis le liste des animaux (animal sélectionné)
     [-] pouvoir sélectionner un animal à l'aide d'une liste déroulante
     [-] pouvoir trier par ordre croissant ou décroissant
@@ -45,3 +35,22 @@
     [-] pouvoir modifier une images
     [-] pouvoir suprimer une images
     [-] qu'une image par défaut soit associée lors de la création d'un animal
+
+## -----
+
+* une miniature  animal.images[0].name
+- le nom de l'animal
+* la race liée à sa fiche
+- l'état de santé
+* l'habitat lié à sa fiche
+- la ou les photo(s)
+- les repas donnés par l'employé(e)
+- l'alimentation préconisée par le vétérinaire
+- les rapports
+- 
+- un btn-icon Voir
+- un btn-icon Rapport
+- un bouton Créer un compte-rendu
+
+ 
+  
