@@ -15,7 +15,7 @@
 
 - la date 
 - le pseudo
-* le commentaire tronqué
+- le commentaire tronqué
 * le statut
 - un btn-icon Voir
 - un btn-icon Modifier
