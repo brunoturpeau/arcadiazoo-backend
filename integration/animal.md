@@ -8,14 +8,17 @@
 
 > _Les ANIMAUX_
 
-    [-] voir la liste des animaux
-    [-] voir la fiche d'un animal
-    [-] voir la liste des rapports sur la fiche animal
-    [-] voir les images sous forme de slideshow sur la fiche animal
-    [-] pouvoir créer un rapport depuis le liste des animaux (animal sélectionné)
-    [-] pouvoir sélectionner un animal à l'aide d'une liste déroulante
+    [X] voir la liste des animaux
+    [-] pouvoir créer un rapport depuis la liste des animaux
     [-] pouvoir trier par ordre croissant ou décroissant
     [-] pouvoir filtrer par race et par habitat
+
+    [X] voir la fiche d'un animal
+    [-] voir la liste des rapports sur la fiche animal
+    [-] voir les images sous forme de slideshow sur la fiche animal
+
+    [-] pouvoir créer un rapport depuis le liste des animaux (animal sélectionné)
+    [-] pouvoir sélectionner un animal à l'aide d'une liste déroulante
 
 #### En tant qu'employé(e) je souhaite ___
 
@@ -40,9 +43,10 @@
 
 * une miniature  animal.images[0].name
 - le nom de l'animal
-* la race liée à sa fiche
+- la race liée à sa fiche
 - l'état de santé
 * l'habitat lié à sa fiche
+
 - la ou les photo(s)
 - les repas donnés par l'employé(e)
 - l'alimentation préconisée par le vétérinaire
@@ -52,5 +56,7 @@
 - un btn-icon Rapport
 - un bouton Créer un compte-rendu
 
- 
+ ## Notes
+
+- Créer la route admin/rapport/{id}/ajout 
   
