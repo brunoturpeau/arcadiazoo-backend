@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Breed;
 use App\Form\BreedType;
+use App\Repository\AnimalRepository;
 use App\Repository\BreedRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,10 +17,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class BreedController extends AbstractController
 {
     #[Route('/', name: 'app_breed_index', methods: ['GET'])]
-    public function index(BreedRepository $breedRepository): Response
+    public function index(BreedRepository $breedRepository, AnimalRepository $animalRepository): Response
     {
+
         return $this->render('admin/breed/index.html.twig', [
             'breeds' => $breedRepository->findAll(),
+            'animals' => $animalRepository->findAll(),
         ]);
     }
 
