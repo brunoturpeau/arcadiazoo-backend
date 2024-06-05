@@ -43,5 +43,32 @@
             </tr>
             </tbody>
         </table>
+        <h2 class="text-center">Liste des animaux</h2>
+        <table class="tw-table table-sm">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <td>{{ animal.id }}</td>
+                    <td>
+                        <a href="{{ path('app_animal_show', {'id' : animal.id}) }}">
+                            {{ animal.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                    <td class="actions"></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun résultat</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

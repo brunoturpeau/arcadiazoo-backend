@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Habitat;
 use App\Form\HabitatType;
+use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,7 @@ class HabitatController extends AbstractController
     #[Route('/', name: 'app_habitat_index', methods: ['GET'])]
     public function index(HabitatRepository $habitatRepository): Response
     {
+
         return $this->render('admin/habitat/index.html.twig', [
             'habitats' => $habitatRepository->findAll(),
         ]);
@@ -52,10 +54,14 @@ class HabitatController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_habitat_show', methods: ['GET'])]
-    public function show(Habitat $habitat): Response
+    public function show(Habitat $habitat, AnimalRepository $animalRepository): Response
     {
+
+        $animals = $animalRepository->findBy([],['name' => 'asc']);
+
         return $this->render('admin/habitat/show.html.twig', [
             'habitat' => $habitat,
+            'animals' => $animals,
         ]);
     }
 
