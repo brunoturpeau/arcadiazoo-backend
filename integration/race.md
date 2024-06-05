@@ -1,20 +1,21 @@
-# Race
+# Races
 
-#### En tant qu'administrateur je souhaite ___
+## En tant qu'administrateur je souhaite ___
 
-> _Les RACES_
+    [X] voir la liste des RACES (description tronquée)
+    [-] voir le nombre d'animaux par RACE
+    [-] voir une RACE avec la liste des animaux qui compose la RACE, par ordre alphabétique
+    [-] pouvoir créer une RACE
+    [-] modifier une RACE depuis sa fiche ou depuis la liste des RACES
+    [-] supprimer une RACE il elle ne contient pas d'animaux associé
+    [-] créer un repas depuis le liste des Repas (animal sélectionné)
 
-    [-] voir la liste des RACES avec, pour chaque item :
-        - le nom 
-        * une description tronquée
-        - un btn-icon Voir
-        - un btn-icon Modifier
-        - un btn-icon Supprimer
-        * la liste des animaux qui compose la race, pour chaque item :
-            * le nom de l'animal
-            * un btn-icon Voir
-            * un btn-icon Repas
-    [-] pouvoir créer un repas depuis le liste des Repas (animal sélectionné)
-    [-] pouvoir créer une race 
-    [-] pouvoir modifier une race 
-    [&] pouvoir supprimer une race il elle ne contient pas d'animaux associé [flash]
+## Eléments
+
+- le nom 
+- une description 
+
+auto
+- id
+- created_at
+- slug auto

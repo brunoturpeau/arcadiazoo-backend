@@ -27,7 +27,7 @@
             {% for breed in breeds %}
                 <tr>
                     <td>{{ breed.name }}</td>
-                    <td>{{ breed.detail }}</td>
+                    <td>{{ breed.detail|u.truncate(50, '...') }}</td>
                     <td class="actions">
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('app_breed_show', {'id': breed.id}) }}">

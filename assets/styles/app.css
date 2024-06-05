@@ -9,8 +9,18 @@
     h2 {
         @apply text-gray-800 text-xl font-bold mb-5;
     }
-    .hr{
-        @apply border-slate-300 border mb-5;
+    hr{
+        @apply border-slate-300 border my-10;
+    }
+    form {
+        @apply max-w-md mx-auto;
+        input,
+        textarea {
+            @apply bg-white border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
+        }
+        label {
+            @apply block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white;
+        }
     }
 }
 
@@ -102,16 +112,7 @@
     #btn-create{
         @apply container mx-auto flex justify-end mb-5;
     }
-    form {
-        @apply max-w-md mx-auto;
-    }
-    input,
-    textarea {
-        @apply bg-white border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
-    }
-    label {
-        @apply block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white;
-    }
+
     .table {
         @apply mb-10 w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400;
     }
