@@ -2,7 +2,7 @@
 
 ## En tant qu'employé(e) je souhaite ___
 
-    [-] avoir la possibilité de voir la liste des COMMENTAIRES en chronologie inversée
+    [X] avoir la possibilité de voir la liste des COMMENTAIRES en chronologie inversée
     [-] avoir la possibilité de modifier un COMMENTAIRE
     [-] avoir la possibilité d'ajouter un COMMENTAIRE
     [-] avoir la possibilité de supprimer un commentaire
