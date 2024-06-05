@@ -1,8 +1,6 @@
-# Animal
+# Animaux
 
 ## En tant que vétérinaire je souhaite ___
-
-> _Les ANIMAUX_
 
     [X] voir la liste des animaux
     [-] créer un rapport depuis la liste des animaux
@@ -16,21 +14,17 @@
 
 ## En tant qu'employé(e) je souhaite ___
 
-> _Les ANIMAUX_
-
     [X] avoir les mêmes fonctionnalités que les vétérinaires
 
 ## En tant qu'administrateur je souhaite ___
 
-> _Les ANIMAUX_
-
     [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] pouvoir créer un animal
-    [-] pouvoir modifier un animal
-    [-] pouvoir supprimer un animal
-    [-] pouvoir ajouter une ou plusieurs images
-    [-] pouvoir modifier une images
-    [-] pouvoir suprimer une images
+    [-] créer un animal
+    [-] modifier un animal
+    [-] supprimer un animal
+    [-] ajouter une ou plusieurs images
+    [-] modifier une images
+    [-] suprimer une images
     [-] qu'une image par défaut soit associée lors de la création d'un animal
 
 ## -----
