@@ -51,18 +51,30 @@
                 </button>
             </div>
 
-            <div class="card-show w-full">
-                <h2>{{ animal.name }}</h2>
-                <hr>
-                <p><b>ID</b> : {{ animal.id }}</p>
-                <p><b>Race</b> : {{ animal.breed.name }}</p>
-                <p><b>Habitat</b> : </p>
-                <p><b>Santé</b> : {{ animal.health }}</p>
-                <p><b>Description</b> : {{ animal.description }}</p>
-                <p><b>Slug</b> : {{ animal.slug }}</p>
-                <p><b>Date de création</b> : {{ animal.createdAt ? animal.createdAt|date('d/m/Y') : '' }}</p>
-            </div>
-
+            <table class="table table-sm">
+                <tbody>
+                <tr>
+                    <th>N°</th>
+                    <td>{{ animal.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ animal.name }}</td>
+                </tr>
+                <tr>
+                    <th>Race</th>
+                    <td>{{ animal.breed.name }}</td>
+                </tr>
+                <tr>
+                    <th>Santé</th>
+                    <td>{{ animal.health }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ animal.description }}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
