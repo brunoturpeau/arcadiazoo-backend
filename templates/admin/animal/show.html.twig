@@ -79,6 +79,28 @@
                 </tr>
                 </tbody>
             </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for report in reports %}
+                    <tr>
+                        <td>{{ report.id }}</td>
+                        <td>{{ report.date|date('d-m-Y') }}</td>
+                        <td class="actions">
+                            <a href="{{ path('app_report_show', {'id':report.id}) }}">
+                                {{ include('_partials/icons/_eye.html.twig') }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
