@@ -38,7 +38,11 @@
                         </a>
                     </td>
                     <td>{{ report.animal.health }}</td>
-                    <td>{{ report.user.firstname }}</td>
+                    <td>
+                        <a href="{{ path('app_user_show', {'id': report.user.id}) }}">
+                            {{ report.user.firstname }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
                     <td class="actions">
                         <a href="{{ path('app_report_show', {'id': report.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}

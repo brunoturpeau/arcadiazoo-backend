@@ -21,13 +21,37 @@
 
     <div class="cont">
         <h1>Rapport</h1>
-        <div class="flex justify-center">
-            <div class="card-show">
-                <h2>{{ report.date ? report.date|date('d/m/Y') : '' }}</h2>
-                <hr>
-                <p><b>ID</b> : {{ report.id }}</p>
-                <p><b>Rapport</b> : {{ report.detail }}</p>
-            </div>
-        </div>
+        <table class="table table-sm">
+            <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ report.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ report.date ? report.date|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Animal</th>
+                <td>
+                    <a href="{{ path('app_animal_show', {'id':report.animal.id}) }}">
+                        {{ report.animal.name }} {{ include('_partials/icons/_link.html.twig') }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Vétérinaire</th>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': report.user.id}) }}">
+                        {{ report.user.firstname }} {{ include('_partials/icons/_link.html.twig') }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Rapport</th>
+                <td>{{ report.detail }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 {% endblock %}
