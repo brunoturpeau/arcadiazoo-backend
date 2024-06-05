@@ -29,7 +29,7 @@
                 <tr>
                     <td><b>{{ comment.createdAt|date('d-m-Y') }}</b></td>
                     <td><b>{{ comment.pseudo }}</b></td>
-                    <td>{{ comment.commentText }}</td>
+                    <td>{{ comment.commentText|u.truncate(50, '...') }}</td>
                     <td class="actions">
                         <a href="{{ path('app_comment_show', {'id': comment.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
