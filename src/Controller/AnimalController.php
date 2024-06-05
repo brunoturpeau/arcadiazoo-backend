@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
+use App\Repository\ReportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +17,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AnimalController extends AbstractController
 {
     #[Route('/', name: 'app_animal_index', methods: ['GET'])]
-    public function index(AnimalRepository $animalRepository): Response
+    public function index(AnimalRepository $animalRepository, ReportRepository $reportRepository): Response
     {
         return $this->render('admin/animal/index.html.twig', [
             'animals' => $animalRepository->findAll(),
+            'reports' => $reportRepository->findAll(),
         ]);
     }
 

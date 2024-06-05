@@ -51,7 +51,7 @@
                 </button>
             </div>
 
-            <table class="table table-sm">
+            <table class="table">
                 <tbody>
                 <tr>
                     <th>N°</th>
@@ -63,7 +63,11 @@
                 </tr>
                 <tr>
                     <th>Race</th>
-                    <td>{{ animal.breed.name }}</td>
+                    <td>
+                        <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                            {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <th>Santé</th>
