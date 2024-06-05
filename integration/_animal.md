@@ -5,15 +5,14 @@
 > _Les ANIMAUX_
 
     [X] voir la liste des animaux
-    [-] pouvoir créer un rapport depuis la liste des animaux
-    [-] pouvoir trier par ordre croissant ou décroissant
-    [-] pouvoir filtrer par race et par habitat
+    [-] créer un rapport depuis la liste des animaux
+    [-] trier par ordre croissant ou décroissant
+    [-] filtrer par race et par habitat
+    [-] sélectionner un animal à l'aide d'une liste déroulante
 
     [X] voir la fiche d'un animal
     [X] voir la liste des rapports sur la fiche animal
     [X] voir les images sous forme de slideshow sur la fiche animal
-
-    [-] pouvoir sélectionner un animal à l'aide d'une liste déroulante
 
 ## En tant qu'employé(e) je souhaite ___
 

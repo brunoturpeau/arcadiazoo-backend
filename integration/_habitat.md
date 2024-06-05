@@ -5,7 +5,7 @@
     [X] voir la liste des HABITATS
     [-] voir le nombre d'animaux par HABITAT
     [X] voir la fiche HABITAT
-    [-] voir la liste des animaux sur la fiche HABITAT
+    [X] voir la liste des animaux sur la fiche HABITAT
     [-] voir la liste des races sur la fiche HABITAT
 
 ## En tant que vétérinaire je souhaite ___
