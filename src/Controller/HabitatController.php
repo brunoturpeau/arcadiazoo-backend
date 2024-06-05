@@ -56,12 +56,13 @@ class HabitatController extends AbstractController
     #[Route('/{id}', name: 'app_habitat_show', methods: ['GET'])]
     public function show(Habitat $habitat, AnimalRepository $animalRepository): Response
     {
-
-        $animals = $animalRepository->findBy([],['name' => 'asc']);
+        $animals = $animalRepository->findBy(['habitat' => $habitat->getId()],['name' => 'asc']);
+        $count = $animalRepository->count(['habitat' => $habitat->getId()]);
 
         return $this->render('admin/habitat/show.html.twig', [
             'habitat' => $habitat,
             'animals' => $animals,
+            'count' => $count,
         ]);
     }
 
