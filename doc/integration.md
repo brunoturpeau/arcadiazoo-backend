@@ -14,31 +14,7 @@
 
 > _Les RAPPORTS_
 
-    [X] voir la liste des RAPPORTS avec, pour chaque item :
-        - le numéro du rapport
-        - le nom de l'animal
-        - la date de passage
-        - l'état de santé de l'animal
-        - un btn-icon Voir, un btn-icon Modifier, un btn-icon Supprimer
-        - un bouton Créer un rapport
-    [-] voir chaque RAPPORT et y trouver :
-        - le numéro du rapport
-        - le nom de l'animal
-        - la date de passage
-        - l'état de santé de l'animal
-        * l'alimentation préconisé et son grammage
-    [-] pouvoir créer un RAPPORT à l'aide d'un formulaire [flash] 
-        - la date de passage
-        - le détail du rapport
-        - l'état de santé de l’animal
-        - le type de nourriture et la quantité préconisée
-    [-] pouvoir modifier chaque RAPPORT [flash] 
-    [-] pouvoir supprimer un RAPPORT [flash] 
-    [-] voir la liste des RAPPORTS regroupés par animaux
-    [-] voir la liste des RAPPORTS par ordre chronologique inversée
-    [-] pouvoir trier par ordre croissant ou décroissant
-    [-] pouvoir filtrer par animal et par habitat
-    [-] que lors de la création d'un RAPPORT la date de passage contienne automatiquement la date du jour si je ne la renseigne pas
+    ->
 
 > _Les ANIMAUX_
 
@@ -122,7 +98,7 @@
 
 > _Les RAPPORTS_
 
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
+    ->
 
 > _Les COMMENTAIRES_
 

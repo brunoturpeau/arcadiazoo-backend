@@ -22,6 +22,7 @@
                 <th>Date</th>
                 <th>Animal</th>
                 <th>&Eacute;tat de santé</th>
+                <th>Vétérinaire</th>
                 <th></th>
             </tr>
             </thead>
@@ -37,6 +38,7 @@
                         </a>
                     </td>
                     <td>{{ report.animal.health }}</td>
+                    <td>{{ report.user.firstname }}</td>
                     <td class="actions">
                         <a href="{{ path('app_report_show', {'id': report.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
@@ -53,7 +55,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr class="empty" colspan="5"><h2>Aucun rapport</h2></tr>
+                <tr class="empty" colspan="6"><h2>Aucun rapport</h2></tr>
             {% endfor %}
             </tbody>
         </table>
