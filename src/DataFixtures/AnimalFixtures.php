@@ -24,7 +24,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
 
 
 
-        for ($i = 1; $i <= 30; $i++){
+        for ($i = 1; $i <= 50; $i++){
             $animal = new Animal();
             $animal->setName($faker->firstName());
             $animal->setHealth($faker->text(30));

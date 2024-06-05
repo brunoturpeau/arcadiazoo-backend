@@ -33,9 +33,16 @@
 
                     </td>
                     <td>{{ animal.name }}</td>
-                    <td>{{ animal.breed.name }}</td>
+                    <td>
+                        <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                            {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
                     <td>{{ animal.health }}</td>
                     <td class="actions">
+                        <a href="#" title="Créer un rapport">
+                            {{ include('_partials/icons/_report.html.twig') }}
+                        </a>
                         <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
                             {{ include ('_partials/icons/_eye.html.twig') }}
                         </a>

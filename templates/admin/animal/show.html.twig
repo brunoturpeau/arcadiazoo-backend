@@ -51,18 +51,60 @@
                 </button>
             </div>
 
-            <div class="card-show w-full">
-                <h2>{{ animal.name }}</h2>
-                <hr>
-                <p><b>ID</b> : {{ animal.id }}</p>
-                <p><b>Race</b> : {{ animal.breed.name }}</p>
-                <p><b>Habitat</b> : {{ animal.habitat.name }}</p>
-                <p><b>Santé</b> : {{ animal.health }}</p>
-                <p><b>Description</b> : {{ animal.description }}</p>
-                <p><b>Slug</b> : {{ animal.slug }}</p>
-                <p><b>Date de création</b> : {{ animal.createdAt ? animal.createdAt|date('d/m/Y') : '' }}</p>
-            </div>
-
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>N°</th>
+                    <td>{{ animal.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ animal.name }}</td>
+                </tr>
+                <tr>
+                    <th>Race</th>
+                    <td>
+                        <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                            {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Santé</th>
+                    <td>{{ animal.health }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ animal.description }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Liste des rapports</h2>
+            <table class="tw-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for report in reports %}
+                    <tr>
+                        <td>{{ report.id }}</td>
+                        <td>{{ report.date|date('d-m-Y') }}</td>
+                        <td class="actions">
+                            <a href="{{ path('app_report_show', {'id':report.id}) }}">
+                                {{ include('_partials/icons/_eye.html.twig') }}
+                            </a>
+                            <a href="{{ path('app_report_edit', {'id':report.id}) }}">
+                                {{ include('_partials/icons/_edit.html.twig') }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

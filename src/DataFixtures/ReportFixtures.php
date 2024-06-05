@@ -6,28 +6,30 @@ use App\Entity\Report;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Faker;
 
 class ReportFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Faker\Factory::create('fr_FR');
-
-        for ($i = 1; $i <= 50; $i++)
-        {
-            $report = new Report();
-            $report->setDetail($faker->text(50));
-            $user = $this->getReference('user-'.rand(3, 6));
-            $report->setUser($user);
-            $animal = $this->getReference('animal-'.rand(1, 30));
-            $report->setAnimal($animal);
-
-            $manager->persist($report);
-        }
-
+        $this->createReport(new \DateTimeImmutable('2024-08-01'), 'Rapport texte','user-3','Dundy', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-05'), 'Rapport texte','user-5','Dundy', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-17'), 'Rapport texte','user-3','Zibrou', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-12'), 'Rapport texte','user-5','Zibrou', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Zibrou', $manager);
 
         $manager->flush();
+    }
+    public function createReport($date, string $detail, $user, $animal, ObjectManager $manager)
+    {
+        $report = new Report();
+        $report->setDate($date);
+        $user = $this->getReference($user);
+        $report->setUser($user);
+        $report->setDetail($detail);
+        $animal = $this->getReference($animal);
+        $report->setAnimal($animal);
+
+        $manager->persist($report);
     }
     public function getDependencies(): array
     {
