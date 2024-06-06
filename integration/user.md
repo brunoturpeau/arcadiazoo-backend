@@ -9,8 +9,8 @@
     [X] label: rôle
     [X] label: statut
     [X] link: voir l'utilisateur
-    [X] link: modifier l'utilisateur
-    [X] link: supprimer l'utilisateur
+    [X] link: modifier l'utilisateur 
+    [X] link: supprimer l'utilisateur (flash)
 
 [-] créer un vétérinaire
 [-] créer un(e) employé(e) 
