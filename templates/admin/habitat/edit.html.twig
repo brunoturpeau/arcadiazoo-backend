@@ -12,9 +12,10 @@
             {% endif %}
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <span class="ms-3">
+                    <div class="btn">
                         {{ include('admin/habitat/_delete_icon.html.twig') }}
-                    </span>
+                        Supprimer
+                    </div>
                 {% endif %}
             </div>
         </div>

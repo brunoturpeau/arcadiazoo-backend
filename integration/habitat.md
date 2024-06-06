@@ -31,14 +31,16 @@
 
 ## En tant qu'administrateur je souhaite ___
 
-[/] voir la liste des habitats
+[X] voir la liste des habitats
     [X] idem employé(e)
-    [-] créer un habitat
-    [-] modifier un habitat
-    [-] supprimer un habitat
+    [X] link: créer un habitat
+    [-] link: modifier un habitat
+    [-] action: supprimer un habitat si il ne contient aucun animal
 
 [X] voir un habitat
     [X] idem vétérinaire
     [-] link: créer un habitat
     [-] link: modifier l'habitat
     [-] action: supprimer l'habitat si aucun animal n'est associé (flash)
+
+[X] créer un habitat
