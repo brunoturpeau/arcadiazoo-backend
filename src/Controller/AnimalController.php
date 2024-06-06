@@ -45,6 +45,8 @@ class AnimalController extends AbstractController
             $entityManager->persist($animal);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Animal ajouté avec succès.');
+
             return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -79,6 +81,8 @@ class AnimalController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Animal modifié avec succès.');
+
             return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -94,6 +98,9 @@ class AnimalController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$animal->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success', 'Animal supprimé avec succès.');
+
             $entityManager->remove($animal);
             $entityManager->flush();
         }

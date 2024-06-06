@@ -1,8 +1,9 @@
 # Animaux
 
-## En tant qu'employé(e) ou vétérinaire je souhaite ___
+## En tant qu'utilisateur je souhaite ___
 
-[/] voir la liste des animaux
+[X] voir la liste des animaux
+    [X] label: n°
     [X] label: nom (link) (asc)
     [X] label: race (link)
     [X] label: état de santé (50 max)
@@ -41,8 +42,8 @@
 
 [X] voir la liste des animaux
     [X] idem employé(e)s
-    [-] btn: créer un animal
-    [-] link: modifier la fiche de l'animal
+    [X] link: créer un animal
+    [X] link: modifier la fiche de l'animal
     [-] link: supprimer la fiche de l'animal
 
 
