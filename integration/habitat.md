@@ -2,7 +2,7 @@
 
 ## En tant qu'employé(e) je souhaite ___
 
-[/] voir la liste des habitats
+[X] voir la liste des habitats
     [X] label: nom
     [X] label: description (50 max)
     [X] label: commentaire (50 max)
@@ -10,9 +10,6 @@
     [X] link: voir l'habitat
 
 
-    [X] voir la liste des animaux par ordre alphabétique sur la fiche HABITAT
-    [-] voir une miniature sur la liste des animaux
-    [-] voir la liste des races sur la fiche HABITAT
 
 ## En tant que vétérinaire je souhaite ___
 

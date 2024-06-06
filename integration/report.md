@@ -18,6 +18,17 @@
     [-] filter: habitat
     [-] filter: date (asc-desc)
 
+[/] voir un rapport
+    [X] label: N°
+    [X] label: date 
+    [-] label: image
+    [X] label: animal (link)
+    [-] label: état de santé (50 max)
+    [X] label: vétérinaire (link)
+    [X] label: rapport
+    [X] link: modifier le rapport (flash)
+    [X] action: supprimer le rapport (flash)
+
 [/] créer un rapport
     [-] input: date
     [X] input: rapport

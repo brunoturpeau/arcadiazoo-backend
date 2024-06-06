@@ -44,7 +44,7 @@
                     </td>
                     <td>{{ report.animal.health }}</td>
                     <td>
-                        {# TODO link: modifier l'état de santé #}
+                        {# @todo link: modifier l'état de santé #}
 
                         <a href="{{ path('app_user_show', {'id': report.user.id}) }}">
                             {{ report.user.firstname }} {{ include('_partials/icons/_link.html.twig') }}
