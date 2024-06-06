@@ -11,12 +11,19 @@
     [-] lien: créer un rapport pour l'animal
     [-] lien: voir les rapports de l'animal
 
-[-] voir la liste des rapports
+[/] voir la liste des rapports
     [X] label: date (desc)
     [X] label: animal (link)
     [X] label: description (50 max)
     [-] lien: voir le rapport
-    [-] lien: modifier le rapport
+    [X] lien: modifier le rapport
+
+[/] voir la liste des habitats
+    [X] label: nom
+    [X] label: description (50 max)
+    [-] label: nombre d'animaux
+    [X] lien: voir l'habitat
+    [-] lien: mettre un commentaire sur l'habitat
 
 ## En tant qu'employé(e), sur ma dashboard, je souhaite ___
 
@@ -33,3 +40,5 @@
 [-] voir la liste des rapports
     [X] avoir les mêmes fonctionnalités que les vétérinaires
 
+[/] voir la liste des habitats
+    [X] avoir les mêmes fonctionnalités que les vétérinaires
