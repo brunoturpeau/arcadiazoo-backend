@@ -13,6 +13,6 @@
 
 [/] voir la liste des services
     [X] idem employé(e)
-    [-] créer un service
-    [-] supprimer un service
+[-] créer un service
+[-] supprimer un service
 
