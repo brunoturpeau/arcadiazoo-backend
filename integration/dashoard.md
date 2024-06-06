@@ -42,6 +42,12 @@
     [X] link: modifier le commentaire
     [X] action: supprimer le commentaire (flash)
 
+[X] voir la liste des services
+    [X] label: nom
+    [X] label: description (50 max)
+    [X] link: voir le commentaire
+    [X] link: modifier le commentaire
+
 ## En tant qu'administrateur, sur ma dashboard, je souhaite ___
 
 [X] voir la liste des animaux
@@ -58,4 +64,7 @@
     [-] link: supprimer un habitat si il ne contient aucun animal
 
 [X] voir la liste des commentaires
+    [X] idem employé(e)s
+
+[X] voir la liste des services
     [X] idem employé(e)s
