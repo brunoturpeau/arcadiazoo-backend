@@ -11,7 +11,11 @@
         <table class="table">
             {% for animal in animals  %}
                 <tr>
-                    <td>{{ animal.name }}</td>
+                    <td>
+                        <a href="{{ path('app_animal_show',{'id': animal.id}) }}">
+                            <b>{{ animal.name }}</b> {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
                     <td>{{ animal.breed.name }}</td>
                     <td class="flex gap-5">
                         <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
