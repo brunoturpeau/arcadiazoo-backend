@@ -45,6 +45,8 @@ class HabitatController extends AbstractController
             $entityManager->persist($habitat);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Habitat ajouté avec succès');
+
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -82,6 +84,8 @@ class HabitatController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Habitat modifié avec succès');
+
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -107,6 +111,7 @@ class HabitatController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Commentaire modifié avec succès');
+
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -122,6 +127,9 @@ class HabitatController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$habitat->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success', 'Habitat supprimé avec succès');
+
             $entityManager->remove($habitat);
             $entityManager->flush();
         }
