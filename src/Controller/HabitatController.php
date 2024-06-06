@@ -90,6 +90,30 @@ class HabitatController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/commentaire', name: 'app_habitat_comment_edit', methods: ['GET', 'POST'])]
+    public function editComment(Request $request, Habitat $habitat,SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
+
+        $form = $this->createForm(HabitatType::class, $habitat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // we generate the slug
+            $slug = $slugger->slug($habitat->getName());
+            $habitat->setSlug($slug);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/habitat/edit.html.twig', [
+            'habitat' => $habitat,
+            'form' => $form,
+        ]);
+    }
+
     #[Route('/{id}', name: 'app_habitat_delete', methods: ['POST'])]
     public function delete(Request $request, Habitat $habitat, EntityManagerInterface $entityManager): Response
     {

@@ -30,7 +30,9 @@
 [/] voir la liste des habitats
     [X] idem employé(e)
     [-] link: ajouter ou modifier commentaire sur l'habitat
+
 [-] action: créer un rapport
+
 ## En tant qu'administrateur je souhaite ___
 
 [/] voir la liste des habitats
