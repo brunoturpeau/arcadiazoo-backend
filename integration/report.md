@@ -2,7 +2,6 @@
 
 ## En tant que vétérinaire je souhaite ___
 
-
 [X] voir la liste des rapports
     [X] label: N°
     [X] label: date (desc)

@@ -3,11 +3,12 @@
 ## En tant que vétérinaire, sur ma dashboard, je souhaite ___
 
 [/] voir la liste des animaux
-    [X] label: nom (link) (asc)
-    [X] label: race (link)
+    [X] N°
+    [-] label: nom (link) (asc)
+    [-] label: race (link)
     [-] label: habitat (link)
     [-] label: nombre d'animaux
-    [X] lien: voir la fiche de l'animal
+    [-] lien: voir la fiche de l'animal
     [-] lien: créer un rapport pour l'animal
     [-] lien: voir les rapports de l'animal
 
