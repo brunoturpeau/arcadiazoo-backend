@@ -77,9 +77,12 @@ class CommentController extends AbstractController
     #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
 
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success','Commentaire supprimé avec succés.');
+
             $entityManager->remove($comment);
             $entityManager->flush();
         }

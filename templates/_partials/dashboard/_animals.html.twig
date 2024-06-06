@@ -13,6 +13,8 @@
                 <tr>
                     <th>Animal</th>
                     <th>Race</th>
+                    <th>Habitat</th>
+                    {# TODO label: nombre d'animaux #}
                     <th></th>
                 </tr>
             </thead>
@@ -29,7 +31,14 @@
                             {{ animal.breed.name }}  {{ include('_partials/icons/_link.html.twig') }}
                         </a>
                     </td>
+                    <td>
+                        {# TODO label: habitat (link) #}
+                    </td>
                     <td class="flex gap-5">
+                        {# TODO label: lien: créer un rapport pour l'animal #}
+
+                        {# TODO label: lien: voir les rapports de l'animal #}
+
                         <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
                             {{ include ('_partials/icons/_eye.html.twig') }}
                         </a>

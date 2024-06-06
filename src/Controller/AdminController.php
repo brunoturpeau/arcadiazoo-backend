@@ -19,12 +19,13 @@ class AdminController extends AbstractController
     {
         $animals = $animalRepository->findBy([],['name' => 'asc']);
         $reports = $reportRepository->findBy([]);
+        $comments = $commentRepository->findBy([],['created_at' => 'desc']);
 
         return $this->render('admin/index.html.twig', [
             'users' => $users->findAll(),
             'animals' => $animals,
             'services' => $serviceRepository->findAll(),
-            'comments' => $commentRepository->findAll(),
+            'comments' => $comments,
             'reports' => $reports,
             'habitats' => $habitatRepository->findAll(),
         ]);

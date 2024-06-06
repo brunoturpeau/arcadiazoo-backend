@@ -3,19 +3,19 @@
 ## En tant que vétérinaire, sur ma dashboard, je souhaite ___
 
 [/] voir la liste des animaux
-    [-] nombre d'animaux
-    [X] orderby: nom asc
-    [X] label: nom avec lien
-    [X] label: race avec lien
+    [X] label: nom (link) (asc)
+    [X] label: race (link)
+    [-] label: habitat (link)
+    [-] label: nombre d'animaux
     [X] lien: voir la fiche de l'animal
     [-] lien: créer un rapport pour l'animal
     [-] lien: voir les rapports de l'animal
 
-[/] voir la liste des rapports
+[X] voir la liste des rapports
     [X] label: date (desc)
     [X] label: animal (link)
     [X] label: description (50 max)
-    [-] lien: voir le rapport
+    [X] lien: voir le rapport
     [X] lien: modifier le rapport
 
 [/] voir la liste des habitats
@@ -28,17 +28,34 @@
 ## En tant qu'employé(e), sur ma dashboard, je souhaite ___
 
 [X] voir la liste des animaux
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
+    [X] idem vétérinaires
 
+[X] voir la liste des habitats
+    [X] idem vétérinaires
+
+[X] voir la liste des commentaires
+    [X] label: date (desc)
+    [X] label: pseudo
+    [X] label: commentaire (50 max)
+    [X] label: publié
+    [X] link: voir le commentaire
+    [X] link: modifier le commentaire
+    [X] action: supprimer le commentaire (flash)
 
 ## En tant qu'administrateur, sur ma dashboard, je souhaite ___
 
 [X] voir la liste des animaux
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [X] lien: modifier une animal
+    [X] idem employé(e)s
+    [X] lien: modifier un animal
 
 [-] voir la liste des rapports
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
+    [X] idem vétérinaires
 
 [/] voir la liste des habitats
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
+    [X] idem employé(e)s
+    [-] link: créer un habitat
+    [-] link: modifier un habitat
+    [-] link: supprimer un habitat si il ne contient aucun animal
+
+[X] voir la liste des commentaires
+    [X] idem employé(e)s
