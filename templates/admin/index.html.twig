@@ -16,7 +16,7 @@
                 {{ include('_partials/dashboard/_comments.html.twig') }}
             {% endif %}
             {% if is_granted('ROLE_VETERINAIRE') %}
-
+                {{ include('_partials/dashboard/_reports.html.twig') }}
             {% endif %}
         </div>
     </div>
