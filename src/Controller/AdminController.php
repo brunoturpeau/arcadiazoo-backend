@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AnimalRepository;
 use App\Repository\CommentRepository;
+use App\Repository\FoodRepository;
 use App\Repository\HabitatRepository;
 use App\Repository\ReportRepository;
 use App\Repository\ServiceRepository;
@@ -15,11 +16,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'app_admin')]
-    public function index(UserRepository $users, ServiceRepository $serviceRepository, CommentRepository $commentRepository, AnimalRepository $animalRepository, ReportRepository $reportRepository, HabitatRepository $habitatRepository): Response
+    public function index(UserRepository $users, ServiceRepository $serviceRepository, CommentRepository $commentRepository, AnimalRepository $animalRepository, ReportRepository $reportRepository, HabitatRepository $habitatRepository, FoodRepository $foodRepository): Response
     {
         $animals = $animalRepository->findBy([],['name' => 'asc']);
         $reports = $reportRepository->findBy([]);
         $comments = $commentRepository->findBy([],['created_at' => 'desc']);
+        $food = $foodRepository->findBy([],['created_at' => 'desc']);
 
         return $this->render('admin/index.html.twig', [
             'users' => $users->findAll(),
@@ -27,6 +29,7 @@ class AdminController extends AbstractController
             'services' => $serviceRepository->findAll(),
             'comments' => $comments,
             'reports' => $reports,
+            'food' => $food,
             'habitats' => $habitatRepository->findAll(),
         ]);
     }

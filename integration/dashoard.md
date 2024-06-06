@@ -48,6 +48,19 @@
     [X] link: voir le commentaire
     [X] link: modifier le commentaire
 
+[-] voir la liste des repas
+    [-] label: date (desc)
+    [-] label: animal (link)
+    [-] link: voir le repas
+    [-] link: modifier le repas
+    [-] action: supprimer le repas si il n'y a aucune entrée associée
+    [-] sublist: alimentation
+        [-] label: nourriture
+        [-] label: quantité
+        [-] link: modifier la ligne
+        [-] link: supprimer la ligne
+
+
 ## En tant qu'administrateur, sur ma dashboard, je souhaite ___
 
 [X] voir la liste des animaux

@@ -17,8 +17,10 @@ class ReportController extends AbstractController
     #[Route('/', name: 'app_report_index', methods: ['GET'])]
     public function index(ReportRepository $reportRepository): Response
     {
+        $reports = $reportRepository->findby([],['date' => 'desc']);
+
         return $this->render('admin/report/index.html.twig', [
-            'reports' => $reportRepository->findAll(),
+            'reports' => $reports,
         ]);
     }
 
