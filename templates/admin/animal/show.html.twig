@@ -51,6 +51,10 @@
                 </button>
             </div>
 
+            {# @todo label: habitat (link) #}
+            {# @todo link: créer un rapport pour l'animal (veto) #}
+            {# @todo link: créer un repas pour l'animal (employe) #}
+
             <table class="table">
                 <tbody>
                 <tr>
@@ -71,11 +75,11 @@
                 </tr>
                 <tr>
                     <th>Santé</th>
-                    <td>{{ animal.health }}</td>
+                    <td>{{ animal.health|u.truncate(50, '...') }}</td>
                 </tr>
                 <tr>
                     <th>Description</th>
-                    <td>{{ animal.description }}</td>
+                    <td>{{ animal.description|u.truncate(50, '...') }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -85,6 +89,7 @@
                     <tr>
                         <th>N°</th>
                         <th>Date</th>
+                        <th>Rapport</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -93,6 +98,7 @@
                     <tr>
                         <td>{{ report.id }}</td>
                         <td>{{ report.date|date('d-m-Y') }}</td>
+                        <td>{{ report.detail|u.truncate(50, '...') }}</td>
                         <td class="actions">
                             <a href="{{ path('app_report_show', {'id':report.id}) }}">
                                 {{ include('_partials/icons/_eye.html.twig') }}
@@ -104,6 +110,8 @@
                             {% endif %}
                         </td>
                     </tr>
+                {% else %}
+                    <tr colspan="4">Aucun résultat</tr>
                 {% endfor %}
                 </tbody>
             </table>

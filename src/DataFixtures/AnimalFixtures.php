@@ -16,11 +16,12 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        $this->createAnimal("Dundy",$faker->text(120),'En très bonne forme', 'Crocodile', 'Marais', $manager);
-        $this->createAnimal("Simba",$faker->text(90),'En très bonne forme', 'Lion', 'Savane', $manager);
-        $this->createAnimal("Zibrou",$faker->text(80),'En très bonne forme', 'Zèbre', 'Savane', $manager);
-        $this->createAnimal("Sheer Khan",$faker->text(110),'En très bonne forme', 'Tigre', 'Jungle', $manager);
-        $this->createAnimal("Ceros",$faker->text(100),'En très bonne forme', 'Rhinocéros blanc', 'Jungle', $manager);
+
+        $this->createAnimal("Dundy",'En très bonne forme', 'Crocodile', 'Marais', $manager);
+        $this->createAnimal("Simba",'En très bonne forme', 'Lion', 'Savane', $manager);
+        $this->createAnimal("Zibrou",'En très bonne forme', 'Zèbre', 'Savane', $manager);
+        $this->createAnimal("Sheer Khan",'En très bonne forme', 'Tigre', 'Jungle', $manager);
+        $this->createAnimal("Ceros",'En très bonne forme', 'Rhinocéros blanc', 'Jungle', $manager);
 
 
 
@@ -42,11 +43,13 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
 
         $manager->flush();
     }
-    public function createAnimal(string $name,string $description, string $health, string $breed, string $habitat, ObjectManager $manager)
+    public function createAnimal(string $name, string $health, string $breed, string $habitat, ObjectManager $manager)
     {
+        $faker = Faker\Factory::create('fr_FR');
+
         $animal = new Animal();
         $animal->setName($name);
-        $animal->setDescription($description);
+        $animal->setDescription($faker->text(150));
         $animal->setHealth($health);
         $animal->setSlug($this->slugger->slug($animal->getName())->lower());
         $habitat = $this->getReference($habitat);

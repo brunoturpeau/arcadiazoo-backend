@@ -1,6 +1,6 @@
 # Animaux
 
-## En tant que vétérinaire je souhaite ___
+## En tant qu'employé(e) ou vétérinaire je souhaite ___
 
 [/] voir la liste des animaux
     [X] label: nom (link) (asc)
@@ -15,13 +15,31 @@
     [-] filter : filtrer par race et par habitat
     [-] filter : sélectionner un animal à l'aide d'une liste déroulante
 
-    [X] voir la fiche d'un animal
+[X] voir un animal
+    [X] label: n°
+    [X] label: nom 
+    [X] label: race (link)
+    [X] label: description (50 max)
+    [X] label: état de santé (50 max)
+    [-] label: habitat (link)
+    [-] link: créer un rapport pour l'animal [veto]
+    [-] link: créer un repas pour l'animal [employe]
+    [X] sublist: rapport
+        [X] label: n°
+        [-] label: date (desc)
+        [-] label: rapport (50 max)
+        [X] link: voir le rapport
+        [X] link: modifier le rapport [veto]
+--- 
+    [-] sublist: images
+
+    [-] sublist: repas
+
+
+
+
     [X] voir la liste des rapports sur la fiche animal
     [X] voir les images sous forme de slideshow sur la fiche animal
-
-## En tant qu'employé(e) je souhaite ___
-
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
 
 ## En tant qu'administrateur je souhaite ___
 
