@@ -73,6 +73,8 @@ class ServiceController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success','Le service a été modifié avec succès.');
+
             return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -88,6 +90,9 @@ class ServiceController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success','Le service a été supprimé avec succès.');
+
             $entityManager->remove($service);
             $entityManager->flush();
         }
