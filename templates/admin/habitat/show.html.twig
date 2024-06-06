@@ -25,13 +25,16 @@
         </div>
     </div>
 
+    {# @todo label: miniature #}
+    {# @todo label sublist: nom (link) (asc) #}
+
     <div class="cont">
-        <h1>Habitat</h1>
+        <h1>Habitat : {{ habitat.name }}</h1>
         <table class="table table-sm">
             <tbody>
             <tr>
-                <th>Nom</th>
-                <td>{{ habitat.name }}</td>
+                <th>N°</th>
+                <td>{{ habitat.id }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -41,20 +44,23 @@
                 <th>Commentaire</th>
                 <td>{{ habitat.description }}</td>
             </tr>
+            <tr>
+                <th>Nombre d'animaux</th>
+                <td><span class="badge">{{ count }}</span></td>
+            </tr>
             </tbody>
         </table>
+
+        {# @todo label: miniature #}
+
         <h2 class="text-center">Liste des animaux</h2>
         <table class="tw-table table-sm">
             <thead>
                 <tr>
                     <th>N°</th>
                     <th>Nom</th>
-                    <th class="text-right">
-                        <span class="badge">
-                            {{ count }}
-                        </span>
-
-                    </th>
+                    <th>Race</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +72,12 @@
                     </td>
                     <td>
                         <a href="{{ path('app_animal_show', {'id' : animal.id}) }}">
-                            {{ animal.name }} {{ include('_partials/icons/_link.html.twig') }}
+                            <b>{{ animal.name }}</b> {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                            {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
                         </a>
                     </td>
                     <td class="actions">
@@ -83,7 +94,7 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="3">Aucun résultat</td>
+                    <td colspan="4">Aucun résultat</td>
                 </tr>
             {% endfor %}
             </tbody>

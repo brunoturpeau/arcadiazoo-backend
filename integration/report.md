@@ -18,7 +18,7 @@
     [-] filter: habitat
     [-] filter: date (asc-desc)
 
-[/] voir un rapport
+[X] voir un rapport
     [X] label: N°
     [X] label: date 
     [-] label: image
