@@ -21,6 +21,7 @@
             <tr>
                 <th>N°</th>
                 <th>Service</th>
+                <th>Description</th>
                 <th></th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <tr class="item">
                     <td>#S-{{ service.id }}</td>
                     <td>{{ service.name }}</td>
+                    <td>{{ service.description|u.truncate(50, '...') }}</td>
                     <td class="actions">
                         <a href="{{ path('app_service_show', {'id': service.id}) }}">
                             {{ include ('_partials/icons/_eye.html.twig') }}
@@ -45,7 +47,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr class="empty"><h2>Aucun service</h2></tr>
+                <tr colspan="4">Aucun résultat</tr>
             {% endfor %}
             </tbody>
         </table>

@@ -18,28 +18,34 @@
         <h1>Les animaux</h1>
         <table class="tw-table">
             <thead>
-            <tr>
-                <th></th>
-                <th>Nom</th>
-                <th>Race</th>
-                <th>Santé</th>
-                <th></th>
-            </tr>
+                <tr>
+                    {# TODO label: habitat (link) #}
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Race</th>
+                    <th>Santé</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
             {% for animal in animals %}
                 <tr>
-                    <td>
-
-                    </td>
-                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.id }}</td>
+                    <td><b>{{ animal.name }}</b></td>
                     <td>
                         <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
                             {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
                         </a>
                     </td>
-                    <td>{{ animal.health }}</td>
+                    <td>{{ animal.health|u.truncate(50, '...') }}</td>
                     <td class="actions">
+                        {# TODO link: créer un rapport pour l'animal #}
+                        {# TODO lien: voir les rapports de l'animal #}
+                        {# TODO action: créer un rapport pour l'animal #}
+                        {# TODO filter: trier par ordre croissant ou décroissant #}
+                        {# TODO filtrer par race et par habitat #}
+                        {# TODO filter : sélectionner un animal à l'aide d'une liste déroulante #}
+
                         <a href="#" title="Créer un rapport">
                             {{ include('_partials/icons/_report.html.twig') }}
                         </a>
@@ -54,7 +60,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr class="empty" colspan="5"><h2>Aucun animal</h2></tr>
+                <tr colspan="5">Aucun résultat</tr>
             {% endfor %}
             </tbody>
         </table>

@@ -1,28 +1,60 @@
-<h2 id="accordion-flush-heading-animals">
-    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-animals" aria-expanded="false" aria-controls="accordion-flush-body-1">
-        <span>Les animaux</span>
-        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-        </svg>
-    </button>
-</h2>
-<div id="accordion-flush-body-animals" class="hidden" aria-labelledby="accordion-flush-heading-animals">
-    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-        <table class="table">
-            {% for animal in animals  %}
+<div class="cont">
+    <h2 id="accordion-flush-heading-animals">
+        <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-animals" aria-expanded="false" aria-controls="accordion-flush-body-1">
+            <span>Les animaux</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+            </svg>
+        </button>
+    </h2>
+    <div id="accordion-flush-body-animals" class="hidden" aria-labelledby="accordion-flush-heading-animals">
+        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+            <table class="tw-table">
+                <thead>
                 <tr>
-                    <td>{{ animal.name }}</td>
-                    <td>{{ animal.breed.name }}</td>
-                    <td class="flex gap-5">
-                        <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
-                            {{ include ('_partials/icons/_eye.html.twig') }}
-                        </a>
-                        <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">
-                            {{ include ('_partials/icons/_edit.html.twig') }}
-                        </a>
-                    </td>
+                    <th>Animal</th>
+                    <th>Race</th>
+                    <th>Habitat</th>
+                    {# TODO label: nombre d'animaux #}
+                    <th></th>
                 </tr>
-            {% endfor %}
-        </table>
+                </thead>
+                <tbody>
+                {% for animal in animals  %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('app_animal_show',{'id': animal.id}) }}">
+                                <b>{{ animal.name }}</b> {{ include('_partials/icons/_link.html.twig') }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                                {{ animal.breed.name }}  {{ include('_partials/icons/_link.html.twig') }}
+                            </a>
+                        </td>
+                        <td>
+                            {# TODO label: habitat (link) #}
+                        </td>
+                        <td class="flex gap-5">
+                            {# TODO label: lien: créer un rapport pour l'animal #}
+
+                            {# TODO label: lien: voir les rapports de l'animal #}
+
+                            <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
+                                {{ include ('_partials/icons/_eye.html.twig') }}
+                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">
+                                    {{ include ('_partials/icons/_edit.html.twig') }}
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr colspan="3">Aucun résultat</tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

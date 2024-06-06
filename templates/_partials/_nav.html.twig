@@ -16,14 +16,12 @@
                 <li><a href="{{ path('app_habitat_index') }}">Habitats</a></li>
                 {% if is_granted('ROLE_EMPLOYE') %}
                     <li><a href="{{ path('app_food_index') }}">Repas</a></li>
-                    <li><a href="{{ path('app_eating_index') }}">Nourriture</a></li>
                     <li><a href="{{ path('app_service_index') }}">Services</a></li>
                     <li><a href="{{ path('app_comment_index') }}">Avis</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN')  %}
                     <li><a href="{{ path('app_breed_index') }}">Races</a></li>
                     <li><a href="{{ path('app_user_index') }}">Comptes</a></li>
-                    <li><a href="{{ path('app_image_index') }}">Images</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_VETERINAIRE') %}
                     <li><a href="{{ path('app_report_index') }}">Rapports</a></li>

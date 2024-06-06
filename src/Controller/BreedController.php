@@ -19,9 +19,10 @@ class BreedController extends AbstractController
     #[Route('/', name: 'app_breed_index', methods: ['GET'])]
     public function index(BreedRepository $breedRepository, AnimalRepository $animalRepository): Response
     {
+        $breeds = $breedRepository->findBy([],['name' => 'asc']);
 
         return $this->render('admin/breed/index.html.twig', [
-            'breeds' => $breedRepository->findAll(),
+            'breeds' => $breeds,
             'animals' => $animalRepository->findAll(),
         ]);
     }

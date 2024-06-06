@@ -18,6 +18,7 @@
         <table class="tw-table">
             <thead>
             <tr>
+                <th>N°</th>
                 <th>Nom et prénom</th>
                 <th>E-mail</th>
                 <th>Rôle</th>
@@ -28,15 +29,16 @@
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.lastname }} {{ user.firstname }}</td>
+                    <td>{{ user.id }}</td>
+                    <td><b>{{ user.lastname }} {{ user.firstname }}</b></td>
                     <td>{{  user.email }}</td>
                     <td>
                         {% if 'ROLE_ADMIN' in user.roles %}
-                            <b>Administrateur</b>
+                            Administrateur
                         {% elseif 'ROLE_VETERINAIRE' in user.roles %}
-                            <b>Vétérinaire</b>
+                            Vétérinaire
                         {% elseif 'ROLE_EMPLOYE' in user.roles %}
-                            <b>Employé(e)</b>
+                            Employé(e)
                         {% endif %}
                     </td>
                     <td>
@@ -52,7 +54,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr class="empty" colspan="3"><h2>Aucun résultat</h2></tr>
+                <tr colspan="6">Aucun résultat</tr>
             {% endfor %}
             </tbody>
         </table>

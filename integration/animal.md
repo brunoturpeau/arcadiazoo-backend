@@ -2,11 +2,18 @@
 
 ## En tant que vétérinaire je souhaite ___
 
-    [X] voir la liste des animaux
-    [-] créer un rapport depuis la liste des animaux
-    [-] trier par ordre croissant ou décroissant
-    [-] filtrer par race et par habitat
-    [-] sélectionner un animal à l'aide d'une liste déroulante
+[/] voir la liste des animaux
+    [X] label: nom (link) (asc)
+    [X] label: race (link)
+    [X] label: état de santé (50 max)
+    [-] label: habitat (link)
+    [X] link: voir la fiche de l'animal
+    [-] link: créer un rapport pour l'animal
+    [-] lien: voir les rapports de l'animal
+    [-] action: créer un rapport pour l'animal
+    [-] filter: trier par ordre croissant ou décroissant
+    [-] filter : filtrer par race et par habitat
+    [-] filter : sélectionner un animal à l'aide d'une liste déroulante
 
     [X] voir la fiche d'un animal
     [X] voir la liste des rapports sur la fiche animal
@@ -18,10 +25,16 @@
 
 ## En tant qu'administrateur je souhaite ___
 
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] créer un animal
-    [-] modifier un animal
-    [-] supprimer un animal
+
+[/] voir la liste des animaux
+    [X] idem employé(e)s
+    [-] btn: créer un animal
+    [-] link: modifier la fiche de l'animal
+    [-] link: supprimer la fiche de l'animal
+
+
+
+
     [-] ajouter une ou plusieurs images
     [-] modifier une images
     [-] suprimer une images
