@@ -41,6 +41,8 @@ class ServiceController extends AbstractController
             $entityManager->persist($service);
             $entityManager->flush();
 
+            $this->addFlash('success','Le service a été ajouté avec succès.');
+
             return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 

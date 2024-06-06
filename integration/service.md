@@ -24,14 +24,14 @@
 
 [X] voir la liste des services
     [X] idem employé(e)
-    [-] link: créer un service
-    [-] link: supprimer un service
-
-[X] supprimer un service
+    [X] link: créer un service
+    [X] action: supprimer un service (flash)
 
 ## Fixtures
 
-[-] 6 services
+[X] 6 fixtures service
 
 ## API
 
+[GET] /api/services
+[GET] /api/services/{id}

@@ -28,7 +28,7 @@
             <tbody>
             {% for service in services %}
                 <tr class="item">
-                    <td>#S-{{ service.id }}</td>
+                    <td>{{ service.id }}</td>
                     <td>{{ service.name }}</td>
                     <td>{{ service.description|u.truncate(50, '...') }}</td>
                     <td class="actions">
