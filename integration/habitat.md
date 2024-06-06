@@ -21,17 +21,13 @@
         [-] label: nom (link) (asc)
         [X] label: race (link)
         [X] link: voir l'animal
-         
-    
----
 
 ## En tant que vétérinaire je souhaite ___
 
-[/] voir la liste des habitats
+[X] voir la liste des habitats
     [X] idem employé(e)
-    [-] link: ajouter ou modifier commentaire sur l'habitat
+    [X] link: ajouter ou modifier commentaire sur l'habitat
 
-[-] action: créer un rapport
 
 ## En tant qu'administrateur je souhaite ___
 

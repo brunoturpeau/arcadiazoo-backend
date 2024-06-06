@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Habitat;
+use App\Form\HabitatCommentFormType;
 use App\Form\HabitatType;
 use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
@@ -95,7 +96,7 @@ class HabitatController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
-        $form = $this->createForm(HabitatType::class, $habitat);
+        $form = $this->createForm(HabitatCommentFormType::class, $habitat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -105,10 +106,11 @@ class HabitatController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Commentaire modifié avec succès');
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/habitat/edit.html.twig', [
+        return $this->render('admin/habitat/edit_comment.html.twig', [
             'habitat' => $habitat,
             'form' => $form,
         ]);

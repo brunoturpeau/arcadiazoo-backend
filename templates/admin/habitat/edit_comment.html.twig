@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier commentaire sur un habitat{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            {% if is_granted('ROLE_VETERINAIRE') %}
+                <a  href="{{ path('app_habitat_index') }}">
+                    {{ include('_partials/icons/_left-circle.html.twig') }}
+                </a>
+            {% endif %}
+            <div class="right">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div>{{ include('admin/habitat/_delete_icon.html.twig') }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Modifier commentaire sur un habitat</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 p-10 lg:w-1/2">
+                {{ include('admin/habitat/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
