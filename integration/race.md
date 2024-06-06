@@ -20,10 +20,4 @@
 
 ## Eléments
 
-- le nom 
-- une description 
 
-auto
-- id
-- created_at
-- slug auto

@@ -5,4 +5,7 @@
     [-] Pagination
     [-] Editor
 
+- created_at
+- slug auto
+
 
