@@ -1,21 +1,27 @@
 # Commentaires
 
-#### En tant qu'employé(e) je souhaite ___
+## En tant qu'employé(e) je souhaite ___
 
-> _Les COMMENTAIRES_
+    [X] avoir la possibilité de voir la liste des COMMENTAIRES en chronologie inversée
+    [-] avoir la possibilité valider un COMMENTAIRE
 
-    [-] voir la liste des COMMENTAIRES avec, pour chaque item :
-        - la date de création
-        - le pseudo
-        * le commentaire tronqué
-        * le statut
-        * un btn-icon Voir
-        * un btn-icon Modifier
-        * un btn-icon Supprimer
-    [X] pouvoir supprimer un commentaire [flash]
-
-#### En tant qu'administrateur je souhaite ___
-
-> _Les COMMENTAIRES_
+## En tant qu'administrateur je souhaite ___
 
     [X] avoir les mêmes fonctionnalités que les employé(e)s
+    [-] avoir la possibilité de supprimer un commentaire
+
+## Eléments
+
+- la date 
+- le pseudo
+- le commentaire tronqué
+- le statut
+- 
+- un btn-icon Voir
+- un btn-icon Modifier
+- un btn-icon Supprimer
+- un bouton Créer un commentaire
+
+## Notes
+
+- isVibible -> form unmapped

@@ -29,6 +29,8 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
             $animal->setName($faker->firstName());
             $animal->setHealth($faker->text(30));
             $animal->setSlug($this->slugger->slug($animal->getName())->lower());
+            $habitat = $this->getReference('Jungle');
+            $animal->setHabitat($habitat);
             $breed = $this->getReference('breed-'.rand(1, 10));
             $animal->setBreed($breed);
 

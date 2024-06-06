@@ -1,42 +1,30 @@
+# Animaux
 
-
-#### En tant que vétérinaire je souhaite ___
-
-> _Les RAPPORTS_
-
-    ->
-
-> _Les ANIMAUX_
+## En tant que vétérinaire je souhaite ___
 
     [X] voir la liste des animaux
-    [-] pouvoir créer un rapport depuis la liste des animaux
-    [-] pouvoir trier par ordre croissant ou décroissant
-    [-] pouvoir filtrer par race et par habitat
+    [-] créer un rapport depuis la liste des animaux
+    [-] trier par ordre croissant ou décroissant
+    [-] filtrer par race et par habitat
+    [-] sélectionner un animal à l'aide d'une liste déroulante
 
     [X] voir la fiche d'un animal
-    [-] voir la liste des rapports sur la fiche animal
-    [-] voir les images sous forme de slideshow sur la fiche animal
+    [X] voir la liste des rapports sur la fiche animal
+    [X] voir les images sous forme de slideshow sur la fiche animal
 
-    [-] pouvoir créer un rapport depuis le liste des animaux (animal sélectionné)
-    [-] pouvoir sélectionner un animal à l'aide d'une liste déroulante
-
-#### En tant qu'employé(e) je souhaite ___
-
-> _Les ANIMAUX_
+## En tant qu'employé(e) je souhaite ___
 
     [X] avoir les mêmes fonctionnalités que les vétérinaires
 
-#### En tant qu'administrateur je souhaite ___
-
-> _Les ANIMAUX_
+## En tant qu'administrateur je souhaite ___
 
     [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] pouvoir créer un animal
-    [-] pouvoir modifier un animal
-    [-] pouvoir supprimer un animal
-    [-] pouvoir ajouter une ou plusieurs images
-    [-] pouvoir modifier une images
-    [-] pouvoir suprimer une images
+    [-] créer un animal
+    [-] modifier un animal
+    [-] supprimer un animal
+    [-] ajouter une ou plusieurs images
+    [-] modifier une images
+    [-] suprimer une images
     [-] qu'une image par défaut soit associée lors de la création d'un animal
 
 ## -----
@@ -51,7 +39,7 @@
 - les repas donnés par l'employé(e)
 - l'alimentation préconisée par le vétérinaire
 - les rapports
-- 
+
 - un btn-icon Voir
 - un btn-icon Rapport
 - un bouton Créer un compte-rendu

@@ -21,15 +21,17 @@
                 <th>Date</th>
                 <th>Pseudo</th>
                 <th>Commentaire</th>
+                <th>Statut</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             {% for comment in comments %}
                 <tr>
-                    <td><b>{{ comment.createdAt|date('d-m-Y') }}</b></td>
+                    <td>{{ comment.createdAt|date('d-m-Y') }}</td>
                     <td><b>{{ comment.pseudo }}</b></td>
-                    <td>{{ comment.commentText }}</td>
+                    <td>{{ comment.commentText|u.truncate(50, '...') }}</td>
+                    <td>{{ comment.visible  ? 'Publié' : 'Brouillon' }}</td>
                     <td class="actions">
                         <a href="{{ path('app_comment_show', {'id': comment.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
@@ -44,7 +46,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr class="empty" colspan="4"><h2>Aucun résultat</h2></tr>
+                <tr class="empty" colspan="5"><h2>Aucun résultat</h2></tr>
             {% endfor %}
             </tbody>
         </table>
