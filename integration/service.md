@@ -2,18 +2,17 @@
 
 ## En tant qu'employé(e) je souhaite ___
 
-    [X] voir la liste des SERVICES
-    [-] voir un SERVICE
-    [-] modifier un SERVICE
+[X] voir la liste des services
+    [X] label: n°
+    [X] label: service
+    [X] label: description (50 max)
+    [X] link: voir le service
+    [X] link: modifier le service
 
 ## En tant qu'administrateur je souhaite ___
 
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] créer un SERVICE 
-    [-] supprimer un SERVICE 
+[/] voir la liste des services
+    [X] idem employé(e)
+    [-] créer un service
+    [-] supprimer un service
 
-##
-
-- le numéro du service
-- le nom du service
-- un btn-icon Voir, un btn-icon Modifier

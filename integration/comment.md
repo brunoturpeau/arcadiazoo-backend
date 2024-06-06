@@ -14,21 +14,7 @@
 
 ## En tant qu'administrateur je souhaite ___
 
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] avoir la possibilité de supprimer un commentaire
+[X] voir la liste des commentaires
+    [X] idem employé(e)
 
-## Eléments
 
-- la date 
-- le pseudo
-- le commentaire tronqué
-- le statut
-- 
-- un btn-icon Voir
-- un btn-icon Modifier
-- un btn-icon Supprimer
-- un bouton Créer un commentaire
-
-## Notes
-
-- isVibible -> form unmapped
