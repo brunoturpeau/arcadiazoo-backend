@@ -2,29 +2,29 @@
 
 ## En tant qu'employé(e) je souhaite ___
 
-    [X] voir la liste des HABITATS
-    [-] voir le nombre d'animaux par HABITAT
-    [X] voir la fiche HABITAT
+[/] voir la liste des habitats
+    [X] label: nom
+    [X] label: description (50 max)
+    [X] label: commentaire (50 max)
+    [-] label: nombre d'animaux
+    [X] link: voir l'habitat
+
+
     [X] voir la liste des animaux par ordre alphabétique sur la fiche HABITAT
     [-] voir une miniature sur la liste des animaux
     [-] voir la liste des races sur la fiche HABITAT
 
 ## En tant que vétérinaire je souhaite ___
 
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] pouvoir ajouter ou modifier un commentaire sur l'HABITAT
+[/] voir la liste des habitats
+    [X] idem employé(e)
+    [-] link: ajouter ou modifier commentaire sur l'habitat
 
 ## En tant qu'administrateur je souhaite ___
 
-    [X] avoir les mêmes fonctionnalités que les employé(e)s
-    [-] pouvoir créer un habitat
-    [-] pouvoir supprimer un habitat
+[/] voir la liste des habitats
+    [X] idem employé(e)
+    [-] créer un habitat
+    [-] modifier un habitat
+    [-] supprimer un habitat
 
-## Eléments
-
-- le nom de l'habitat
-- une description
-- un commentaire
-
-
-## Notes
