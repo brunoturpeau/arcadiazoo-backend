@@ -19,7 +19,7 @@ class HabitatFixtures extends Fixture
         $habitat = new Habitat();
         $habitat->setName('Savane');
         $habitat->setSlug($this->slugger->slug($habitat->getName())->lower());
-        $habitat->setDescription("La savane africaine, reconstitution souvent vue en zoos, abrite une multitude d\'espèces emblématiques. Lions majestueux, éléphants imposants, girafes gracieuses, zèbres rayés, rhinocéros massifs, guépards rapides et hyènes rusées évoquent un monde sauvage captivant, offrant aux visiteurs une immersion unique dans la beauté et la diversité de la nature africaine.");
+        $habitat->setDescription("La savane africaine, reconstitution souvent vue en zoos, abrite une multitude d'espèces emblématiques. Lions majestueux, éléphants imposants, girafes gracieuses, zèbres rayés, rhinocéros massifs, guépards rapides et hyènes rusées évoquent un monde sauvage captivant, offrant aux visiteurs une immersion unique dans la beauté et la diversité de la nature africaine.");
         $habitat->setCommentHabitat($faker->text(50));
         $manager->persist($habitat);
         $this->addReference('Savane', $habitat);

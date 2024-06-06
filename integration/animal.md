@@ -1,39 +1,55 @@
 # Animaux
 
-## En tant que vétérinaire je souhaite ___
+## En tant qu'employé(e) ou vétérinaire je souhaite ___
 
 [/] voir la liste des animaux
     [X] label: nom (link) (asc)
     [X] label: race (link)
     [X] label: état de santé (50 max)
-    [-] label: habitat (link)
+    [_] label: habitat (link)
     [X] link: voir la fiche de l'animal
-    [-] link: créer un rapport pour l'animal
-    [-] lien: voir les rapports de l'animal
-    [-] action: créer un rapport pour l'animal
-    [-] filter: trier par ordre croissant ou décroissant
-    [-] filter : filtrer par race et par habitat
-    [-] filter : sélectionner un animal à l'aide d'une liste déroulante
+    [_] link: créer un rapport pour l'animal
+    [_] lien: voir les rapports de l'animal
+    [_] action: créer un rapport pour l'animal
+    [_] filter: trier par ordre croissant ou décroissant
+    [_] filter : filtrer par race et par habitat
+    [_] filter : sélectionner un animal à l'aide d'une liste déroulante
 
-    [X] voir la fiche d'un animal
-    [X] voir la liste des rapports sur la fiche animal
-    [X] voir les images sous forme de slideshow sur la fiche animal
+[X] voir un animal
+    [X] label: n°
+    [X] label: nom 
+    [X] label: race (link)
+    [X] label: description (50 max)
+    [X] label: état de santé (50 max)
+    [_] label: habitat (link)
+    [_] link: créer un rapport pour l'animal [veto]
+    [_] link: créer un repas pour l'animal [employe]
+    [X] sublist: rapport
+        [X] label: n°
+        [-] label: date (desc)
+        [X] label: rapport (50 max)
+        [X] link: voir le rapport
+        [X] link: modifier le rapport [veto]
+    [X] sublist: images
+        [X] label: thumbnail
+        [X] label: title
+    [_] sublist: repas
 
-## En tant qu'employé(e) je souhaite ___
-
-    [X] avoir les mêmes fonctionnalités que les vétérinaires
+--- 
 
 ## En tant qu'administrateur je souhaite ___
 
-
-[/] voir la liste des animaux
+[X] voir la liste des animaux
     [X] idem employé(e)s
     [-] btn: créer un animal
     [-] link: modifier la fiche de l'animal
     [-] link: supprimer la fiche de l'animal
 
 
-
+[X] voir un animal
+    [-] sublist: images
+    [_] link: modifier l'image
+    [_] action: supprimer l'image (flash)
 
     [-] ajouter une ou plusieurs images
     [-] modifier une images

@@ -5,15 +5,13 @@
 {% block body %}
     <div class="nav-context">
         <div class="parent">
-            {% if is_granted('ROLE_EMPLOYE') %}
-                <a  href="{{ path('app_service_index') }}">
-                    {{ include('_partials/icons/_left-circle.html.twig') }}
-                </a>
-            {% endif %}
+            <a  href="{{ path('app_service_index') }}">
+                {{ include('_partials/icons/_left-circle.html.twig') }}
+            </a>
             <div class="right">
                 {% if is_granted('ROLE_EMPLOYE') %}
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">
-                        {{ include('_partials/icons/_edit.html.twig') }}
+                    <a class="btn" href="{{ path('app_service_edit', {'id': service.id}) }}">
+                        {{ include('_partials/icons/_edit.html.twig') }} Modifier
                     </a>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
@@ -26,19 +24,22 @@
     </div>
 
     <div class="cont">
-        <h1>Service</h1>
-        <div class="flex justify-center">
-            <div class="card-show">
-                <h2>{{ service.name }}</h2>
-                <hr>
-                <p><b>ID</b> : {{ service.id }}</p>
-                <p><b>Description</b> : {{ service.description }}</p>
-                <p><b>Slug</b> : {{ service.slug }}</p>
-                <p>
-                    <b>Date de création</b> : {{ service.createdAt ? service.createdAt|date('d/m/Y ') : '' }}
-                </p>
-
-            </div>
-        </div>
+        <h1>Service : {{ service.name }}</h1>
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <th>N°</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Service</th>
+                    <td>{{ service.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ service.description }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

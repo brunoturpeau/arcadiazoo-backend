@@ -7,5 +7,7 @@
 
 - created_at
 - slug auto
+  [-] que lors de la création d'un RAPPORT la date de passage contienne automatiquement la date du jour si je ne la renseigne pas
+
 
 

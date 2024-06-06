@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Habitat;
+use App\Form\HabitatCommentFormType;
 use App\Form\HabitatType;
 use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
@@ -44,6 +45,8 @@ class HabitatController extends AbstractController
             $entityManager->persist($habitat);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Habitat ajouté avec succès');
+
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,10 +84,38 @@ class HabitatController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Habitat modifié avec succès');
+
             return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/habitat/edit.html.twig', [
+            'habitat' => $habitat,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/commentaire', name: 'app_habitat_comment_edit', methods: ['GET', 'POST'])]
+    public function editComment(Request $request, Habitat $habitat,SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
+
+        $form = $this->createForm(HabitatCommentFormType::class, $habitat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // we generate the slug
+            $slug = $slugger->slug($habitat->getName());
+            $habitat->setSlug($slug);
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Commentaire modifié avec succès');
+
+            return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/habitat/edit_comment.html.twig', [
             'habitat' => $habitat,
             'form' => $form,
         ]);
@@ -96,6 +127,9 @@ class HabitatController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$habitat->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success', 'Habitat supprimé avec succès');
+
             $entityManager->remove($habitat);
             $entityManager->flush();
         }
