@@ -42,10 +42,12 @@
         [X] avec son n°
         [X] avec la date
             [X] par ordre décroissant
-            [-] avec l'heure
+        [-] avec l'heure
         [-] voir la composition du repas
             [-] avec la nourriture
             [-] avec la quantité en gramme
+        [-] avec, pour les vétérinaires, un lien pour modifier la composition du repas
+        [-] avec, pour les vétérinaires, un lien pour supprimer le repas
 
 ## En tant qu'administrateur je souhaite ___
 
