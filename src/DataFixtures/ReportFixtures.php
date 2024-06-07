@@ -16,6 +16,7 @@ class ReportFixtures extends Fixture implements DependentFixtureInterface
         $this->createReport(new \DateTimeImmutable('2024-08-17'), 'Rapport texte','user-3','Zibrou', $manager);
         $this->createReport(new \DateTimeImmutable('2024-08-12'), 'Rapport texte','user-5','Zibrou', $manager);
         $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Zibrou', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Zibrou', $manager);
 
         $manager->flush();
     }
