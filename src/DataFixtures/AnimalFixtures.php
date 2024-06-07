@@ -17,6 +17,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
+        $this->createAnimal("Adèle",'En très bonne forme', 'Girafe', 'Savane', $manager);
         $this->createAnimal("Dundy",'En très bonne forme', 'Crocodile', 'Marais', $manager);
         $this->createAnimal("Simba",'En très bonne forme', 'Lion', 'Savane', $manager);
         $this->createAnimal("Zibrou",'En très bonne forme', 'Zèbre', 'Savane', $manager);

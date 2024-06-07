@@ -1,79 +1,90 @@
 # Animaux
 
-## En tant qu'employé(e) ou vétérinaire je souhaite ___
+## En tant qu'utilisateur je souhaite ___
 
-[/] voir la liste des animaux
-    [X] label: nom (link) (asc)
-    [X] label: race (link)
-    [X] label: état de santé (50 max)
-    [_] label: habitat (link)
-    [X] link: voir la fiche de l'animal
-    [_] link: créer un rapport pour l'animal
-    [_] lien: voir les rapports de l'animal
-    [_] action: créer un rapport pour l'animal
-    [_] filter: trier par ordre croissant ou décroissant
-    [_] filter : filtrer par race et par habitat
-    [_] filter : sélectionner un animal à l'aide d'une liste déroulante
+[X] voir la liste des animaux
+    [X] avec son n°
+    [X] avec son nom
+        [X] avec un lien vers l'animal
+        [X] par ordre croissant
+    [X] avec sa race
+        [X] avec un lien vers la race
+    [X] avec son état de santé (50 carac. max)
+    [_] avec son habitat
+        [-] avec un lien vers l'habitat
+    [X] avec un lien pour voir la fiche de l'animal
+    [_] avec un lien pour créer un rapport pour l'animal
+    [_] avec un lien pour voir les rapports de l'animal
+    [_] avec un lien pour créer un rapport pour l'animal
+    [_] avec un filtre pour trier par ordre croissant ou décroissant
+    [_] avec un filtre pour filtrer par race et par habitat
+    [_] avec un filtre pour sélectionner un animal à l'aide d'une liste déroulante
 
 [X] voir un animal
-    [X] label: n°
-    [X] label: nom 
-    [X] label: race (link)
-    [X] label: description (50 max)
-    [X] label: état de santé (50 max)
-    [_] label: habitat (link)
-    [_] link: créer un rapport pour l'animal [veto]
-    [_] link: créer un repas pour l'animal [employe]
-    [X] sublist: rapport
-        [X] label: n°
-        [-] label: date (desc)
-        [X] label: rapport (50 max)
-        [X] link: voir le rapport
-        [X] link: modifier le rapport [veto]
-    [X] sublist: images
-        [X] label: thumbnail
-        [X] label: title
-    [_] sublist: repas
-
---- 
+    [X] avec son n°
+    [X] avec son nom 
+    [X] avec sa race et un lien vers la race
+    [X] avec sa description (50 carac. max)
+    [X] avec son état de santé (50 carac. max)
+    [_] avec son habitat et un lien vers l'habitat
+    [_] avec, pour les vétérinaire, une lien pour créer un rapport pour l'animal
+    [_] avec, pour les employé(e)s, une lien pour créer un rapport pour l'animal
+    [X] avec la liste des rapports le concernant
+        [X] avec son n°
+        [-] avec sa date
+            [-] par ordre décroissant
+        [X] avec son rapport (50 carac. max)
+        [X] avec un lien pour voir le rapport
+        [X] avec, pour les employé un lien pour modifier le rapport
+    [X] avec la liste des images le concernant
+        [X] avec une miniature
+    [&] avec la liste des repas le concernant
+        [X] avec son n°
+        [X] avec la date
+            [X] par ordre décroissant
+        [-] avec l'heure
+        [-] voir la composition du repas
+            [-] avec la nourriture
+            [-] avec la quantité en gramme
+        [-] avec, pour les vétérinaires, un lien pour modifier la composition du repas
+        [-] avec, pour les vétérinaires, un lien pour supprimer le repas
 
 ## En tant qu'administrateur je souhaite ___
 
 [X] voir la liste des animaux
-    [X] idem employé(e)s
-    [-] btn: créer un animal
-    [-] link: modifier la fiche de l'animal
-    [-] link: supprimer la fiche de l'animal
-
+    [X] avec les mêmes fonctionnalités que les utilisateurs
+    [X] avec un lien pour créer un animal
+    [X] avec un lien pour modifier la fiche de l'animal
 
 [X] voir un animal
-    [-] sublist: images
-    [_] link: modifier l'image
-    [_] action: supprimer l'image (flash)
+    [X] voir la liste des images associées
+        [X] avec les mêmes fonctionnalités que les utilisateurs
+        [X] avec lien pour supprimer l'image
+            [-] avec une redirection vers la page animal
+            [X] et avoir un message de confirmation
 
-    [-] ajouter une ou plusieurs images
-    [-] modifier une images
-    [-] suprimer une images
-    [-] qu'une image par défaut soit associée lors de la création d'un animal
+[X] supprimer un animal (aucune entrée associée)
+    [X] et avoir un message de confirmation
 
-## -----
+[X] créer un animal
+    [X] en ajoutant un nom
+    [X] en sélectionnant une race
+    [X] en ajoutant une description
+    [X] en ajoutant une ou plusieurs images
+    [_] avec une image par défaut
+    [_] avec une balise alt par défaut
 
-* une miniature  animal.images[0].name
-- le nom de l'animal
-- la race liée à sa fiche
-- l'état de santé
-* l'habitat lié à sa fiche
+[_] modifier un animal
+    [-] avec son nom
+    [-] avec sa race
+    [-] avec sa description
+    [-] avec la liste des images
+        [-] avec une miniature
+        [-] avec le nom de l'image
+        [-] avec un lien pour modifier l'image
+        [-] avec un lien pour supprimer l'image
+            [-] et avoir un message de confirmation
 
-- la ou les photo(s)
-- les repas donnés par l'employé(e)
-- l'alimentation préconisée par le vétérinaire
-- les rapports
-
-- un btn-icon Voir
-- un btn-icon Rapport
-- un bouton Créer un compte-rendu
-
- ## Notes
-
-- Créer la route admin/rapport/{id}/ajout 
+            [-] avec une redirection vers la page animal
+            [-] et avoir un message de confirmation
   

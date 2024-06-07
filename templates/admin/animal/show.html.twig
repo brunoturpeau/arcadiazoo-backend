@@ -11,9 +11,13 @@
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn" href="{{ path('app_animal_edit', {'id': animal.id}) }}">
+                        {{ include('_partials/icons/_edit.html.twig') }}
                         Modifier la fiche
                     </a>
-                    <div>{{ include('admin/animal/_delete_icon.html.twig') }}</div>
+                    <div class="btn">
+                        {{ include('admin/animal/_delete_icon.html.twig') }}
+                        Supprimer
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -26,9 +30,9 @@
             {# @todo label: habitat (link) #}
             {# @todo link: créer un rapport pour l'animal (veto) => Créer la route admin/rapport/{id}/ajout #}
             {# @todo link: créer un repas pour l'animal (employe) #}
-            {# @todo sublist: [admin] link: modifier l'image #}
             {# @todo sublist: [admin] action: supprimer l'image (flash) #}
-            {# @todo sublist: repas #}
+            {# @todo - image par défaut #}
+            {# @todo - balise alt #}
 
             <table class="table">
                 <tbody>
@@ -58,18 +62,38 @@
                 </tr>
                 </tbody>
             </table>
+
+            <h2>Images</h2>
+            <div class="flex flex-row gap-5">
+                {% for image in animal.images %}
+                    <div class="flex flex-col p-1 bg-slate-200 shadow-lg">
+                        <img src="{{ asset('uploads/animals/mini/300x300-') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="flex justify-center ">
+                                <a class="opacity-50 hover:opacity-80" href="#">
+                                    {{ include('admin/image/_delete_icon.html.twig') }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
             <h2>Liste des rapports</h2>
             <table class="tw-table">
                 <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>Date</th>
-                        <th>Rapport</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>N°</th>
+                    <th>Date</th>
+                    <th>Date</th>
+                    <th>Rapport</th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
+
                 {% for report in reports %}
+                    {% if report.animal.id == report.id  %}
                     <tr>
                         <td>{{ report.id }}</td>
                         <td>{{ report.date|date('d-m-Y') }}</td>
@@ -85,65 +109,49 @@
                             {% endif %}
                         </td>
                     </tr>
+                    {% endif %}
                 {% else %}
                     <tr colspan="4">Aucun résultat</tr>
                 {% endfor %}
                 </tbody>
             </table>
-            <h2>Images</h2>
+
+            <h2>Liste des repas</h2>
             <table class="tw-table">
                 <thead>
-                    <tr>
-                        <th>Miniature</th>
-                        <th>Titre</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>N°</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Repas</th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
-                {% for image in animal.images %}
+                {% for food in foods %}
+                    {% if food.animal.id == food.id  %}
                     <tr>
-                        <td>
-                            <img src="{{ asset('uploads/animals/') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
-                        </td>
-                        <td>{{ image.title }}</td>
+                        <td>{{ food.id }}</td>
+                        <td>{{ food.createdAt|date('d-m-Y') }}</td>
+                        <td>{{ food.time|date('H:i') }}</td>
+                        <td>{{ food.eatings.count }}</td>
                         <td class="actions">
-
+                            {% if is_granted('ROLE_EMPLOYE') %}
+                                <a href="{{ path('app_food_show', {'id': food.id}) }}">
+                                    {{ include('_partials/icons/_edit.html.twig') }}
+                                </a>
+                                <div>
+                                    {{  include('admin/food/_delete_icon.html.twig') }}
+                                </div>
+                            {% endif %}
                         </td>
                     </tr>
+                    {% endif %}
                 {% else %}
-                    <tr><td colspan="3">Aucun résultat</td></tr>
+                    <tr colspan="5">Aucun résultat</tr>
                 {% endfor %}
                 </tbody>
             </table>
-
-            <div id="default-carousel" class="relative w-full" data-carousel="slide">
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    {% for image in animal.images %}
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('uploads/animals/') ~ image.name }}" class="d-block w-100" alt="{{ image.title }}">
-                        </div>
-                    {% endfor %}
-                </div>
-
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
-            </div>
-
         </div>
     </div>
 {% endblock %}
