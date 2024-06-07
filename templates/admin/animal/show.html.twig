@@ -93,7 +93,7 @@
                 <tbody>
 
                 {% for report in reports %}
-                    {% if report.animal.id == report.id  %}
+                    {% if animal.id == report.animal.id  %}
                     <tr>
                         <td>{{ report.id }}</td>
                         <td>{{ report.date|date('d-m-Y') }}</td>
@@ -129,7 +129,7 @@
                 </thead>
                 <tbody>
                 {% for food in foods %}
-                    {% if food.animal.id == food.id  %}
+                    {% if animal.id == food.animal.id  %}
                     <tr>
                         <td>{{ food.id }}</td>
                         <td>{{ food.createdAt|date('d-m-Y') }}</td>
