@@ -18,6 +18,7 @@
         </div>
     </div>
     {# @todo - modifier un animal #}
+    {# @todo - être redirigé vers sur la page animal en cours après une suppression d'image ou une modification du formulaire  #}
 
     <div class="cont">
         <h1>Modifier un animal</h1>
@@ -25,9 +26,20 @@
             <div class="bg-slate-200 p-10 lg:w-1/2">
                 {{ include('admin/animal/_form.html.twig', {'button_label': 'Enregistrer'}) }}
             </div>
-            <div>
+
+            <h2>Images</h2>
+            <div class="flex flex-row gap-5">
                 {% for image in animal.images %}
-                    {{ image.title }}
+                    <div class="flex flex-col p-1 bg-slate-200 shadow-lg">
+                        <img src="{{ asset('uploads/animals/mini/300x300-') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="flex justify-center ">
+                                <a class="opacity-50 hover:opacity-80" href="{{ path('app_animal_image_delete', {'id': image.id}) }}">
+                                    {{ include('admin/animal/_delete_image_icon.html.twig') }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             </div>
         </div>

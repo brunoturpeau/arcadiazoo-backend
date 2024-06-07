@@ -129,4 +129,20 @@ class AnimalController extends AbstractController
 
         return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/image/{id}', name: 'app_animal_image_delete', methods: ['POST'])]
+    public function deleteImg(Request $request, Image $image, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->getPayload()->get('_token'))) {
+
+
+
+            $this->addFlash('success', "L'image a été supprimée avec succès.");
+
+            $entityManager->remove($image);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

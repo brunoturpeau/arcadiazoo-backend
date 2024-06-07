@@ -29,7 +29,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
         $this->createImageAnimal("7d1863aa6303a073b2408bec7f28e14f.webp",'Adèle', 'Adèle', $manager);
         $this->createImageAnimal("e0bade7dbcdacf3fb449189ec7eb712e.webp",'Zibrou', 'Zibrou', $manager);
         $this->createImageAnimal("797a30293f8f7ca971f603c6d2c050a9.webp",'Zibrou', 'Zibrou', $manager);
-        $this->createImageAnimal("e0bade7dbcdacf3fb449189ec7eb712e.webp",'Adèle', 'Adèle', $manager);
+        $this->createImageAnimal("e0bade7dbcdacf3fb449189ec7eb712e.webp",'Zibrou', 'Adèle', $manager);
         $this->createImageAnimal("95ed91fc9b6097d19dcd40369d9bf40d.webp",'Sheila', 'Sheila', $manager);
         $this->createImageAnimal("aed5b0223b5fb972266e0fabd642c279.webp",'Sheila', 'Sheila', $manager);
 
