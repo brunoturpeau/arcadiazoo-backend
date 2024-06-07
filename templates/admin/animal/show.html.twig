@@ -91,59 +91,23 @@
                 </tbody>
             </table>
             <h2>Images</h2>
-            <table class="tw-table">
-                <thead>
-                    <tr>
-                        <th>Miniature</th>
-                        <th>Titre</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="flex flex-row gap-5">
                 {% for image in animal.images %}
-                    <tr>
-                        <td>
-                            <img src="{{ asset('uploads/animals/') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
-                        </td>
-                        <td>{{ image.title }}</td>
-                        <td class="actions">
-
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr><td colspan="3">Aucun résultat</td></tr>
+                    <div class="flex flex-col p-1 bg-slate-200 shadow-lg">
+                        <img src="{{ asset('uploads/animals/mini/300x300-') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="flex justify-between ">
+                                <a class="opacity-50 hover:opacity-80" href="#">
+                                    {{ include('_partials/icons/_edit.html.twig') }}
+                                </a>
+                                <a class="opacity-50 hover:opacity-80" href="#">
+                                    {{ include('admin/image/_delete_icon.html.twig') }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endfor %}
-                </tbody>
-            </table>
-
-            <div id="default-carousel" class="relative w-full" data-carousel="slide">
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    {% for image in animal.images %}
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('uploads/animals/') ~ image.name }}" class="d-block w-100" alt="{{ image.title }}">
-                        </div>
-                    {% endfor %}
-                </div>
-
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
             </div>
-
         </div>
     </div>
 {% endblock %}

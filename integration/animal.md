@@ -38,7 +38,6 @@
         [X] avec, pour les employé un lien pour modifier le rapport
     [X] avec la liste des images le concernant
         [X] avec une miniature
-        [X] avec son titre
     [_] avec la liste des repas le concernant
 
 ## En tant qu'administrateur je souhaite ___
@@ -52,19 +51,19 @@
     [X] et voir la liste des images associées
         [X] avec les mêmes fonctionnalités que les utilisateurs
         [_] avec un lien pour modifier l'image 
-        [-] et avoir un lien pour modifier une image
-    [X] suprimer une image (aucune entrée associée)
-        [X] et avoir un message de confirmation
+        [-] avec lien pour supprimer l'image
+            [-] et avoir un message de confirmation
 
 [X] supprimer un animal (aucune entrée associée)
     [X] et avoir un message de confirmation
 
 [_] créer un animal
-    [-] avec son nom
-    [-] avec sa race
-    [-] avec sa description
-    [&] avec une ou plusieurs images
+    [X] en ajoutant un nom
+    [X] en sélectionnant une race
+    [X] en ajoutant une description
+    [X] en ajoutant une ou plusieurs images
     [-] avec une image par défaut
+    [-] avec une balise alt par défaut
 
 [_] modifier un animal
     [-] avec son nom
