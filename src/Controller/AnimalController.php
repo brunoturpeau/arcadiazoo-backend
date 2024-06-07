@@ -41,7 +41,7 @@ class AnimalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // We recover the images
             $images = $form->get('images')->getData();
-            dd($form);
+
 
             foreach($images as $image){
                 // We define the destination folder
@@ -51,6 +51,7 @@ class AnimalController extends AbstractController
 
                 $img = new Image();
                 $img->setTitle($file);
+                $img->setName($file);
                 $animal->addImage($img);
             }
             // we generate the slug
