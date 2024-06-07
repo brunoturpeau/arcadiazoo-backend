@@ -44,17 +44,7 @@ class BreedFixtures extends Fixture
 
         $faker = Faker\Factory::create('fr_FR');
 
-        for($i = 1; $i <= 10; $i++)
-        {
-            $breed = new Breed();
-            $breed->setName('Race-'.$i);
-            $breed->setSlug($this->slugger->slug($breed->getName())->lower());
-            $breed->setDetail($faker->text);
-            $manager->persist($breed);
 
-            $this->addReference('breed-'.$this->counter, $breed);
-            $this->counter++;
-        }
 
         $manager->flush();
     }
