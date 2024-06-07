@@ -31,6 +31,10 @@ class FoodFixtures extends Fixture implements DependentFixtureInterface
         $this->createFood(new \DateTimeImmutable('2024-09-02'),new \DateTimeImmutable('2024-09-02'),new \DateTimeImmutable('11:00:00'),'Ceros', $manager);
         $this->createFood(new \DateTimeImmutable('2024-09-03'),new \DateTimeImmutable('2024-09-03'),new \DateTimeImmutable('11:00:00'),'Ceros', $manager);
         $this->createFood(new \DateTimeImmutable('2024-09-04'),new \DateTimeImmutable('2024-09-04'),new \DateTimeImmutable('11:00:00'),'Ceros', $manager);
+        $this->createFood(new \DateTimeImmutable('2024-09-01'),new \DateTimeImmutable('2024-09-01'),new \DateTimeImmutable('11:30:00'),'Adèle', $manager);
+        $this->createFood(new \DateTimeImmutable('2024-09-02'),new \DateTimeImmutable('2024-09-02'),new \DateTimeImmutable('11:30:00'),'Adèle', $manager);
+        $this->createFood(new \DateTimeImmutable('2024-09-03'),new \DateTimeImmutable('2024-09-03'),new \DateTimeImmutable('11:30:00'),'Adèle', $manager);
+        $this->createFood(new \DateTimeImmutable('2024-09-04'),new \DateTimeImmutable('2024-09-04'),new \DateTimeImmutable('11:30:00'),'Adèle', $manager);
 
         $manager->flush();
     }

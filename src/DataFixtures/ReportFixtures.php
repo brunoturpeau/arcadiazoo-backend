@@ -21,6 +21,21 @@ class ReportFixtures extends Fixture implements DependentFixtureInterface
         $this->createReport(new \DateTimeImmutable('2024-09-23'), 'Rapport texte','user-3','Adèle', $manager);
         $this->createReport(new \DateTimeImmutable('2024-09-22'), 'Rapport texte','user-3','Adèle', $manager);
 
+        $this->createReport(new \DateTimeImmutable('2024-08-17'), 'Rapport texte','user-4','Ceros', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-12'), 'Rapport texte','user-4','Ceros', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-4','Ceros', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-4','Ceros', $manager);
+
+        $this->createReport(new \DateTimeImmutable('2024-08-17'), 'Rapport texte','user-3','Sheer Khan', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-12'), 'Rapport texte','user-3','Sheer Khan', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Sheer Khan', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Sheer Khan', $manager);
+
+        $this->createReport(new \DateTimeImmutable('2024-08-17'), 'Rapport texte','user-3','Simba', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-12'), 'Rapport texte','user-3','Simba', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Simba', $manager);
+        $this->createReport(new \DateTimeImmutable('2024-08-24'), 'Rapport texte','user-3','Simba', $manager);
+
         $manager->flush();
     }
     public function createReport($date, string $detail, $user, $animal, ObjectManager $manager)
