@@ -22,7 +22,6 @@ class BreedFixtures extends Fixture
         $this->createBreed("Guépard","", $manager);
         $this->createBreed("Rhinocéros blanc","", $manager);
         $this->createBreed("Hyène tachetée","", $manager);
-        $this->createBreed("Gnou bleu","", $manager);
         $this->createBreed("Tigre","Le tigre, majestueux grand félin aux rayures distinctives, est un prédateur solitaire des jungles et forêts d'Asie. Il chasse principalement des cerfs et des sangliers. Menacé par la déforestation, la fragmentation de l'habitat et le braconnage, le tigre symbolise la beauté sauvage et la nécessité de la conservation.", $manager);
         $this->createBreed("Singe hurleur","", $manager);
         $this->createBreed("Jaguar","", $manager);
@@ -30,17 +29,16 @@ class BreedFixtures extends Fixture
         $this->createBreed("Boa constricteur","", $manager);
         $this->createBreed("Perroquet ara","", $manager);
         $this->createBreed("Léopard","", $manager);
-        $this->createBreed("Fourmilier géant","", $manager);
         $this->createBreed("Crocodile","Le crocodile, redoutable prédateur des marais et rivières, possède une mâchoire puissante et une armure écailleuse. Excellent nageur, il chasse discrètement en embuscade. Présent depuis des millions d'années, il incarne la résilience et la force de la nature. Sa conservation est essentielle face aux menaces humaines.", $manager);
         $this->createBreed("Alligator","", $manager);
         $this->createBreed("Tortue de Floride","", $manager);
         $this->createBreed("Héron cendré","", $manager);
-        $this->createBreed("Ibis","", $manager);
-        $this->createBreed("Rat musqué","", $manager);
-        $this->createBreed("Grenouille taureau","", $manager);
-        $this->createBreed("Serpent d'eau","", $manager);
-        $this->createBreed("Castor","", $manager);
-        $this->createBreed("Canard colvert","", $manager);
+        // $this->createBreed("Ibis","", $manager);
+        // $this->createBreed("Rat musqué","", $manager);
+        // $this->createBreed("Grenouille taureau","", $manager);
+        // $this->createBreed("Serpent d'eau","", $manager);
+        // $this->createBreed("Castor","", $manager);
+        // $this->createBreed("Canard colvert","", $manager);
 
         $faker = Faker\Factory::create('fr_FR');
 
