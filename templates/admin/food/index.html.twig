@@ -7,7 +7,7 @@
         <div class="parent">
             <div></div>
             <div id="btn-create">
-                {% if is_granted('ROLE_ADMIN') %}
+                {% if is_granted('ROLE_EMPLOYE') %}
                     <a class="btn" href="{{ path('app_food_new') }}">Créer un repas</a>
                 {% endif %}
             </div>
@@ -23,7 +23,7 @@
                 <th>Date</th>
                 <th>Heure</th>
                 <th>Animal</th>
-                <th>Items</th>
+                <th>Repas</th>
                 <th></th>
             </tr>
             </thead>
@@ -38,7 +38,19 @@
                             {{ food.animal.name }} {{ include('_partials/icons/_link.html.twig') }}
                         </a>
                     </td>
-                    <td>{{ food.eatings.count }}</td>
+                    <td>
+                        {% if food.eatings.count > 0 %}
+                            <div>
+                            {% for eating in eatings %}
+                                {% if food.id == eating.food.id %}
+                                    <div>
+                                        {{ eating.feeding }} : {{ eating.quantity }} g.
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
                     <td class="actions">
                         <a href="{{ path('app_food_show', {'id': food.id}) }}">
                             {{ include('_partials/icons/_eye.html.twig') }}
@@ -62,5 +74,5 @@
             {% endfor %}
         </div>
 
-    </div>
+    </table>
 {% endblock %}

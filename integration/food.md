@@ -14,9 +14,9 @@
     [X] avec un lien pour supprimer le repas (aucune entrée associée)
         [X] avec une redirection vers la page repas
         [x] avec un message de confirmation
-    [&] avec, pour chaque repas la liste de sa composition
-        [-] avec la nourriture
-        [-] avec la quantité
+    [X] avec, pour chaque repas la liste de sa composition
+        [X] avec la nourriture
+        [X] avec la quantité
         [-] avec un lien pour modifier la ligne
         [-] avec un lien pour modifier la ligne
 
