@@ -46,7 +46,7 @@ class Animal
     /**
      * @var Collection<int, Image>
      */
-    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'animal')]
+    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'animal', cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

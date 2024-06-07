@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Entity\Image;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use App\Repository\ReportRepository;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +30,7 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/ajout', name: 'app_animal_new', methods: ['GET', 'POST'])]
-    public function new(Request $request,SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
+    public function new(Request $request,SluggerInterface $slugger, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -37,15 +39,28 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // We recover the images
+            $images = $form->get('images')->getData();
+            dd($form);
 
+            foreach($images as $image){
+                // We define the destination folder
+                $folder = 'animals';
+                // We call the add service
+                $file = $pictureService->add($image, $folder, 300, 300);
+
+                $img = new Image();
+                $img->setTitle($file);
+                $animal->addImage($img);
+            }
             // we generate the slug
-            $slug = $slugger->slug($animal->getName());
+            $slug = $slugger->slug($animal->getName())->lower();
             $animal->setSlug($slug);
 
             $entityManager->persist($animal);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Animal ajouté avec succès.');
+            $this->addFlash('success', 'Animal ajouté avec succès');
 
             return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
         }
