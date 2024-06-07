@@ -50,9 +50,9 @@
 [X] voir un animal
     [X] et voir la liste des images associées
         [X] avec les mêmes fonctionnalités que les utilisateurs
-        [_] avec un lien pour modifier l'image 
-        [-] avec lien pour supprimer l'image
-            [-] et avoir un message de confirmation
+        [X] avec lien pour supprimer l'image
+            [-] avec une redirection vers la page animal
+            [X] et avoir un message de confirmation
 
 [X] supprimer un animal (aucune entrée associée)
     [X] et avoir un message de confirmation
@@ -76,5 +76,6 @@
         [-] avec un lien pour supprimer l'image
             [-] et avoir un message de confirmation
 
-
+            [-] avec une redirection vers la page animal
+            [-] et avoir un message de confirmation
   
