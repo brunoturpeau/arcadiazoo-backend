@@ -32,13 +32,20 @@
     [X] avec la liste des rapports le concernant
         [X] avec son n°
         [-] avec sa date
-            [-] et par ordre décroissant
+            [-] par ordre décroissant
         [X] avec son rapport (50 carac. max)
         [X] avec un lien pour voir le rapport
         [X] avec, pour les employé un lien pour modifier le rapport
     [X] avec la liste des images le concernant
         [X] avec une miniature
-    [_] avec la liste des repas le concernant
+    [&] avec la liste des repas le concernant
+        [X] avec son n°
+        [X] avec la date
+            [X] par ordre décroissant
+            [-] avec l'heure
+        [-] voir la composition du repas
+            [-] avec la nourriture
+            [-] avec la quantité en gramme
 
 ## En tant qu'administrateur je souhaite ___
 
@@ -48,7 +55,7 @@
     [X] avec un lien pour modifier la fiche de l'animal
 
 [X] voir un animal
-    [X] et voir la liste des images associées
+    [X] voir la liste des images associées
         [X] avec les mêmes fonctionnalités que les utilisateurs
         [X] avec lien pour supprimer l'image
             [-] avec une redirection vers la page animal
@@ -57,13 +64,13 @@
 [X] supprimer un animal (aucune entrée associée)
     [X] et avoir un message de confirmation
 
-[_] créer un animal
+[X] créer un animal
     [X] en ajoutant un nom
     [X] en sélectionnant une race
     [X] en ajoutant une description
     [X] en ajoutant une ou plusieurs images
-    [-] avec une image par défaut
-    [-] avec une balise alt par défaut
+    [_] avec une image par défaut
+    [_] avec une balise alt par défaut
 
 [_] modifier un animal
     [-] avec son nom

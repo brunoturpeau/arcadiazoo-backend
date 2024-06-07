@@ -6,6 +6,8 @@ use App\Entity\Animal;
 use App\Entity\Image;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
+use App\Repository\EatingRepository;
+use App\Repository\FoodRepository;
 use App\Repository\ReportRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -73,11 +75,15 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_animal_show', methods: ['GET'])]
-    public function show(Animal $animal, ReportRepository $reportRepository): Response
+    public function show(Animal $animal, ReportRepository $reportRepository, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+
         return $this->render('admin/animal/show.html.twig', [
             'animal' => $animal,
             'reports' => $reportRepository->findAll(),
+            'foods' => $foods,
+            'eatings' => $eatingRepository->findAll(),
         ]);
     }
 
