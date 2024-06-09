@@ -12,15 +12,16 @@
     <div class="nav-context">
         <div class="parent">
             {% if is_granted('ROLE_EMPLOYE') %}
-                <a  href="{{ path('app_service_index') }}">
+                <a class="btn"  href="{{ path('app_service_index') }}">
                     {{ include('_partials/icons/_left-circle.html.twig') }}
+                    Modifier
                 </a>
             {% endif %}
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <span class="ms-3">
-                        {{ include('admin/service/_delete_icon.html.twig') }}
-                    </span>
+                    <div class="btn">
+                        {{ include('admin/service/_delete_form.html.twig') }}
+                    </div>
                 {% endif %}
             </div>
         </div>
