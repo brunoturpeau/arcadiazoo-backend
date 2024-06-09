@@ -11,8 +11,7 @@
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="btn">
-                        {{ include('admin/user/_delete_icon.html.twig') }}
-                        Supprimer
+                        {{ include('admin/user/_delete_form.html.twig') }}
                     </div>
                 {% endif %}
             </div>

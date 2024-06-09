@@ -13,14 +13,15 @@
 
             <div class="right">
                 {% if is_granted('ROLE_EMPLOYE') %}
-                    <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">
+                    <a class="btn" href="{{ path('app_comment_edit', {'id': comment.id}) }}">
                         {{ include('_partials/icons/_edit.html.twig') }}
+                        Modifier
                     </a>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <span class="ms-3">
-                        {{ include('admin/comment/_delete_icon.html.twig') }}
-                    </span>
+                    <div class="btn">
+                        {{ include('admin/comment/_delete_form.html.twig') }}
+                    </div>
                 {% endif %}
             </div>
         </div>
