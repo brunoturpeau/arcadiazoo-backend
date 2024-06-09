@@ -12,8 +12,8 @@
         [X] avec le nom
         [X] avec un lien vers l'animal
     [X] avec un lien pour voir la race
-    [X] avec un lien pour modifier la race
-    [X] avec un lien pour supprimer la race (aucune entrée associée)
+    [X] avec, pour l'admin, un lien pour modifier la race
+    [X] avec, pour l'admin, un lien pour supprimer la race (aucune entrée associée)
         [X] et être redirigé vers la page Races
         [X] et avoir un message de confirmation
 
@@ -27,9 +27,11 @@
         [X] le nom
         [X] l'état de santé
         [X] avec un lien pour voir l'animal
-        [X] avec un lien pour modifier l'animal
-    [X] avec un lien pour supprimer l'animal (aucune entrée associée)
+        [X] avec, pour l'admin, un lien pour modifier l'animal
+    [X] avec, pour l'admin, un lien pour supprimer l'animal (aucune entrée associée)
         [X] et avoir un message de confirmation
+
+## En tant qu'administrateur je souhaite ___
 
 [X] modifier une race
     [X] avec le nom
@@ -37,21 +39,9 @@
     [-] et être redirigé vers la page race en cours
     [X] et avoir un message de confirmation
     [X] avec un lien pour supprimer la race (aucune entrée associée)
-        [X] et avoir un message de confirmation
-
-[-] créer une race
     [X] et avoir un message de confirmation
 
-
-
-
-## En tant qu'administrateur je souhaite ___
-
-[/] voir la liste des races
-    [X] idem employé(e)
-    [-] créer une race
-    [-] modifier une race (depuis sa fiche ou depuis la liste des RACES)
-    [-] supprimer une race il elle ne contient pas d'animaux associé
-
-
-
+[X] créer une race
+    [X] avec un nom
+    [X] avec une description
+    [X] et avoir un message de confirmation
