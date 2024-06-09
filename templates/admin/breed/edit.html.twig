@@ -16,9 +16,9 @@
             </a>
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <span class="ms-3">
-                        {{ include('admin/breed/_delete_icon.html.twig') }}
-                    </span>
+                    <div class="btn">
+                        {{ include('admin/breed/_delete_form.html.twig') }}
+                    </div>
                 {% endif %}
             </div>
         </div>

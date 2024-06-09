@@ -45,6 +45,8 @@ class BreedController extends AbstractController
             $entityManager->persist($breed);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Race ajoutée avec succès');
+
             return $this->redirectToRoute('app_breed_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -82,6 +84,8 @@ class BreedController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Race modifiée avec succès');
+
             return $this->redirectToRoute('app_breed_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -97,6 +101,9 @@ class BreedController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$breed->getId(), $request->getPayload()->get('_token'))) {
+
+            $this->addFlash('success', 'Race supprimée avec succès');
+
             $entityManager->remove($breed);
             $entityManager->flush();
         }

@@ -17,13 +17,11 @@
         <h1>Les races</h1>
         <table class="tw-table">
             {# TODO label: habitat (link) #}
-            {# TODO label: nombre d'animaux #}
             <thead>
             <tr>
                 <th>N°</th>
                 <th>Race</th>
-                <th>Description</th>
-                <th>Nombre d'animaux</th>
+                <th>Animaux</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,11 +30,15 @@
                 <tr>
                     <td>{{ breed.id }}</td>
                     <td><b>{{ breed.name }}</b></td>
-                    <td>{{ breed.detail|u.truncate(50, '...') }}</td>
                     <td>
                         {% for animal in animals %}
                             {% if animal.breed.id == breed.id %}
-                                <p>{{ animal.name }}</p>
+                                <p>
+                                    <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
+                                        {{ animal.name }}
+                                        {{ include('_partials/icons/_link.html.twig') }}
+                                    </a>
+                                </p>
                             {% endif %}
                         {% endfor %}
                     </td>
@@ -56,7 +58,7 @@
                     </td>
                 </tr>
             {% else %}
-                <tr colspan="5">Aucun résultat</tr>
+                <tr colspan="4">Aucun résultat</tr>
             {% endfor %}
             </tbody>
         </table>
