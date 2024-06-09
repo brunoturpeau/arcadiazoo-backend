@@ -37,6 +37,17 @@ class FoodController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // We recover the data
+            $date = $form->get('created_at')->getData();
+            $time = $form->get('time')->getData();
+            $animal = $form->get('animal')->getData();
+
+            $food = new Food();
+            $food->setCreatedAt($date);
+            $food->setTime($time);
+            $food->setAnimal($animal);
+
             $entityManager->persist($food);
             $entityManager->flush();
 
@@ -94,4 +105,5 @@ class FoodController extends AbstractController
 
         return $this->redirectToRoute('app_food_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

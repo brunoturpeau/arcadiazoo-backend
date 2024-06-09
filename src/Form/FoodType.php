@@ -18,15 +18,19 @@ class FoodType extends AbstractType
         $builder
             ->add('time', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure'
+                'label' => 'Heure',
+                'mapped' => false,
             ])
             ->add('created_at', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date'
+                'label' => 'Date',
+                'input'  => 'datetime_immutable',
+                'mapped' => false,
             ])
             ->add('animal', EntityType::class, [
                 'class' => Animal::class,
                 'choice_label' => 'name',
+                'mapped' => false,
             ])
         ;
     }
