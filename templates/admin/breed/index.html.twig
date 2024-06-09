@@ -33,7 +33,13 @@
                     <td>{{ breed.id }}</td>
                     <td><b>{{ breed.name }}</b></td>
                     <td>{{ breed.detail|u.truncate(50, '...') }}</td>
-                    <td>Nbre</td>
+                    <td>
+                        {% for animal in animals %}
+                            {% if animal.breed.id == breed.id %}
+                                <p>{{ animal.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
                     <td class="actions">
                         <a href="{{ path('app_breed_show', {'id': breed.id}) }}">
                             {{ include ('_partials/icons/_eye.html.twig') }}
