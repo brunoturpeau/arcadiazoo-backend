@@ -21,7 +21,7 @@ class AnimalType extends AbstractType
                 'label' => 'Nom de l\'animal',
             ])
             ->add('description', TextareaType::class,[
-                'attr' => ['class' => 'editor', 'id' => 'editor'],
+                'attr' => ['class' => 'editor'],
             ])
             ->add('health', TextType::class,[
                 'label' => 'Santé',

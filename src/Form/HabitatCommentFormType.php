@@ -16,6 +16,7 @@ class HabitatCommentFormType extends AbstractType
         $builder
             ->add('comment_habitat',TextareaType::class,[
                 'label' => 'Commentaire',
+                'attr' => ['class' => 'editor'],
             ])
         ;
     }

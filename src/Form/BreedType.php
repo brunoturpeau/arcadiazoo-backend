@@ -18,7 +18,8 @@ class BreedType extends AbstractType
                 'label' => 'Nom'
             ])
             ->add('detail', TextareaType::class,[
-                'label' => 'Description'
+                'label' => 'Description',
+                'attr' => ['class' => 'editor'],
             ])
         ;
     }

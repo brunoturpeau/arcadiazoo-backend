@@ -17,7 +17,9 @@ class ServiceType extends AbstractType
             ->add('name',TextType::class,[
                 'label' => 'Nom du service',
             ])
-            ->add('description',TextareaType::class);
+            ->add('description',TextareaType::class, [
+                'attr' => ['class' => 'editor'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
