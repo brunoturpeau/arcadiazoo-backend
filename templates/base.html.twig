@@ -13,6 +13,7 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+    {# @todo CKEditor - interpreter le html en lecture #}
     <body>
         {% if app.user %}
             {{ include('/_partials/_nav.html.twig') }}

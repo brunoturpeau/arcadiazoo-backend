@@ -1,10 +1,12 @@
 # COMMUN
 
 [X] message de confirmation
-[x] Editor
+
 [X] created_at
 [X] slug auto
 
+[/] Editor
+    [_] interpréter le html en lecture
 
 [-] Pagination
 

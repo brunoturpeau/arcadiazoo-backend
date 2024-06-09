@@ -2,6 +2,11 @@
 
 {% block title %}Modifier un habitat{% endblock %}
 
+{% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
     <div class="nav-context">
         <div class="parent">
@@ -13,8 +18,7 @@
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="btn">
-                        {{ include('admin/habitat/_delete_icon.html.twig') }}
-                        Supprimer
+                        {{ include('admin/habitat/_delete_form.html.twig') }}
                     </div>
                 {% endif %}
             </div>
