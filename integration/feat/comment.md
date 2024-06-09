@@ -3,14 +3,26 @@
 ## En tant qu'employé(e) je souhaite ___
 
 [X] voir la liste des commentaires
-    [X] label: date (desc)
-    [X] label: pseudo
-    [X] label: commentaire (50 max)
-    [X] label: publié
-    [X] link: voir le commentaire
-    [X] link: modifier le commentaire
-    [X] action: supprimer le commentaire (flash)
-    [-] action: valider un commentaire
+    [X] avec la date 
+        [X] par ordre décroissant
+    [X] avec le pseudo
+    [X] avec le commentaire 
+        [X] 50 caractères maxi
+    [X] avec le statut
+    [X] avec un lien pour voir le commentaire
+    [X] avec un lien pour modifier le commentaire
+    [X] avec un lien pour supprimer le commentaire
+        [X] et avoir un message de confirmation
+    [_] avec un lien pour valider un commentaire
+        [-] et avoir un message de confirmation
+
+[X] voir un commentaire
+    [X] avec la date
+    [X] avec le pseudo
+    [X] avec le commentaire
+    [X] avec un lien pour modifier le commentaire
+    [X] avec un lien pour supprimer le commentaire
+        [X] et avoir un message de confirmation
 
 ## En tant qu'administrateur je souhaite ___
 
