@@ -7,14 +7,6 @@
 import './styles/app.css';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
-ClassicEditor
-    .create( document.querySelector( '.editor' ) )
-    .catch( error => {
-        console.error( error );
-    } );
 
-ClassicEditor
-    .create( document.querySelector( '.editor2' ) )
-    .catch( error => {
-        console.error( error );
-    } );
+
+
