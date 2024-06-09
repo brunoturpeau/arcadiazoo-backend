@@ -47,6 +47,9 @@ class FoodController extends AbstractController
             $food->setCreatedAt($date);
             $food->setTime($time);
             $food->setAnimal($animal);
+            $user = $this->getUser();
+            $food->setUser($user);
+
 
             $entityManager->persist($food);
             $entityManager->flush();

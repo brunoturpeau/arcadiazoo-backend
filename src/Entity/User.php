@@ -53,10 +53,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Report::class, mappedBy: 'user')]
     private Collection $reports;
 
+    /**
+     * @var Collection<int, Food>
+     */
+    #[ORM\OneToMany(targetEntity: Food::class, mappedBy: 'user')]
+    private Collection $food;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->reports = new ArrayCollection();
+        $this->food = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,6 +213,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($report->getUser() === $this) {
                 $report->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Food>
+     */
+    public function getFood(): Collection
+    {
+        return $this->food;
+    }
+
+    public function addFood(Food $food): static
+    {
+        if (!$this->food->contains($food)) {
+            $this->food->add($food);
+            $food->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFood(Food $food): static
+    {
+        if ($this->food->removeElement($food)) {
+            // set the owning side to null (unless already changed)
+            if ($food->getUser() === $this) {
+                $food->setUser(null);
             }
         }
 

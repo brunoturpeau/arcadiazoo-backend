@@ -34,6 +34,9 @@ class Food
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\ManyToOne(inversedBy: 'food')]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -106,6 +109,18 @@ class Food
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
