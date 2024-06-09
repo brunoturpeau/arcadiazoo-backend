@@ -19,7 +19,8 @@ class ReportType extends AbstractType
         $builder
 
             ->add('detail', TextareaType::class,[
-                'label' => "Rapport"
+                'label' => "Rapport",
+                'attr' => ['class' => 'editor'],
             ])
             ->add('user', EntityType::class, [
                 'label' => 'Vétérinaire',

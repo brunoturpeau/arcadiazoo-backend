@@ -8,6 +8,7 @@
         {% block stylesheets %}
         {% endblock %}
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="{{ asset('assets/js/lib/ckeditor.js') }}" defer></script>
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
@@ -19,7 +20,7 @@
 
         {% if app.user %}
             <div class="bg-slate-200">
-                <div class="container mx-auto flex justify-between items-center h-10 px-5">
+                <div class="container max-w-screen-xl mx-auto flex justify-between items-center h-10 px-5">
                     <p>
                         Bonjour {{ app.user.firstname }} ({{ app.user.userIdentifier }})
                     </p>

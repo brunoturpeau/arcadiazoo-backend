@@ -74,17 +74,15 @@
     [_] avec une image par défaut
     [_] avec une balise alt par défaut
 
-[_] modifier un animal
-    [-] avec son nom
-    [-] avec sa race
-    [-] avec sa description
-    [-] avec la liste des images
-        [-] avec une miniature
-        [-] avec le nom de l'image
-        [-] avec un lien pour modifier l'image
-        [-] avec un lien pour supprimer l'image
-            [-] et avoir un message de confirmation
-
-            [-] avec une redirection vers la page animal
-            [-] et avoir un message de confirmation
+[X] modifier un animal
+    [X] avec son nom
+    [X] avec sa race
+    [X] avec sa description
+    [X] avec la liste des images
+        [X] avec une miniature
+        [X] avec un lien pour supprimer l'image
+            [X] et avoir un message de confirmation
+            [_] et être redirigé vers sur la page en cours 
+   [_] avec une redirection vers la page animal
+        [X] et avoir un message de confirmation
   

@@ -19,9 +19,11 @@ class HabitatType extends AbstractType
             ])
             ->add('description',TextareaType::class,[
                 'label' => 'Description',
+                'attr' => ['class' => 'editor'],
             ])
             ->add('comment_habitat',TextareaType::class,[
                 'label' => 'Commentaire',
+                'attr' => ['class' => 'editor2'],
             ])
         ;
     }

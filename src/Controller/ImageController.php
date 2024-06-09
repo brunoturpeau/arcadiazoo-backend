@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-// @todo voir la liste des images
 #[Route('/admin/image')]
 class ImageController extends AbstractController
 {

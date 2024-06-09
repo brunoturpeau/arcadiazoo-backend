@@ -18,6 +18,7 @@ class CommentType extends AbstractType
             ->add('pseudo', TextType::class)
             ->add('comment_text', TextareaType::class,[
                 'label' => 'Commentaire',
+                'attr' => ['class' => 'editor'],
             ])
             ->add('is_visible', CheckboxType::class,[
                 'label' => 'Publié',
