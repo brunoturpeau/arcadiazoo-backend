@@ -2,6 +2,10 @@
 
 {% block title %}Modifier un animal{% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
     <div class="nav-context">
         <div class="parent">
@@ -44,3 +48,4 @@
         </div>
     </div>
 {% endblock %}
+
