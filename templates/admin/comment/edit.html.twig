@@ -2,6 +2,11 @@
 
 {% block title %}Modifier un commentaire{% endblock %}
 
+{% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
     <div class="nav-context">
         <div class="parent">
