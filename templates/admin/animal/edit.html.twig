@@ -3,6 +3,7 @@
 {% block title %}Modifier un animal{% endblock %}
 
 {% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
     <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 {% endblock %}
 
