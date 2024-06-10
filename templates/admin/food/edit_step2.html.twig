@@ -20,7 +20,7 @@
         <h1>Modifier un repas - étape 2</h1>
         <div class="flex flex-col justify-center items-center">
             <div class="bg-slate-200 p-10 lg:w-1/2">
-                {{ include('admin/food/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                {{ include('admin/food/_form_step_two.html.twig', {'button_label': 'Enregistrer'}) }}
                 <table class="table">
                     {% for eating in eatings %}
                         {% if food.id == eating.food.id %}

@@ -44,7 +44,6 @@ class AnimalController extends AbstractController
             // We recover the images
             $images = $form->get('images')->getData();
 
-
             foreach($images as $image){
                 // We define the destination folder
                 $folder = 'animals';

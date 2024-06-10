@@ -6,7 +6,7 @@ use App\Entity\Eating;
 use App\Entity\Food;
 use App\Form\EatingType;
 use App\Form\FoodFormType;
-use App\Form\FoodType;
+use App\Form\FoodStepTwoFormType;
 use App\Repository\EatingRepository;
 use App\Repository\FoodRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,7 +35,7 @@ class FoodController extends AbstractController
     public function new(Request $request,SluggerInterface $slugger, FoodRepository $foodRepository, EntityManagerInterface $entityManager): Response
     {
         $food = new Food();
-        $form = $this->createForm(FoodType::class, $food);
+        $form = $this->createForm(FoodFormType::class, $food);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -109,12 +109,22 @@ class FoodController extends AbstractController
     #[Route('/{id}/composition', name: 'app_food_edit_2', methods: ['GET', 'POST'])]
     public function editStep2(Request $request, Food $food, EatingRepository $eatingRepository, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(FoodFormType::class, $food);
+        $form = $this->createForm(FoodStepTwoFormType::class, $food);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
 
+            $food_id = $food->getId();
+
+            $feeding = $form->get('feeding')->getData();
+            $quantity = $form->get('quantity')->getData();
+
+            $eating = new Eating();
+            $eating->setFeeding($feeding);
+            $eating->setQuantity($quantity);
+            $eating->setFood($food);
+            $entityManager->persist($eating);
+            $entityManager->flush();
             $this->addFlash('success', 'Repas modifié avec succès');
 
             return $this->redirectToRoute('app_food_index', [], Response::HTTP_SEE_OTHER);

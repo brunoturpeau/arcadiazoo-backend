@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_row(form.created_at) }}
+    {{ form_row(form.time) }}
+    {{ form_row(form.animal) }}
+    {{ form_row(form.feeding) }}
+    {{ form_row(form.quantity) }}
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
