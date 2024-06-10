@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Report;
 use App\Form\ReportType;
+use App\Repository\EatingRepository;
+use App\Repository\FoodRepository;
 use App\Repository\ReportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,10 +51,18 @@ class ReportController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_report_show', methods: ['GET'])]
-    public function show(Report $report): Response
+    public function show(Report $report, FoodRepository $foodRepository, EatingRepository $eatingRepository ): Response
     {
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+        $food = $foods[0];
+        $food_id = $food->getId();
+
+        $eatings = $eatingRepository->findBy(['food' => $food_id]);
+
         return $this->render('admin/report/show.html.twig', [
             'report' => $report,
+            'food' => $food,
+            'eatings' => $eatings,
         ]);
     }
 
