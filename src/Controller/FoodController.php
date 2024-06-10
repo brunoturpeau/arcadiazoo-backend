@@ -127,7 +127,7 @@ class FoodController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Repas modifié avec succès');
 
-            return $this->redirectToRoute('app_food_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_food_edit_2', ['id' => $food_id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/food/edit_step2.html.twig', [

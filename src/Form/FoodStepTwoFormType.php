@@ -18,26 +18,15 @@ class FoodStepTwoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('time', TimeType::class, [
-                'widget' => 'single_text',
-                'label' => 'Heure',
-            ])
-            ->add('created_at', DateType::class, [
-                'widget' => 'single_text',
-                'label' => 'Date',
-                'input'  => 'datetime_immutable',
-            ])
-            ->add('animal', EntityType::class, [
-                'class' => Animal::class,
-                'choice_label' => 'name',
-            ])
             ->add('feeding',TextType::class, [
                 'mapped' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Nourriture',
             ])
             ->add('quantity',IntegerType::class, [
                 'mapped' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Quantité',
             ])
         ;
     }
