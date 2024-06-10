@@ -61,12 +61,19 @@ class Animal
     #[ORM\OneToMany(targetEntity: Food::class, mappedBy: 'animal')]
     private Collection $food;
 
+    /**
+     * @var Collection<int, SuggestFeeding>
+     */
+    #[ORM\OneToMany(targetEntity: SuggestFeeding::class, mappedBy: 'animal')]
+    private Collection $suggestFeedings;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->reports = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->food = new ArrayCollection();
+        $this->suggestFeedings = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -217,6 +224,36 @@ class Animal
             // set the owning side to null (unless already changed)
             if ($food->getAnimal() === $this) {
                 $food->setAnimal(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SuggestFeeding>
+     */
+    public function getSuggestFeedings(): Collection
+    {
+        return $this->suggestFeedings;
+    }
+
+    public function addSuggestFeeding(SuggestFeeding $suggestFeeding): static
+    {
+        if (!$this->suggestFeedings->contains($suggestFeeding)) {
+            $this->suggestFeedings->add($suggestFeeding);
+            $suggestFeeding->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSuggestFeeding(SuggestFeeding $suggestFeeding): static
+    {
+        if ($this->suggestFeedings->removeElement($suggestFeeding)) {
+            // set the owning side to null (unless already changed)
+            if ($suggestFeeding->getAnimal() === $this) {
+                $suggestFeeding->setAnimal(null);
             }
         }
 
