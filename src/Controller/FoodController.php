@@ -62,10 +62,10 @@ class FoodController extends AbstractController
             $entityManager->flush();
 
             $food = $foodRepository->findBy(['slug' => $slug]);
-            $food_id = $food[0];
+            $food = $food[0];
+            $food_id = $food->getId();
 
-
-            return $this->redirectToRoute('app_food_edit', ['id' => 44], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_food_edit_2', ['id' => $food_id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/food/new.html.twig', [
@@ -100,6 +100,27 @@ class FoodController extends AbstractController
         }
 
         return $this->render('admin/food/edit.html.twig', [
+            'food' => $food,
+            'form' => $form,
+            'eatings' => $eatingRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/{id}/composition', name: 'app_food_edit_2', methods: ['GET', 'POST'])]
+    public function editStep2(Request $request, Food $food, EatingRepository $eatingRepository, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(FoodFormType::class, $food);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Repas modifié avec succès');
+
+            return $this->redirectToRoute('app_food_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/food/edit_step2.html.twig', [
             'food' => $food,
             'form' => $form,
             'eatings' => $eatingRepository->findAll(),
