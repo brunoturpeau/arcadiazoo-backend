@@ -71,11 +71,14 @@ class EatingController extends AbstractController
     #[Route('/{id}', name: 'app_eating_delete', methods: ['POST'])]
     public function delete(Request $request, Eating $eating, EntityManagerInterface $entityManager): Response
     {
+        $food_id = $eating->getFood()->getId();
+
         if ($this->isCsrfTokenValid('delete'.$eating->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($eating);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_eating_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_food_edit_2', ['id' => $food_id], Response::HTTP_SEE_OTHER);
+
     }
 }
