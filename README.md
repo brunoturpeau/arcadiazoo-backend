@@ -2,13 +2,12 @@
 
 ## Evaluation en Cours de Formation
 
-Préparation au Titre Professionnel[integration.md](..%2Farcadiazoo_backend%2Fdoc%2Fintegration.md)
+Préparation au Titre Professionnel
 > RNCP37674 - Développeur web et web mobile
 
 ## Le projet
 
 Cette application fournie une API Rest pour le site vitrine Arcadia Zoo.
-
 
 ## Installation du backend
 
@@ -22,7 +21,7 @@ git clone https://github.com/brunoturpeau/arcadiazoo-backend.git
 2. Installez les dépendances
 
 ```bash
-cd arcadiazoo_backend
+cd arcadiazoo-backend
 composer install
 npm install
 ```
