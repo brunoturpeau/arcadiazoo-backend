@@ -59,11 +59,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Food::class, mappedBy: 'user')]
     private Collection $food;
 
+    /**
+     * @var Collection<int, SuggestFeeding>
+     */
+    #[ORM\OneToMany(targetEntity: SuggestFeeding::class, mappedBy: 'user')]
+    private Collection $suggestFeedings;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->reports = new ArrayCollection();
         $this->food = new ArrayCollection();
+        $this->suggestFeedings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -243,6 +250,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($food->getUser() === $this) {
                 $food->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SuggestFeeding>
+     */
+    public function getSuggestFeedings(): Collection
+    {
+        return $this->suggestFeedings;
+    }
+
+    public function addSuggestFeeding(SuggestFeeding $suggestFeeding): static
+    {
+        if (!$this->suggestFeedings->contains($suggestFeeding)) {
+            $this->suggestFeedings->add($suggestFeeding);
+            $suggestFeeding->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSuggestFeeding(SuggestFeeding $suggestFeeding): static
+    {
+        if ($this->suggestFeedings->removeElement($suggestFeeding)) {
+            // set the owning side to null (unless already changed)
+            if ($suggestFeeding->getUser() === $this) {
+                $suggestFeeding->setUser(null);
             }
         }
 

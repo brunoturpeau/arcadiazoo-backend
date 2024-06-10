@@ -35,11 +35,11 @@
 [&] modifier un repas
     [-] avec le n°
 
-- 'mapped' => false,
-- 
+
 
 [-] créer un repas
 
+user
 
 [X] filtrer la liste des repas
 
@@ -47,3 +47,6 @@
 
 [X] voir la liste des repas
   [X] idem employé(e)s
+
+[-] Suggérer la nourriture et la quantité pour un animal depuis son rapport
+

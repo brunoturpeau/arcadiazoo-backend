@@ -122,6 +122,7 @@ class FoodController extends AbstractController
             $eating = new Eating();
             $eating->setFeeding($feeding);
             $eating->setQuantity($quantity);
+            // @todo add user
             $eating->setFood($food);
             $entityManager->persist($eating);
             $entityManager->flush();

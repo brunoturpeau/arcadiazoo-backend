@@ -27,37 +27,67 @@
 
     <div class="cont">
         <h1>Rapport</h1>
-        <table class="table table-sm">
-            <tbody>
-            <tr>
-                <th>N°</th>
-                <td>{{ report.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ report.date ? report.date|date('d/m/Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Animal</th>
-                <td>
-                    <a href="{{ path('app_animal_show', {'id':report.animal.id}) }}">
-                        {{ report.animal.name }} {{ include('_partials/icons/_link.html.twig') }}
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>Vétérinaire</th>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': report.user.id}) }}">
-                        {{ report.user.firstname }} {{ include('_partials/icons/_link.html.twig') }}
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>Rapport</th>
-                <td>{{ report.detail }}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="flex flex-col items-center sm:w-3/4 lg:w-1/2 gap-5 mx-auto justify-center">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>N°</th>
+                    <td>{{ report.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ report.date ? report.date|date('d/m/Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Animal</th>
+                    <td>
+                        <a href="{{ path('app_animal_show', {'id':report.animal.id}) }}">
+                            {{ report.animal.name }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Vétérinaire</th>
+                    <td>
+                        <a href="{{ path('app_user_show', {'id': report.user.id}) }}">
+                            {{ report.user.firstname }} {{ include('_partials/icons/_link.html.twig') }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Rapport</th>
+                    <td>{{ report.detail }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Dernier repas</h2>
+            <table class="tw-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Employé(e)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ food.id }}</td>
+                        <td>{{ food.createdAt|date('d_m-Y') }}</td>
+                        <td>{{ food.time|date('H:i') }}</td>
+                        <td>{{ food.user.firstname }} {{ food.user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            {% for eating in eatings %}
+                                <div class="ps-10">
+                                    {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
