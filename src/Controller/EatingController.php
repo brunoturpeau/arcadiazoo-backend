@@ -22,7 +22,7 @@ class EatingController extends AbstractController
         ]);
     }
 
-    #[Route('/ajout', name: 'app_eating_new', methods: ['GET', 'POST'])]
+    #[Route('/ajout', name: 'appzzzzzz_eating_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eating = new Eating();
