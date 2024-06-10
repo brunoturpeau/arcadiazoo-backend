@@ -28,15 +28,27 @@
     </div>
     <div class="cont">
         <h1>Commentaire</h1>
-        <div class="flex justify-center">
-            <div class="card-show">
-                <h2>{{ comment.pseudo }}</h2>
-                <hr>
-                <p><b>ID</b> : {{ comment.id }}</p>
-                <p><b>Commentaire </b>: {{ comment.commentText }}</p>
-                <p><b>Statut</b> : {{ comment.isVisible ? 'Publié' : 'Pas publié' }}</p>
-                <p><b>Date de création</b> : {{ comment.createdAt ? comment.createdAt|date('d/m/Y') : '' }}</p>
-            </div>
+        <div class="flex flex-col items-center sm:w-3/4 lg:w-1/2 gap-5 mx-auto justify-center">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ comment.createdAt ? comment.createdAt|date('d/m/Y') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pseudo</th>
+                        <td>{{ comment.pseudo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Commentaire</th>
+                        <td>{{ comment.commentText }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ comment.isVisible ? 'Publié' : 'Pas publié' }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

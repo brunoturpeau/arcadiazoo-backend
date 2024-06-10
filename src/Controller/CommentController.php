@@ -37,6 +37,8 @@ class CommentController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Commentaire ajouté avec succès.');
+
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,6 +67,8 @@ class CommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'Commentaire modifié avec succès.');
+
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,11 +85,11 @@ class CommentController extends AbstractController
 
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->getPayload()->get('_token'))) {
 
-            $this->addFlash('success','Commentaire supprimé avec succés.');
-
             $entityManager->remove($comment);
             $entityManager->flush();
         }
+
+        $this->addFlash('success', 'Commentaire supprimé avec succès.');
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }

@@ -7,6 +7,8 @@
     <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 {% endblock %}
 
+{# @todo - valider un commentaire #}
+
 {% block body %}
     <div class="nav-context">
         <div class="parent">
@@ -16,12 +18,6 @@
                 </a>
             {% endif %}
             <div class="right">
-                {% if is_granted('ROLE_EMPLOYE') %}
-                    <a class="btn" href="{{ path('app_comment_edit', {'id': comment.id}) }}">
-                        {{ include('_partials/icons/_edit.html.twig') }}
-                        Modifier
-                    </a>
-                {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="btn">
                         {{ include('admin/comment/_delete_form.html.twig') }}

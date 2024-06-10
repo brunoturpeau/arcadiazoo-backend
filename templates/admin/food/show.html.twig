@@ -52,6 +52,7 @@
             </thead>
             <tbody>
             {% for eating in eatings %}
+                {% if food.id == eating.food.id %}
                 <tr>
                     <td>{{ eating.id }}</td>
                     <td>{{ eating.feeding }}</td>
@@ -65,6 +66,7 @@
                         </div>
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>

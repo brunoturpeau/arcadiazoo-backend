@@ -47,7 +47,7 @@ class FoodFixtures extends Fixture implements DependentFixtureInterface
         $food->setTime($time);
         $animal = $this->getReference($animal);
         $food->setAnimal($animal);
-
+        $food->setSlug('repas-'.rand(1, 99999999));
         $this->addReference($reference, $food);
 
         $manager->persist($food);

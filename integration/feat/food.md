@@ -3,7 +3,7 @@
 ## En tant qu'employé(e) je souhaite ___
 
 [X] voir la liste des repas
-    [X] avec son n°
+    [X] avec le n°
     [X] avec la date
         [X] par ordre décroissant
     [X] avec l'heure
@@ -21,12 +21,25 @@
         [-] avec un lien pour modifier la ligne
 
 [-] voir un repas
+    [X] avec le n°
+    [X] avec la date
+    [X] avec l'heure
+    [X] avec le nom de l'animal concerné
+        [-] avec un lien vars sa fiche
+    [X] avec un lien pour modifier le repas
+    [X] avec un lien pour supprimer le repas (aucune entrée associée)
+        [X] avec une redirection vers la page repas
+        [x] avec un message de confirmation
+    [X] avec la composition du repas
 
-[-] modifier un repas
+[&] modifier un repas
+    [-] avec le n°
+
+- 'mapped' => false,
+- 
 
 [-] créer un repas
 
-[-] supprimer un repas
 
 [X] filtrer la liste des repas
 
