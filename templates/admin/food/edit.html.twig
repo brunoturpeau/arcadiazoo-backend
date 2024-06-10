@@ -21,8 +21,25 @@
         <div class="flex flex-col justify-center items-center">
             <div class="bg-slate-200 p-10 lg:w-1/2">
                 {{ include('admin/food/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                <table class="table">
+                    {% for eating in eatings %}
+                        <tr>
+                            <td>{{ eating.feeding }}</td>
+                            <td>{{ eating.quantity }}</td>
+                            <td>
+                                <a href="#">
+                                    {{ include('_partials/icons/_edit.html.twig') }}
+                                </a>
+                                <div>
+                                    {{ include('admin/eating/_delete_icon.html.twig') }}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
+
     </div>
 
 {% endblock %}

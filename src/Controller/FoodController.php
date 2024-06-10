@@ -86,7 +86,7 @@ class FoodController extends AbstractController
     }
 
     #[Route('/{id}/edition', name: 'app_food_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Food $food, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Food $food, EatingRepository $eatingRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(FoodFormType::class, $food);
         $form->handleRequest($request);
@@ -102,6 +102,7 @@ class FoodController extends AbstractController
         return $this->render('admin/food/edit.html.twig', [
             'food' => $food,
             'form' => $form,
+            'eatings' => $eatingRepository->findAll(),
         ]);
     }
 
