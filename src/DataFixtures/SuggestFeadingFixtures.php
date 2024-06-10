@@ -11,17 +11,28 @@ class SuggestFeadingFixtures extends Fixture implements DependentFixtureInterfac
 {
     public function load(ObjectManager $manager): void
     {
+        $this->createSuggestFeeding('lapin',3000,'user-3','Dundy',$manager);
+        $this->createSuggestFeeding('Boeuf',5000,'user-3','Dundy',$manager);
+        $this->createSuggestFeeding('Fourrage',5000,'user-3','Adèle',$manager);
+        $this->createSuggestFeeding('Viandes diverses',5000,'user-3','Sheila',$manager);
+        $this->createSuggestFeeding('Viandes diverses',7000,'user-3','Simba',$manager);
+        $this->createSuggestFeeding('Viandes diverses',7000,'user-3','Sheer Khan',$manager);
+
+
+        $manager->flush();
+    }
+
+    public function createSuggestFeeding(string $feeding, int $quantity, $user, $animal, ObjectManager $manager)
+    {
         $suggest = new SuggestFeeding();
-        $suggest->setFeeding('feeding-1');
-        $suggest->setQuantity(1250);
-        $user = $this->getReference('user-3');
+        $suggest->setFeeding($feeding);
+        $suggest->setQuantity($quantity);
+        $user = $this->getReference($user);
         $suggest->setUser($user);
-        $animal = $this->getReference("Sheila");
+        $animal = $this->getReference($animal);
         $suggest->setAnimal($animal);
 
         $manager->persist($suggest);
-
-        $manager->flush();
     }
     public function getDependencies(): array
     {
