@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
 use App\Entity\Report;
+use App\Form\HealthFormType;
 use App\Form\ReportFormType;
 use App\Form\ReportType;
 use App\Form\ReportWithAnimalFormType;
@@ -77,6 +79,10 @@ class ReportController extends AbstractController
         $form = $this->createForm(ReportFormType::class, $report);
         $form->handleRequest($request);
 
+        $health = new Animal();
+        $healthForm = $this->createForm(HealthFormType::class, $health);
+        $healthForm->handleRequest($request);
+
         $animal = $animalRepository->findBy(['id' => $id]);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -109,6 +115,7 @@ class ReportController extends AbstractController
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
+            'healthForm' => $healthForm,
             'animals' => $animal,
             'food' => $food,
             'eatings' => $eatings,
