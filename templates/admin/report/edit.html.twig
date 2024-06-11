@@ -8,9 +8,6 @@
     <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 {% endblock %}
 
-{# @todo - L'id_user est utilisé en remplacement du champs vétérinaire #}
-{# @todo - la liste déroulante ne contient que les vétérinaires #}
-
 {% block body %}
     <div class="nav-context">
         <div class="parent">
@@ -34,6 +31,34 @@
         <div class="flex justify-center">
             <div class="bg-slate-200 p-10 lg:w-1/2">
                 {{ include('admin/report/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                <h2>Dernier repas</h2>
+                <table class="tw-table">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Employé(e)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ food.id }}</td>
+                        <td>{{ food.createdAt|date('d_m-Y') }}</td>
+                        <td>{{ food.time|date('H:i') }}</td>
+                        <td>{{ food.user.firstname }} {{ food.user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            {% for eating in eatings %}
+                                <div class="ps-10">
+                                    {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

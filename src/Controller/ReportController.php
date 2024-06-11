@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Report;
+use App\Form\ReportFormType;
 use App\Form\ReportType;
 use App\Form\ReportWithAnimalFormType;
 use App\Repository\EatingRepository;
@@ -28,7 +29,7 @@ class ReportController extends AbstractController
     }
 
     #[Route('/ajout', name: 'app_report_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
@@ -53,22 +54,30 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+        $food = $foods[0];
+        $food_id = $food->getId();
+
+        $eatings = $eatingRepository->findBy(['food' => $food_id]);
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
+            'food' => $food,
+            'eatings' => $eatings,
         ]);
     }
 
     #[Route('/{id}/ajout', name: 'app_report_animal_new', methods: ['GET', 'POST'])]
-    public function newReport(Request $request, EntityManagerInterface $entityManager): Response
+    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, ): Response
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
         $report = new Report();
-        $form = $this->createForm(ReportWithAnimalFormType::class, $report);
+        $form = $this->createForm(ReportFormType::class, $report);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager->persist($report);
             $entityManager->flush();
 
@@ -80,8 +89,10 @@ class ReportController extends AbstractController
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
+
         ]);
     }
+
     #[Route('/{id}', name: 'app_report_show', methods: ['GET'])]
     public function show(Report $report, FoodRepository $foodRepository, EatingRepository $eatingRepository ): Response
     {

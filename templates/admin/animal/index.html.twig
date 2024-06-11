@@ -46,7 +46,7 @@
                         {# TODO filtrer par race et par habitat #}
                         {# TODO filter : sélectionner un animal à l'aide d'une liste déroulante #}
 
-                        <a href="#" title="Créer un rapport">
+                        <a href="{{ path('app_report_animal_new', {'id': animal.id}) }}" title="Créer un rapport">
                             {{ include('_partials/icons/_report.html.twig') }}
                         </a>
                         <a href="{{ path('app_animal_show', {'id': animal.id}) }}">
