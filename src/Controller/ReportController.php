@@ -60,7 +60,7 @@ class ReportController extends AbstractController
         $food_id = $food->getId();
 
         $eatings = $eatingRepository->findBy(['food' => $food_id]);
-        return $this->render('admin/report/new.html.twig', [
+        return $this->render('admin/report/new_whithout_animal.html.twig', [
             'report' => $report,
             'form' => $form,
             'food' => $food,
@@ -69,7 +69,7 @@ class ReportController extends AbstractController
     }
 
     #[Route('/{id}/ajout', name: 'app_report_animal_new', methods: ['GET', 'POST'])]
-    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, AnimalRepository $animalRepository): Response
+    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, AnimalRepository $animalRepository, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
@@ -88,12 +88,17 @@ class ReportController extends AbstractController
         }
 
         $animal = $animalRepository->findBy(['id' => $id]);
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+        $food = $foods[0];
+        $food_id = $food->getId();
+        $eatings = $eatingRepository->findBy(['food' => $food_id]);
 
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
             'animals' => $animal,
-
+            'food' => $food,
+            'eatings' => $eatings,
         ]);
     }
 
