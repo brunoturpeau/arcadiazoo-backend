@@ -79,7 +79,8 @@ class ReportController extends AbstractController
         $form = $this->createForm(ReportFormType::class, $report);
         $form->handleRequest($request);
 
-        $health = new Animal();
+        $health =  $animalRepository->findBy(['id' => $id]);
+        $health = $health[0];
         $healthForm = $this->createForm(HealthFormType::class, $health);
         $healthForm->handleRequest($request);
 

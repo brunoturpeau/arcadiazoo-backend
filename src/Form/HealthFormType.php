@@ -18,7 +18,7 @@ class HealthFormType extends AbstractType
     {
         $builder
             ->add('health', TextType::class,[
-                'label' => 'Santé',
+                'label' => 'État de santé',
             ])
         ;
     }
