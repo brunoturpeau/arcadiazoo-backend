@@ -28,6 +28,7 @@
                     <h2>{{ animal.name }}</h2>
                     <p>{{ animal.breed.name }}</p>
                     <p>{{ animal.habitat.name }}</p>
+                    <p>{{ animal.health }}</p>
                 {% endfor %}
                 {{ include('admin/report/_form.html.twig') }}
             </div>
@@ -60,6 +61,14 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
+                <h2>Repas suggéré</h2>
+                {% for eating in eatings %}
+                    <div class="ps-10">
+                        {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
