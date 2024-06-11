@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un rapport{% endblock %}
+
+{% block javascripts %}
+    {% block importmap %}
+        {{ importmap('app') }}{% endblock %}
+    <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+    <div class="nav-context">
+        <div class="parent">
+            {% if is_granted('ROLE_VETERINAIRE') %}
+                <a  href="{{ path('app_report_index') }}">
+                    {{ include('_partials/icons/_left-circle.html.twig') }}
+                </a>
+            {% endif %}
+            <div class="right"></div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Créer un rapport</h1>
+        <div class="flex justify-center">
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+                {{ include('admin/report/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

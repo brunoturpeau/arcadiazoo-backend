@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+// @todo - être redirigé vers la page race en cours
 #[Route('/admin/race')]
 class BreedController extends AbstractController
 {

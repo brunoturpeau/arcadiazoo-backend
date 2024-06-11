@@ -2,11 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
 use App\Entity\Report;
+use App\Form\HealthFormType;
+use App\Form\ReportFormType;
 use App\Form\ReportType;
+use App\Form\ReportWithAnimalFormType;
+use App\Repository\AnimalRepository;
 use App\Repository\EatingRepository;
 use App\Repository\FoodRepository;
 use App\Repository\ReportRepository;
+use App\Repository\SuggestFeedingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +33,7 @@ class ReportController extends AbstractController
     }
 
     #[Route('/ajout', name: 'app_report_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
@@ -36,6 +42,13 @@ class ReportController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // we retrieve the current user
+            $user = $this->getUser();
+
+            // we assign the user to the report
+            $report->setUser($user);
+
             $entityManager->persist($report);
             $entityManager->flush();
 
@@ -44,9 +57,70 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+        $food = $foods[0];
+        $food_id = $food->getId();
+
+        $eatings = $eatingRepository->findBy(['food' => $food_id]);
+        return $this->render('admin/report/new_whithout_animal.html.twig', [
+            'report' => $report,
+            'form' => $form,
+            'food' => $food,
+            'eatings' => $eatings,
+        ]);
+    }
+
+    #[Route('/{id}/ajout', name: 'app_report_animal_new', methods: ['GET', 'POST'])]
+    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, AnimalRepository $animalRepository, FoodRepository $foodRepository, EatingRepository $eatingRepository, SuggestFeedingRepository $suggestFeedingRepository): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
+
+        $report = new Report();
+        $form = $this->createForm(ReportFormType::class, $report);
+        $form->handleRequest($request);
+
+        $health =  $animalRepository->findBy(['id' => $id]);
+        $health = $health[0];
+        $healthForm = $this->createForm(HealthFormType::class, $health);
+        $healthForm->handleRequest($request);
+
+        $animal = $animalRepository->findBy(['id' => $id]);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->getUser();
+            $animal = $animalRepository->findBy(['id' => $id]);
+            $animal = $animal[0];
+            $detail = $form->get('detail')->getData();
+
+            $report = new Report();
+            $report->setDetail($detail);
+            $report->setAnimal($animal);
+            $report->setUser($user);
+            $entityManager->persist($report);
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Rapport ajouté avec succès');
+
+            return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+
+        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
+        $food = $foods[0];
+        $food_id = $food->getId();
+        $eatings = $eatingRepository->findBy(['food' => $food_id]);
+        $suggest = $suggestFeedingRepository->findBy(['id' => $id]);
+
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
+            'healthForm' => $healthForm,
+            'animals' => $animal,
+            'food' => $food,
+            'eatings' => $eatings,
+            'suggest' => $suggest,
         ]);
     }
 

@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReportType extends AbstractType
+class ReportFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -26,10 +26,6 @@ class ReportType extends AbstractType
                 'label' => "Rapport",
                 'attr' => ['class' => 'editor'],
                 'data' => ' ',
-            ])
-            ->add('animal', EntityType::class, [
-                'class' => Animal::class,
-                'choice_label' => 'name',
             ])
         ;
     }
