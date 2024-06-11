@@ -6,6 +6,7 @@ use App\Entity\Report;
 use App\Form\ReportFormType;
 use App\Form\ReportType;
 use App\Form\ReportWithAnimalFormType;
+use App\Repository\AnimalRepository;
 use App\Repository\EatingRepository;
 use App\Repository\FoodRepository;
 use App\Repository\ReportRepository;
@@ -68,7 +69,7 @@ class ReportController extends AbstractController
     }
 
     #[Route('/{id}/ajout', name: 'app_report_animal_new', methods: ['GET', 'POST'])]
-    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, ): Response
+    public function newReport(int $id, Request $request, EntityManagerInterface $entityManager, AnimalRepository $animalRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
@@ -86,9 +87,12 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $animal = $animalRepository->findBy(['id' => $id]);
+
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
+            'animals' => $animal,
 
         ]);
     }

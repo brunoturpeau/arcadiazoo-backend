@@ -27,10 +27,6 @@ class ReportFormType extends AbstractType
                 'attr' => ['class' => 'editor'],
                 'data' => ' ',
             ])
-            ->add('animal', EntityType::class, [
-                'class' => Animal::class,
-                'choice_label' => 'name',
-            ])
         ;
     }
 

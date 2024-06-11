@@ -20,14 +20,15 @@
         </div>
     </div>
 
-    {# @todo input: animal (asc) #}
-    {# @todo input: date #}
-    {# @todo input: user (vétérinaire) #}
-
     <div class="cont">
         <h1>Créer un rapport</h1>
         <div class="flex justify-center">
             <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+                {% for animal in animals %}
+                    <h2>{{ animal.name }}</h2>
+                    <p>{{ animal.breed.name }}</p>
+                    <p>{{ animal.habitat.name }}</p>
+                {% endfor %}
                 {{ include('admin/report/_form.html.twig') }}
             </div>
         </div>
