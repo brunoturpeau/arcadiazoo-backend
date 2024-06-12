@@ -111,7 +111,7 @@ class ReportController extends AbstractController
         $food = $foods[0];
         $food_id = $food->getId();
         $eatings = $eatingRepository->findBy(['food' => $food_id]);
-        $suggest = $suggestFeedingRepository->findBy(['id' => $id]);
+        $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
 
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
@@ -120,7 +120,7 @@ class ReportController extends AbstractController
             'animals' => $animal,
             'food' => $food,
             'eatings' => $eatings,
-            'suggest' => $suggest,
+            'suggests' => $suggest,
         ]);
     }
 

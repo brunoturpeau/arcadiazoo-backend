@@ -66,6 +66,14 @@
                 {{ include('admin/report/_form.html.twig') }}
             </div>
             <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
+                <h2>Repas suggéré</h2>
+                {% for suggest in suggests %}
+                    <div class="ps-10">
+                        {{ include('_partials/icons/_arrow_right.html.twig') }} {{suggest.feeding }} : {{ suggest.quantity }}g.
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
                 <h2>Dernier repas</h2>
                 <table class="tw-table">
                     <thead>
@@ -95,14 +103,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
-                <h2>Repas suggéré</h2>
-                {% for eating in eatings %}
-                    <div class="ps-10">
-                        {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
-                    </div>
-                {% endfor %}
-            </div>
+
         </div>
     </div>
 {% endblock %}
