@@ -95,9 +95,11 @@ class ReportController extends AbstractController
             $animal = $animalRepository->findBy(['id' => $id]);
             $animal = $animal[0];
             $detail = $form->get('detail')->getData();
+            $suggest = $form->get('suggest')->getData();
 
             $report = new Report();
             $report->setDetail($detail);
+            $report->setSuggest($suggest);
             $report->setAnimal($animal);
             $report->setUser($user);
             $entityManager->persist($report);
@@ -111,8 +113,6 @@ class ReportController extends AbstractController
 
         // We fecth the last five meals
         $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
-
-        // @todo - récupérer la composition des repas
 
         $findEatingInMeals = $foodRepository->findEatingInMeals($id);
 

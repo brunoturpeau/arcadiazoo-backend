@@ -19,12 +19,18 @@ class ReportFormType extends AbstractType
     {
         $builder
             ->add('date', DateType::class,[
+                'label' => false,
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable'
             ])
             ->add('detail', TextareaType::class,[
                 'label' => "Rapport",
                 'attr' => ['class' => 'editor'],
+                'data' => ' ',
+            ])
+            ->add('suggest', TextareaType::class, [
+                'label' => 'Repas suggéré',
+                'attr' => ['class' => 'editor2'],
                 'data' => ' ',
             ])
         ;

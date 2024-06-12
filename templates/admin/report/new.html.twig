@@ -3,8 +3,7 @@
 {% block title %}Créer un rapport{% endblock %}
 
 {% block javascripts %}
-    {% block importmap %}
-        {{ importmap('app') }}{% endblock %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
     <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 {% endblock %}
 
@@ -35,7 +34,7 @@
 
                             </p>
 
-                            <!-- Main modal -->
+                            <!-- Health modal -->
                             <div id="health-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                 <div class="relative p-4 w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
@@ -59,15 +58,6 @@
                                 </div>
                             </div>
 
-                        {% endfor %}
-                        <h3 class="font-bold my-3">Repas suggéré</h3>
-                        {% for suggest in suggests %}
-                            <div class="ps-10">
-                                {{ include('_partials/icons/_arrow_right.html.twig') }} {{suggest.feeding }} : {{ suggest.quantity }} g.
-                                <a href="{{ path('app_suggest_feeding_edit', {'id': suggest.id}) }}">
-                                    {{ include('_partials/icons/_edit.html.twig') }}
-                                </a>
-                            </div>
                         {% endfor %}
                     </div>
                     <div id="right" class="basis-1/2">
