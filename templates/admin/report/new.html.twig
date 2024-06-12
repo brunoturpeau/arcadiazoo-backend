@@ -9,9 +9,7 @@
 
 {% block body %}
     <div class="nav-context">
-        <div class="parent">
-
-        </div>
+        <div class="parent"></div>
     </div>
 
     <div class="cont">
@@ -20,7 +18,7 @@
                 <h1>Créer un rapport</h1>
                 <hr>
                 <div class="flex flex-row">
-                    <div id="left" class="basis-1/2">
+                    <div id="left" class="basis-1/1">
                         {% for animal in animals %}
                             <h2>{{ animal.name }}</h2>
                             <p>Race : {{ animal.breed.name }}</p>
@@ -60,7 +58,7 @@
 
                         {% endfor %}
                     </div>
-                    <div id="right" class="basis-1/2">
+                    <div id="right" class="basis-1/1">
                         {{ include('admin/report/_form.html.twig') }}
                     </div>
                 </div>

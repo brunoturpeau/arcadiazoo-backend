@@ -6,7 +6,7 @@
     <div class="nav-context">
         <div class="parent">
             <div></div>
-            <div id="btn-create">
+            <div>
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn" href="{{ path('app_service_new') }}">Créer un service</a>
                 {% endif %}
@@ -16,7 +16,7 @@
 
     <div class="cont">
         <h1>Les services</h1>
-        <table class="tw-table">
+        <table class="tw-flex-table">
             <thead>
             <tr>
                 <th>N°</th>

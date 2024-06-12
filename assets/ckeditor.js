@@ -1,5 +1,5 @@
 console.log('ckeditor')
-
+console.log('ckeditor2')
 ClassicEditor
     .create( document.querySelector( '.editor' ) )
     .catch( error => {
@@ -11,3 +11,4 @@ ClassicEditor
     .catch( error => {
         console.error( error );
     } );
+
