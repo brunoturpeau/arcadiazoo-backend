@@ -21,27 +21,11 @@ class FoodRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-            SELECT * FROM food
-            WHERE animal_id = :animal_id
-            ORDER BY created_at DESC
-            LIMIT 5
-            ';
-
-        $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);
-
-        // returns an array of arrays (i.e. a raw data set)
-        return $resultSet->fetchAllAssociative();
-    }
-
-    public function findLastFood($animal_id) : array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-            SELECT * FROM food
-            WHERE animal_id = :animal_id
-            ORDER BY created_at DESC
-            LIMIT 1
+            SELECT food.id, food.animal_id, food.time, food.created_at, user_id, firstname, lastname
+            FROM `food` INNER JOIN user ON user.id = food.user_id 
+            WHERE `animal_id` = :animal_id 
+            ORDER BY food.created_at DESC 
+            LIMIT 5 ;
             ';
 
         $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);

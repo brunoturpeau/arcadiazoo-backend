@@ -83,7 +83,7 @@
                         <th>N°</th>
                         <th>Date</th>
                         <th>Heure</th>
-                        <th></th>
+                        <th>Employé(e)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,6 +92,7 @@
                             <td>{{ lastFiveMeal.id }}</td>
                             <td>{{ lastFiveMeal.created_at|date('d-m-Y') }}</td>
                             <td>{{ lastFiveMeal.time|date('H:i') }}</td>
+                            <td>{{ lastFiveMeal.firstname }} {{ lastFiveMeal.lastname }}</td>
                             <td></td>
                         </tr>
                     {% endfor %}
