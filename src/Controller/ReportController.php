@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\Entity\Report;
 use App\Entity\Food;
+use App\Entity\SuggestFeeding;
 use App\Form\HealthFormType;
 use App\Form\ReportFormType;
 use App\Form\ReportType;
 use App\Form\ReportWithAnimalFormType;
+use App\Form\SuggestFeedingFormType;
 use App\Repository\AnimalRepository;
 use App\Repository\EatingRepository;
 use App\Repository\FoodRepository;
@@ -107,15 +109,12 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
-
         // We fecth the last five meals
         $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
-
 
         // @todo - récupérer la composition des repas
 
         $findEatingInMeals = $foodRepository->findEatingInMeals($id);
-
 
         $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
 
@@ -182,4 +181,23 @@ class ReportController extends AbstractController
 
         return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/edit', name: 'app_suggest_feeding_edit', methods: ['GET', 'POST'])]
+    public function editSuggest(Request $request, SuggestFeeding $suggestFeeding, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(SuggestFeedingFormType::class, $suggestFeeding);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/report/_suggest_form.html.twig', [
+            'suggest_feeding' => $suggestFeeding,
+            'suggestForm' => $form,
+        ]);
+    }
+
 }
