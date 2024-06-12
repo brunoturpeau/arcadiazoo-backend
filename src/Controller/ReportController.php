@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Entity\Report;
+use App\Entity\Food;
 use App\Form\HealthFormType;
 use App\Form\ReportFormType;
 use App\Form\ReportType;
@@ -107,20 +108,24 @@ class ReportController extends AbstractController
         }
 
 
-        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
-        $food = $foods[0];
-        $food_id = $food->getId();
-        $eatings = $eatingRepository->findBy(['food' => $food_id]);
-        $suggest = $suggestFeedingRepository->findBy(['id' => $id]);
+        // We fecth the last five meals
+        $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
+
+        // @todo - Sur la liste des derniers repas : ajouter l'employé qui a donné le repas
+
+        // @todo - récupérer la composition des repas
+
+
+
+        $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
 
         return $this->render('admin/report/new.html.twig', [
             'report' => $report,
             'form' => $form,
             'healthForm' => $healthForm,
             'animals' => $animal,
-            'food' => $food,
-            'eatings' => $eatings,
-            'suggest' => $suggest,
+            'suggests' => $suggest,
+            'lastFiveMeals' => $lastFiveMeals,
         ]);
     }
 

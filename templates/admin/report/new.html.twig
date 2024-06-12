@@ -66,43 +66,44 @@
                 {{ include('admin/report/_form.html.twig') }}
             </div>
             <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
-                <h2>Dernier repas</h2>
+                <h2>Repas suggéré</h2>
+                {% for suggest in suggests %}
+                    <div class="ps-10">
+                        {{ include('_partials/icons/_arrow_right.html.twig') }} {{suggest.feeding }} : {{ suggest.quantity }}g.
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
+
+                <h2>Derniers repas</h2>
                 <table class="tw-table">
                     <thead>
                     <tr>
                         <th>N°</th>
                         <th>Date</th>
                         <th>Heure</th>
-                        <th>Employé(e)</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>{{ food.id }}</td>
-                        <td>{{ food.createdAt|date('d_m-Y') }}</td>
-                        <td>{{ food.time|date('H:i') }}</td>
-                        <td>{{ food.user.firstname }} {{ food.user.lastname }}</td>
-                    </tr>
+                    {% for lastFiveMeal in lastFiveMeals %}
+                        <tr>
+                            <td>{{ lastFiveMeal.id }}</td>
+                            <td>{{ lastFiveMeal.created_at|date('d-m-Y') }}</td>
+                            <td>{{ lastFiveMeal.time|date('H:i') }}</td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
                     <tr>
                         <td colspan="4">
-                            {% for eating in eatings %}
-                                <div class="ps-10">
-                                    {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
-                                </div>
-                            {% endfor %}
+
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10 mx-auto">
-                <h2>Repas suggéré</h2>
-                {% for eating in eatings %}
-                    <div class="ps-10">
-                        {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
-                    </div>
-                {% endfor %}
-            </div>
+
         </div>
     </div>
 {% endblock %}

@@ -17,6 +17,12 @@ class EatingFixtures extends Fixture implements DependentFixtureInterface
         $this->createEating('poulet',1250,'Dundy_repas_2', $manager);
         $this->createEating('boeuf',5000,'Dundy_repas_2', $manager);
 
+        $this->createEating("Feuilles d'acacia",30000,'Adele_repas_1', $manager);
+        $this->createEating('Fruits et graines',5000,'Adele_repas_1', $manager);
+        $this->createEating("Feuilles d'acacia",30000,'Adele_repas_2', $manager);
+        $this->createEating('Fruits et graines',5000,'Adele_repas_2', $manager);
+
+
         $manager->flush();
     }
 
