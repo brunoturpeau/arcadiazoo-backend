@@ -107,19 +107,16 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        // @todo - Récupérer le dernier repas de l'animal
 
-        $lastFood = $foodRepository->findLastFood($id);
-        $lastFood = $lastFood[0];
-
+        // We fecth the last five meals
         $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
 
+        // @todo - Sur la liste des derniers repas : ajouter l'employé qui a donné le repas
 
-        $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
-        $food = $foods[0];
+        // @todo - récupérer la composition des repas
 
-        $food_id = $food->getId();
-        $eatings = $eatingRepository->findBy(['food' => $food_id]);
+
+
         $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
 
         return $this->render('admin/report/new.html.twig', [
@@ -127,10 +124,7 @@ class ReportController extends AbstractController
             'form' => $form,
             'healthForm' => $healthForm,
             'animals' => $animal,
-            'food' => $food,
-            'eatings' => $eatings,
             'suggests' => $suggest,
-            'lastFood' => $lastFood,
             'lastFiveMeals' => $lastFiveMeals,
         ]);
     }

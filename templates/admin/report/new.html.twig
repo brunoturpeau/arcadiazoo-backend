@@ -95,14 +95,9 @@
                             <td></td>
                         </tr>
                     {% endfor %}
-
                     <tr>
                         <td colspan="4">
-                            {% for eating in eatings %}
-                                <div class="ps-10">
-                                    {{ include('_partials/icons/_arrow_right.html.twig') }} {{ eating.feeding }} : {{ eating.quantity }}g.
-                                </div>
-                            {% endfor %}
+
                         </td>
                     </tr>
                     </tbody>
