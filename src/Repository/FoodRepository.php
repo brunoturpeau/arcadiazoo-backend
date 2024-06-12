@@ -34,6 +34,25 @@ class FoodRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
 
+    public function findEatingInMeals($animal_id) : array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT *
+            FROM `eating` 
+            JOIN food ON food.id = eating.food_id
+            WHERE `animal_id` = :animal_id
+            ';
+
+        $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+
+
     //    /**
     //     * @return Food[] Returns an array of Food objects
     //     */

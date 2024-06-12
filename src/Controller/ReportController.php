@@ -111,11 +111,10 @@ class ReportController extends AbstractController
         // We fecth the last five meals
         $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
 
-        // @todo - Sur la liste des derniers repas : ajouter l'employé qui a donné le repas
 
         // @todo - récupérer la composition des repas
-        // findLastFiveMeals JOIN
 
+        $findEatingInMeals = $foodRepository->findEatingInMeals($id);
 
 
         $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
@@ -127,6 +126,7 @@ class ReportController extends AbstractController
             'animals' => $animal,
             'suggests' => $suggest,
             'lastFiveMeals' => $lastFiveMeals,
+            'eatingInMeals' => $findEatingInMeals,
         ]);
     }
 

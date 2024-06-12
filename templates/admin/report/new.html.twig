@@ -80,7 +80,6 @@
                 <table class="tw-table">
                     <thead>
                     <tr>
-                        <th>N°</th>
                         <th>Date</th>
                         <th>Heure</th>
                         <th>Employé(e)</th>
@@ -89,11 +88,21 @@
                     <tbody>
                     {% for lastFiveMeal in lastFiveMeals %}
                         <tr>
-                            <td>{{ lastFiveMeal.id }}</td>
-                            <td>{{ lastFiveMeal.created_at|date('d-m-Y') }}</td>
+                            <td><b>{{ lastFiveMeal.created_at|date('d-m-Y') }}</b></td>
                             <td>{{ lastFiveMeal.time|date('H:i') }}</td>
                             <td>{{ lastFiveMeal.firstname }} {{ lastFiveMeal.lastname }}</td>
-                            <td></td>
+
+                        </tr>
+                        <tr class="bg-white">
+                            <td colspan="3">
+                                {% for eatingInMeal in eatingInMeals %}
+                                    {%  if lastFiveMeal.id == eatingInMeal.id %}
+                                        <p>
+                                            {{ eatingInMeal.feeding }} : {{ eatingInMeal.quantity }} g
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         </tr>
                     {% endfor %}
                     <tr>
