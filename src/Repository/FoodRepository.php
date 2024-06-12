@@ -16,6 +16,23 @@ class FoodRepository extends ServiceEntityRepository
         parent::__construct($registry, Food::class);
     }
 
+    public function findLastFiveMeals($animal_id) : array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM food
+            WHERE animal_id = :animal_id
+            ORDER BY created_at DESC
+            LIMIT 5
+            ';
+
+        $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
     public function findLastFood($animal_id) : array
     {
         $conn = $this->getEntityManager()->getConnection();

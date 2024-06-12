@@ -109,10 +109,11 @@ class ReportController extends AbstractController
 
         // @todo - Récupérer le dernier repas de l'animal
 
-        $findAllFoodDesc = $foodRepository->findLastFood($id);
-        $findAllFoodDesc = $findAllFoodDesc[0];
+        $lastFood = $foodRepository->findLastFood($id);
+        $lastFood = $lastFood[0];
 
-        dd($findAllFoodDesc);
+        $lastFiveMeals = $foodRepository->findLastFiveMeals($id);
+
 
         $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
         $food = $foods[0];
@@ -129,6 +130,8 @@ class ReportController extends AbstractController
             'food' => $food,
             'eatings' => $eatings,
             'suggests' => $suggest,
+            'lastFood' => $lastFood,
+            'lastFiveMeals' => $lastFiveMeals,
         ]);
     }
 
