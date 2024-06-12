@@ -26,11 +26,13 @@ class FoodRepository extends ServiceEntityRepository
             ORDER BY created_at DESC
             LIMIT 1
             ';
+
         $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);
 
         // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();
     }
+
     //    /**
     //     * @return Food[] Returns an array of Food objects
     //     */
