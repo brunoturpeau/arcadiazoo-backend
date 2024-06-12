@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Entity\Report;
+use App\Entity\Food;
 use App\Form\HealthFormType;
 use App\Form\ReportFormType;
 use App\Form\ReportType;
@@ -106,9 +107,16 @@ class ReportController extends AbstractController
             return $this->redirectToRoute('app_report_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        // @todo - Récupérer le dernier repas de l'animal
+
+        $findAllFoodDesc = $foodRepository->findLastFood($id);
+        $findAllFoodDesc = $findAllFoodDesc[0];
+
+        dd($findAllFoodDesc);
 
         $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
         $food = $foods[0];
+
         $food_id = $food->getId();
         $eatings = $eatingRepository->findBy(['food' => $food_id]);
         $suggest = $suggestFeedingRepository->findBy(['animal' => $id]);
