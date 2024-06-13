@@ -74,15 +74,19 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_animal_show', methods: ['GET'])]
-    public function show(Animal $animal, ReportRepository $reportRepository, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
+    public function show(int $id, Animal $animal, ReportRepository $reportRepository, FoodRepository $foodRepository, EatingRepository $eatingRepository): Response
     {
         $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
 
+        $lastMeal = $foodRepository->LastMeal($id);
+
+        // dd($lastMeal);
         return $this->render('admin/animal/show.html.twig', [
             'animal' => $animal,
             'reports' => $reportRepository->findAll(),
             'foods' => $foods,
             'eatings' => $eatingRepository->findAll(),
+            'lastMeal' => $lastMeal,
         ]);
     }
 

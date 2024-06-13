@@ -8,7 +8,6 @@
     <div class="cont">
         <h1>Fiche {{ animal.name }}</h1>
         <div class="wrapper">
-
             <div class="left">
                 <table class="table">
                     <tbody>
@@ -70,6 +69,19 @@
 
         </div>
 
+        <div class="wrapper mt-2">
+            <div class="left">
+                <h2>Dernier repas</h2>
+
+                {% for meal in lastMeal %}
+                    Le {{ meal.created_at|date('d/m/Y') }} à {{ meal.time|date('H:i') }} par {{ meal.firstname }} {{ meal.lastname }}
+                {% endfor %}
+
+            </div>
+            <div class="right">
+                <h2>Dernier rapport</h2>
+            </div>
+        </div>
         <h2>Liste des rapports</h2>
         <table class="tw-table">
             <thead>
