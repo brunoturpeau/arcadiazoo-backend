@@ -3,12 +3,41 @@
 {% block title %}Fiche animal{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent">
-            <a  href="{{ path('app_animal_index') }}">
-                {{ include('_partials/icons/_left-circle.html.twig') }}
-            </a>
-            <div class="right">
+
+
+    <div class="cont">
+        <h1>Fiche {{ animal.name }}</h1>
+        <div class="wrapper">
+
+            <div class="left">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>N°</th>
+                        <td>{{ animal.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ animal.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Race</th>
+                        <td>
+                            <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
+                                {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Santé</th>
+                        <td>{{ animal.health|u.truncate(50, '...') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ animal.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn" href="{{ path('app_animal_edit', {'id': animal.id}) }}">
                         {{ include('_partials/icons/_edit.html.twig') }}
@@ -19,80 +48,43 @@
                     </div>
                 {% endif %}
             </div>
-        </div>
-    </div>
+            <div class="right">
+                 <div class="flex flex-wrap gap-5">
+                    {% for image in animal.images %}
 
-    <div class="cont">
-        <h1>Fiche {{ animal.name }}</h1>
-        <div class="flex flex-col items-center sm:w-3/4 lg:w-1/2 gap-5 mx-auto justify-center">
+                        <div class="flex flex-col p-1 bg-slate-200 shadow-lg">
+                            <img src="{{ asset('uploads/animals/mini/300x300-') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="flex justify-center ">
+                                    <a class="opacity-50 hover:opacity-80" href="#">
+                                        {{ include('admin/image/_delete_icon.html.twig') }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
 
-            {# @todo label: habitat (link) #}
-            {# @todo link: créer un rapport pour l'animal (veto) => Créer la route admin/rapport/{id}/ajout #}
-            {# @todo link: créer un repas pour l'animal (employe) #}
-            {# @todo sublist: [admin] action: supprimer l'image (flash) #}
-            {# @todo - image par défaut #}
-            {# @todo - balise alt #}
 
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>N°</th>
-                    <td>{{ animal.id }}</td>
-                </tr>
-                <tr>
-                    <th>Nom</th>
-                    <td>{{ animal.name }}</td>
-                </tr>
-                <tr>
-                    <th>Race</th>
-                    <td>
-                        <a href="{{ path('app_breed_show', {'id': animal.breed.id}) }}">
-                            {{ animal.breed.name }} {{ include('_partials/icons/_link.html.twig') }}
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Santé</th>
-                    <td>{{ animal.health|u.truncate(50, '...') }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ animal.description }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <h2>Images</h2>
-            <div class="flex flex-row gap-5">
-                {% for image in animal.images %}
-                    <div class="flex flex-col p-1 bg-slate-200 shadow-lg">
-                        <img src="{{ asset('uploads/animals/mini/300x300-') ~ image.name }}" width="150" height="auto" alt="{{ image.title }}">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <div class="flex justify-center ">
-                                <a class="opacity-50 hover:opacity-80" href="#">
-                                    {{ include('admin/image/_delete_icon.html.twig') }}
-                                </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
             </div>
 
-            <h2>Liste des rapports</h2>
-            <table class="tw-table">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date</th>
-                    <th>Date</th>
-                    <th>Rapport</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
+        </div>
 
-                {% for report in reports %}
-                    {% if animal.id == report.animal.id  %}
+        <h2>Liste des rapports</h2>
+        <table class="tw-table">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Date</th>
+                <th>Date</th>
+                <th>Rapport</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for report in reports %}
+                {% if animal.id == report.animal.id  %}
                     <tr>
                         <td>{{ report.id }}</td>
                         <td>{{ report.date|date('d-m-Y') }}</td>
@@ -108,27 +100,27 @@
                             {% endif %}
                         </td>
                     </tr>
-                    {% endif %}
-                {% else %}
-                    <tr colspan="4">Aucun résultat</tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                {% endif %}
+            {% else %}
+                <tr colspan="4">Aucun résultat</tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-            <h2>Liste des repas</h2>
-            <table class="tw-table">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date</th>
-                    <th>Heure</th>
-                    <th>Repas</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for food in foods %}
-                    {% if animal.id == food.animal.id  %}
+        <h2>Liste des repas</h2>
+        <table class="tw-table">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Repas</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for food in foods %}
+                {% if animal.id == food.animal.id  %}
                     <tr>
                         <td>{{ food.id }}</td>
                         <td>{{ food.createdAt|date('d-m-Y') }}</td>
@@ -145,12 +137,17 @@
                             {% endif %}
                         </td>
                     </tr>
-                    {% endif %}
-                {% else %}
-                    <tr colspan="5">Aucun résultat</tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                {% endif %}
+            {% else %}
+                <tr colspan="5">Aucun résultat</tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
+    {# @todo label: habitat (link) #}
+    {# @todo link: créer un rapport pour l'animal (veto) => Créer la route admin/rapport/{id}/ajout #}
+    {# @todo link: créer un repas pour l'animal (employe) #}
+    {# @todo sublist: [admin] action: supprimer l'image (flash) #}
+    {# @todo - image par défaut #}
+    {# @todo - balise alt #}
 {% endblock %}
