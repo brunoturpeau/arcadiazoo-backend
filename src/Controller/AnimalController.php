@@ -79,13 +79,14 @@ class AnimalController extends AbstractController
         $foods = $foodRepository->findBy([], ['created_at' => 'desc']);
 
         $lastMeal = $foodRepository->LastMeal($id);
+        $eatings = $foodRepository->findEatingInMeals($id);
 
-        // dd($lastMeal);
+        //dd($lastMeal_id);
         return $this->render('admin/animal/show.html.twig', [
             'animal' => $animal,
             'reports' => $reportRepository->findAll(),
             'foods' => $foods,
-            'eatings' => $eatingRepository->findAll(),
+            'eatings' => $eatings,
             'lastMeal' => $lastMeal,
         ]);
     }
