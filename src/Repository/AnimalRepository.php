@@ -21,9 +21,10 @@ class AnimalRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-            SELECT animal.id, animal.name, animal.health
+            SELECT animal.id, animal.name, animal.health, breed.name AS breed
             FROM animal 
             JOIN habitat ON habitat.id = animal.habitat_id
+            JOIN breed ON breed.id = animal.breed_id
             WHERE habitat_id = :habitat_id
             
             ';

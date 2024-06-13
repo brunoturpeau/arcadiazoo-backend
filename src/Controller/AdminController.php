@@ -23,7 +23,7 @@ class AdminController extends AbstractController
         $habitat = $habitatRepository->findBy(['name' => 'Savane']);
         $habitat_id = $habitat[0]->getId();
         $savannahAnimals = $animalRepository->savannahAnimals($habitat_id);
-
+// dd($savannahAnimals);
 
         $reports = $reportRepository->findBy([]);
         $comments = $commentRepository->findBy([],['created_at' => 'desc']);
