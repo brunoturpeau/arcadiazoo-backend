@@ -62,6 +62,8 @@ class FoodRepository extends ServiceEntityRepository
             WHERE `animal_id` = :animal_id 
             ORDER BY food.created_at DESC 
             LIMIT 1
+            
+            
             ';
 
         $resultSet = $conn->executeQuery($sql, ['animal_id' => $animal_id]);

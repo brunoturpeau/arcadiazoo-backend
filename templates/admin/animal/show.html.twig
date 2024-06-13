@@ -87,81 +87,16 @@
             </div>
             <div class="right">
                 <h2>Dernier rapport</h2>
+                {% for report in lastReport %}
+                    Le {{ report.date|date('d/m/Y') }} par {{ report.firstname }} {{ report.lastname }}
+                <hr class="my-2 p-0">
+                <div>
+                    {{ report.detail }}
+                </div>
+                {% endfor %}
             </div>
         </div>
-        <h2>Liste des rapports</h2>
-        <table class="tw-table">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Date</th>
-                <th>Date</th>
-                <th>Rapport</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
 
-            {% for report in reports %}
-                {% if animal.id == report.animal.id  %}
-                    <tr>
-                        <td>{{ report.id }}</td>
-                        <td>{{ report.date|date('d-m-Y') }}</td>
-                        <td>{{ report.detail|u.truncate(50, '...') }}</td>
-                        <td class="actions">
-                            <a href="{{ path('app_report_show', {'id':report.id}) }}">
-                                {{ include('_partials/icons/_eye.html.twig') }}
-                            </a>
-                            {% if is_granted('ROLE_VETERINAIRE') %}
-                                <a href="{{ path('app_report_edit', {'id':report.id}) }}">
-                                    {{ include('_partials/icons/_edit.html.twig') }}
-                                </a>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endif %}
-            {% else %}
-                <tr colspan="4">Aucun résultat</tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <h2>Liste des repas</h2>
-        <table class="tw-table">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Repas</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for food in foods %}
-                {% if animal.id == food.animal.id  %}
-                    <tr>
-                        <td>{{ food.id }}</td>
-                        <td>{{ food.createdAt|date('d-m-Y') }}</td>
-                        <td>{{ food.time|date('H:i') }}</td>
-                        <td>{{ food.eatings.count }}</td>
-                        <td class="actions">
-                            {% if is_granted('ROLE_EMPLOYE') %}
-                                <a href="{{ path('app_food_show', {'id': food.id}) }}">
-                                    {{ include('_partials/icons/_edit.html.twig') }}
-                                </a>
-                                <div>
-                                    {{  include('admin/food/_delete_icon.html.twig') }}
-                                </div>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endif %}
-            {% else %}
-                <tr colspan="5">Aucun résultat</tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
     {# @todo label: habitat (link) #}
     {# @todo link: créer un rapport pour l'animal (veto) => Créer la route admin/rapport/{id}/ajout #}
