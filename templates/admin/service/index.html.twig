@@ -4,22 +4,19 @@
 
 {% block body %}
     <div class="nav-context">
-        <div class="parent">
-            <div></div>
-            <div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn" href="{{ path('app_service_new') }}">Créer un service</a>
-                {% endif %}
-            </div>
-        </div>
+        <div class="parent"></div>
     </div>
 
     <div class="cont">
+        <div class="flex justify-end">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn" href="{{ path('app_service_new') }}">Créer un service</a>
+            {% endif %}
+        </div>
         <h1>Les services</h1>
         <table class="tw-flex-table">
             <thead>
             <tr>
-                <th>N°</th>
                 <th>Service</th>
                 <th>Description</th>
                 <th></th>
@@ -28,7 +25,6 @@
             <tbody>
             {% for service in services %}
                 <tr class="item">
-                    <td>{{ service.id }}</td>
                     <td>{{ service.name }}</td>
                     <td>{{ service.description|u.truncate(50, '...') }}</td>
                     <td class="actions">

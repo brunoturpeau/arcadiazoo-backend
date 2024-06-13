@@ -4,14 +4,7 @@
 
 {% block body %}
     <div class="nav-context">
-        <div class="parent">
-            {% if is_granted('ROLE_EMPLOYE') %}
-                <a  href="{{ path('app_service_index') }}">
-                    {{ include('_partials/icons/_left-circle.html.twig') }}
-                </a>
-            {% endif %}
-            <div class="right"></div>
-        </div>
+        <div class="parent"> </div>
     </div>
 
     <div class="cont">
