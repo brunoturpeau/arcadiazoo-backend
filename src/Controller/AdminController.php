@@ -23,7 +23,16 @@ class AdminController extends AbstractController
         $habitat = $habitatRepository->findBy(['name' => 'Savane']);
         $habitat_id = $habitat[0]->getId();
         $savannahAnimals = $animalRepository->savannahAnimals($habitat_id);
-// dd($savannahAnimals);
+
+        $habitat = $habitatRepository->findBy(['name' => 'Marais']);
+        $habitat_id = $habitat[0]->getId();
+        $marshAnimals = $animalRepository->savannahAnimals($habitat_id);
+
+        $habitat = $habitatRepository->findBy(['name' => 'Jungle']);
+        $habitat_id = $habitat[0]->getId();
+        $jungleAnimals = $animalRepository->savannahAnimals($habitat_id);
+
+// dd($jungleAnimals);
 
         $reports = $reportRepository->findBy([]);
         $comments = $commentRepository->findBy([],['created_at' => 'desc']);
@@ -38,6 +47,8 @@ class AdminController extends AbstractController
             'food' => $food,
             'habitats' => $habitatRepository->findAll(),
             'savannahAnimals' => $savannahAnimals,
+            'marshAnimals' => $marshAnimals,
+            'jungleAnimals' => $jungleAnimals,
         ]);
     }
 }
