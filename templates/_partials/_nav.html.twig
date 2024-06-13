@@ -12,14 +12,14 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul id="navigation">
                 <li><a href="/">Accueil</a></li>
-                <li><a href="{{ path('app_animal_index') }}">Animaux</a></li>
-                <li><a href="{{ path('app_habitat_index') }}">Habitats</a></li>
                 {% if is_granted('ROLE_EMPLOYE') %}
                     <li><a href="{{ path('app_food_index') }}">Repas</a></li>
                     <li><a href="{{ path('app_service_index') }}">Services</a></li>
-                    <li><a href="{{ path('app_comment_index') }}">Avis</a></li>
+                    <li><a href="{{ path('app_comment_index') }}">Commentaires</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN')  %}
+                    <li><a href="{{ path('app_habitat_index') }}">Habitats</a></li>
+                    <li><a href="{{ path('app_animal_index') }}">Animaux</a></li>
                     <li><a href="{{ path('app_breed_index') }}">Races</a></li>
                     <li><a href="{{ path('app_user_index') }}">Comptes</a></li>
                 {% endif %}
