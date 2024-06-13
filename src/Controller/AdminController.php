@@ -19,6 +19,12 @@ class AdminController extends AbstractController
     public function index(UserRepository $users, ServiceRepository $serviceRepository, CommentRepository $commentRepository, AnimalRepository $animalRepository, ReportRepository $reportRepository, HabitatRepository $habitatRepository, FoodRepository $foodRepository): Response
     {
         $animals = $animalRepository->findBy([],['name' => 'asc']);
+
+        $habitat = $habitatRepository->findBy(['name' => 'Savane']);
+        $habitat_id = $habitat[0]->getId();
+        $savannahAnimals = $animalRepository->savannahAnimals($habitat_id);
+
+
         $reports = $reportRepository->findBy([]);
         $comments = $commentRepository->findBy([],['created_at' => 'desc']);
         $food = $foodRepository->findBy([],['created_at' => 'desc']);
@@ -31,6 +37,7 @@ class AdminController extends AbstractController
             'reports' => $reports,
             'food' => $food,
             'habitats' => $habitatRepository->findAll(),
+            'savannahAnimals' => $savannahAnimals,
         ]);
     }
 }
