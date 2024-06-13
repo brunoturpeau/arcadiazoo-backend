@@ -51,6 +51,37 @@
 }
 
 @layer components {
+    .card-to-table{
+        @apply  md:table;
+        .thead{
+            @apply hidden md:table-header-group;
+            .row{
+                @apply table-row bg-slate-200 font-bold;
+                div{
+                    @apply table-cell p-3;
+                }
+            }
+        }
+        .tbody{
+            @apply w-full md:table-header-group;
+
+            .item{
+                @apply flex flex-col items-center gap-3 mb-5 p-5 bg-slate-100 border border-slate-200 shadow-xl w-full
+                md:bg-slate-100 md:table-row md:border-b md:border-b-slate-200 md:shadow-none;
+
+                h3{
+                    @apply font-bold text-xl md:text-base;
+                }
+                .actions{
+                    @apply flex justify-center;
+                }
+                div{
+                    @apply px-3 md:table-cell;
+                }
+            }
+        }
+
+    }
     .tw-flex-table{
         @apply flex flex-row md:table;
 
@@ -138,7 +169,7 @@
         @apply flex justify-between p-3 bg-slate-300;
     }
     .btn {
-        @apply mt-5 text-xl text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+        @apply mt-5 text-xl text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
     }
     .btn-secondary {
         @apply mt-5 text-white bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;

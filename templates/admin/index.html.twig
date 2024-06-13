@@ -4,9 +4,11 @@
 
 {% block body %}
     <div class="cont">
+        <h1>Arcadia Zoo - Administration</h1>
+        {{ include('_partials/dashboard/_animals.html.twig') }}
+
         <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
-            {{ include('_partials/dashboard/_animals.html.twig') }}
-            {{ include('_partials/dashboard/_habitats.html.twig') }}
+
             {% if is_granted('ROLE_ADMIN') %}
                 {{ include('_partials/dashboard/_users.html.twig') }}
                 {{ include('_partials/dashboard/_stats.html.twig') }}
@@ -17,7 +19,7 @@
                 {{ include('_partials/dashboard/_comments.html.twig') }}
             {% endif %}
             {% if is_granted('ROLE_VETERINAIRE') %}
-                {{ include('_partials/dashboard/_reports.html.twig') }}
+
             {% endif %}
         </div>
     </div>
