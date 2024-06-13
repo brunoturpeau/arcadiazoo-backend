@@ -38,6 +38,9 @@ class Report
     #[ORM\JoinColumn(nullable: false)]
     private ?Animal $animal = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $suggest = null;
+
     public function __construct()
     {
         $this->date = new \DateTimeImmutable();
@@ -92,6 +95,18 @@ class Report
     public function setAnimal(?Animal $animal): static
     {
         $this->animal = $animal;
+
+        return $this;
+    }
+
+    public function getSuggest(): ?string
+    {
+        return $this->suggest;
+    }
+
+    public function setSuggest(?string $suggest): static
+    {
+        $this->suggest = $suggest;
 
         return $this;
     }

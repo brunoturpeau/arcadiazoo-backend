@@ -1,6 +1,6 @@
 {{ form_errors(form) }}
 {{ form_start(form) }}
-    {{ form_row(form.date) }}
-    {{ form_row(form.detail) }}
+    {{ form_widget(form) }}
+
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

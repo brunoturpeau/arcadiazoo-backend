@@ -10,29 +10,16 @@
 {% block body %}
 
     <div class="nav-context">
-        <div class="parent">
-            {% if is_granted('ROLE_EMPLOYE') %}
-                <a class="btn"  href="{{ path('app_service_index') }}">
-                    {{ include('_partials/icons/_left-circle.html.twig') }}
-                    Modifier
-                </a>
-            {% endif %}
-            <div class="right">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="btn">
-                        {{ include('admin/service/_delete_form.html.twig') }}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        <div class="parent"></div>
     </div>
 
     <div class="cont">
-        <h1>Modifier un service</h1>
-        <div class="flex justify-center">
-            <div class="bg-slate-200 p-10 lg:w-1/2">
-                {{ include('admin/service/_form.html.twig', {'button_label': 'Modifier'}) }}
-            </div>
+        <div class="card-show">
+            <h1>Modifier un service</h1>
+            {{ include('admin/service/_form.html.twig', {'button_label': 'Modifier'}) }}
+
         </div>
+
+
     </div>
 {% endblock %}
