@@ -93,4 +93,22 @@ class CommentController extends AbstractController
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/publier', name: 'app_comment_publish', methods: ['POST'])]
+    public function publish(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
+
+        if ($this->isCsrfTokenValid('publish'.$comment->getId(), $request->getPayload()->get('_token'))) {
+
+            $comment->setVisible(1);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+        }
+
+        $this->addFlash('success', 'Commentaire publié avec succès.');
+
+        return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
+    }
+
 }

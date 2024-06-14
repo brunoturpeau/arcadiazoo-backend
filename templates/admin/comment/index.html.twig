@@ -3,49 +3,51 @@
 {% block title %}Commentaires{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
     <div class="cont">
         <h1>Les commentaires</h1>
-        <table class="tw-table">
-            {# TODO action: valider un commentaire #}
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Pseudo</th>
-                <th>Commentaire</th>
-                <th>Statut</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for comment in comments %}
-                <tr>
-                    <td>{{ comment.createdAt|date('d-m-Y') }}</td>
-                    <td><b>{{ comment.pseudo }}</b></td>
-                    <td>{{ comment.commentText|u.truncate(50, '...') }}</td>
-                    <td>{{ comment.visible  ? 'Publié' : 'Brouillon' }}</td>
-                    <td class="actions">
-                        <a href="{{ path('app_comment_show', {'id': comment.id}) }}">
-                            {{ include('_partials/icons/_eye.html.twig') }}
-                        </a>
 
-                        <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">
-                            {{ include('_partials/icons/_edit.html.twig') }}
-                        </a>
+        <div class="card-to-table">
+            <div class="thead">
+                <div class="row">
+                    <div>Date</div>
+                    <div>Pseudo</div>
+                    <div>Commentaire</div>
+                    <div>Statut</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="tbody">
+                {% for comment in comments %}
+                    <div class="item">
                         <div>
-                            {{ include('admin/comment/_delete_icon.html.twig') }}
+                            {{ comment.createdAt|date('d/m/Y') }}
                         </div>
-                    </td>
-                </tr>
-            {% else %}
-                <tr class="empty" colspan="5"><h2>Aucun résultat</h2></tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                        <div>
+                            <b>{{ comment.pseudo }}</b>
+                        </div>
+                        <div>{{ comment.commentText|u.truncate(50, '...') }}</div>
+                        <div class="flex justify-center">
+                            {% if comment.visible %}
+                                {{ include('_partials/icons/_check.html.twig') }}
+
+                            {% else %}
+                                <div class="btn-success">
+                                    {{ include('admin/comment/_publish_form.html.twig') }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="actions">
+                            <a class="btn" href="{{ path('app_comment_show', {'id': comment.id}) }}">
+                                {{ include('_partials/icons/_eye.html.twig') }}
+                            </a>
+
+                            <div class="btn-danger">
+                                {{ include('admin/comment/_delete_icon.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

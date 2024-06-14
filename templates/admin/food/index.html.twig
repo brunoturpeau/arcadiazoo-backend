@@ -3,16 +3,12 @@
 {% block title %}Repas{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent">
-            <div></div>
-            <div id="btn-create">
-                {% if is_granted('ROLE_EMPLOYE') %}
-                    <a class="btn" href="{{ path('app_food_new') }}">Créer un repas</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+
+<div id="btn-create">
+    {% if is_granted('ROLE_EMPLOYE') %}
+        <a class="btn" href="{{ path('app_food_new') }}">Créer un repas</a>
+    {% endif %}
+</div>
     <div class="cont">
         <h1>Repas</h1>
 

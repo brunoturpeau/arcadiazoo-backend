@@ -3,10 +3,6 @@
 {% block title %}Service{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent"></div>
-    </div>
-
     <div class="cont">
         <div class="card-show bg-slate-100" >
             <h1>Service : {{ service.name }}</h1>
@@ -28,7 +24,7 @@
             </table>
             <div class="mb-5">
                 {% if is_granted('ROLE_EMPLOYE') %}
-                    <a class="btn-success" href="{{ path('app_service_edit', {'id': service.id}) }}">
+                    <a class="btn" href="{{ path('app_service_edit', {'id': service.id}) }}">
                         Modifier
                     </a>
                 {% endif %}
