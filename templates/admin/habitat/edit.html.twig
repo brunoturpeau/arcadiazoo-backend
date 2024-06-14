@@ -10,14 +10,10 @@
 {% block body %}
     <div class="nav-context">
         <div class="parent">
-            {% if is_granted('ROLE_VETERINAIRE') %}
-                <a  href="{{ path('app_habitat_index') }}">
-                    {{ include('_partials/icons/_left-circle.html.twig') }}
-                </a>
-            {% endif %}
+
             <div class="right">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <div class="btn">
+                    <div class="btn-danger">
                         {{ include('admin/habitat/_delete_form.html.twig') }}
                     </div>
                 {% endif %}
@@ -27,8 +23,7 @@
     <div class="cont">
 
         <h1>Modifier un habitat</h1>
-        <div class="flex justify-center">
-            <div class="bg-slate-200 p-10 lg:w-1/2">
+        <div class="card-show">
                 {{ include('admin/habitat/_form.html.twig', {'button_label': 'Enregistrer'}) }}
             </div>
         </div>

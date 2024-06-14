@@ -42,7 +42,7 @@
         @apply flex flex-col justify-center items-center h-screen;
     }
     .cont{
-        @apply container mx-auto p-5 max-w-screen-xl ;
+        @apply container mx-auto p-5 max-w-screen-xl pb-10;
     }
 
     .table-sm{
@@ -154,7 +154,7 @@
         }
     }
     .card-show{
-        @apply bg-slate-100 flex flex-col items-center shadow-2xl md:w-3/4 gap-5 mx-auto justify-center;
+        @apply bg-slate-200 py-5 flex flex-col items-center shadow-xl md:w-3/4 gap-5 mx-auto justify-center;
 
         p{
             @apply mb-3;

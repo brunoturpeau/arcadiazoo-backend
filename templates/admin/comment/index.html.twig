@@ -27,14 +27,8 @@
                             <b>{{ comment.pseudo }}</b>
                         </div>
                         <div>{{ comment.commentText|u.truncate(50, '...') }}</div>
-
-                        {# @todo - faire une ternaire ici #}
                         <div>
-                            {% if comment.visible %}
-                                Publié
-                            {% else %}
-                                En attente
-                            {% endif %}
+                            {{ comment.isVisible ? 'Publié' : 'En attente' }}
                         </div>
                         <div class="flex justify-center">
                             {% if comment.visible %}

@@ -3,22 +3,10 @@
 {% block title %}Créer un animal{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent">
-            <a  href="{{ path('app_animal_index') }}">
-                {{ include('_partials/icons/_left-circle.html.twig') }}
-            </a>
-            <div class="right"></div>
-        </div>
-    </div>
-    {# @todo - créer un animal #}
-
     <div class="cont">
         <h1>Créer un animal</h1>
-        <div class="flex justify-center">
-            <div class="bg-slate-200 w-3/4 g:w-1/2 p-10">
+            <div class="card-show">
                 {{ include('admin/animal/_form.html.twig') }}
             </div>
-        </div>
     </div>
 {% endblock %}

@@ -3,15 +3,10 @@
 {% block title %}Les animaux{% endblock %}
 
 {% block body %}
-    <div class="nav-context">
-        <div class="parent">
-            <div></div>
-            <div id="btn-create">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn" href="{{ path('app_animal_new') }}">Créer un animal</a>
-                {% endif %}
-            </div>
-        </div>
+    <div id="btn-create">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn" href="{{ path('app_animal_new') }}">Créer un animal</a>
+        {% endif %}
     </div>
 
     <div class="cont">
