@@ -33,6 +33,10 @@
                         <div class="btn-success">
                             {{ include('admin/comment/_publish_text_form.html.twig') }}
                         </div>
+                    {% else %}
+                        <div class="btn-danger">
+                            {{ include('admin/comment/_unpublish_text_form.html.twig') }}
+                        </div>
                     {% endif %}
 
                     <div class="btn-danger">

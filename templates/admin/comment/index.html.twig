@@ -13,6 +13,7 @@
                     <div>Pseudo</div>
                     <div>Commentaire</div>
                     <div>Statut</div>
+                    <div>Publier</div>
                     <div></div>
                 </div>
             </div>
@@ -26,10 +27,20 @@
                             <b>{{ comment.pseudo }}</b>
                         </div>
                         <div>{{ comment.commentText|u.truncate(50, '...') }}</div>
+
+                        {# @todo - faire une ternaire ici #}
+                        <div>
+                            {% if comment.visible %}
+                                Publié
+                            {% else %}
+                                En attente
+                            {% endif %}
+                        </div>
                         <div class="flex justify-center">
                             {% if comment.visible %}
-                                {{ include('_partials/icons/_check.html.twig') }}
-
+                                <div class="btn-danger">
+                                    {{ include('admin/comment/_unpublish_form.html.twig') }}
+                                </div>
                             {% else %}
                                 <div class="btn-success">
                                     {{ include('admin/comment/_publish_form.html.twig') }}
