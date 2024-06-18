@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <th>Statut</th>
-                        <td>{{ comment.isVisible ? 'Publié' : 'Pas publié' }}</td>
+                        <td>{{ comment.isVisible ? 'Publié' : 'En attente' }}</td>
                     </tr>
 
                 </tbody>
@@ -32,6 +32,10 @@
                     {% if not comment.visible %}
                         <div class="btn-success">
                             {{ include('admin/comment/_publish_text_form.html.twig') }}
+                        </div>
+                    {% else %}
+                        <div class="btn-danger">
+                            {{ include('admin/comment/_unpublish_text_form.html.twig') }}
                         </div>
                     {% endif %}
 

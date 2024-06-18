@@ -112,7 +112,7 @@ class HabitatController extends AbstractController
 
             $this->addFlash('success', 'Commentaire modifié avec succès');
 
-            return $this->redirectToRoute('app_habitat_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/habitat/edit_comment.html.twig', [

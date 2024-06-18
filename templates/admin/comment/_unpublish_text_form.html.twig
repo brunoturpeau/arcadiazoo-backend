@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_comment_unpublish', {'id': comment.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir invalider ce commentaire ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('publish' ~ comment.id) }}">
+    <button>
+        {{ include('_partials/icons/_close.html.twig') }} Invalider
+    </button>
+</form>
