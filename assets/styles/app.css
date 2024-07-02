@@ -3,204 +3,202 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-        @apply text-gray-800 text-3xl font-bold text-center my-5;
+  h1 {
+    @apply text-gray-800 text-3xl font-bold text-center my-5;
+  }
+  h2 {
+    @apply text-gray-800 text-2xl font-bold my-5;
+  }
+  hr {
+    @apply border-slate-300 border my-10;
+  }
+  form {
+    @apply max-w-md mx-auto;
+    input,
+    textarea {
+      @apply bg-white border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
     }
-    h2 {
-        @apply text-gray-800 text-2xl font-bold my-5;
+    label {
+      @apply block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white;
     }
-    hr{
-        @apply border-slate-300 border my-10;
-    }
-    form {
-        @apply max-w-md mx-auto;
-        input,
-        textarea {
-            @apply bg-white border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
-        }
-        label {
-            @apply block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white;
-        }
-    }
-    .table {
-        @apply bg-slate-100 border-slate-200 w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400;
+  }
+  .table {
+    @apply bg-slate-100 border-slate-200 w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400;
 
-        tr {
-            @apply border-b border-b-slate-200 mx-5;
-            th {
-                @apply p-4;
-            }
-            td {
-                @apply p-4;
-            }
-        }
+    tr {
+      @apply border-b border-b-slate-200 mx-5;
+      th {
+        @apply p-4;
+      }
+      td {
+        @apply p-4;
+      }
     }
+  }
 }
 
-@layer utilities{
-    .cover{
-        @apply flex flex-col justify-center items-center h-screen;
-    }
-    .cont{
-        @apply container mx-auto p-5 max-w-screen-xl pb-10;
-    }
+@layer utilities {
+  .cover {
+    @apply flex flex-col justify-center items-center h-screen;
+  }
+  .cont {
+    @apply container mx-auto p-5 max-w-screen-xl pb-10;
+  }
 
-    .table-sm{
-        @apply sm:w-3/4 lg:w-1/2 mx-auto;
+  .table-sm {
+    @apply sm:w-3/4 lg:w-1/2 mx-auto;
+  }
+  .wrapper {
+    @apply flex flex-col  p-5 md:flex-row bg-slate-100 shadow-xl;
+    .left {
+      @apply md:basis-1/2;
     }
-    .wrapper{
-        @apply flex flex-col  p-5 md:flex-row bg-slate-100 shadow-xl;
-        .left{
-            @apply md:basis-1/2
-        }
-        .right{
-            @apply md:w-1/2
-        }
+    .right {
+      @apply md:w-1/2;
     }
+  }
 }
 
 @layer components {
-    .card-to-table{
-        @apply  md:table;
-        .thead{
-            @apply hidden md:table-header-group;
-            .row{
-                @apply table-row bg-slate-200 font-bold;
-                div{
-                    @apply table-cell p-3;
-                }
-            }
+  .card-to-table {
+    @apply md:table;
+    .thead {
+      @apply hidden md:table-header-group;
+      .row {
+        @apply table-row bg-slate-200 font-bold;
+        div {
+          @apply table-cell p-3;
         }
-        .tbody{
-            @apply w-full md:table-header-group;
+      }
+    }
+    .tbody {
+      @apply w-full md:table-header-group;
 
-            .item{
-                @apply flex flex-col items-center gap-3 mb-5 p-5 bg-slate-100 border border-slate-200 shadow-xl w-full
-                md:bg-slate-100 md:table-row md:border-b md:border-b-slate-200 md:shadow-none;
+      .item {
+        @apply flex flex-col items-center gap-3 mb-5 p-5 bg-slate-100 border border-slate-200 shadow-xl w-full
+                md:bg-slate-100 md:table-row md:border-b md:border-b-slate-200 md:shadow-none md:align-middle md:h-[40px];
 
-                h3{
-                    @apply font-bold text-xl md:text-base;
-                }
-                .actions{
-                    @apply flex justify-center;
-                }
-                div{
-                    @apply px-3 md:table-cell;
-                }
-            }
+        h3 {
+          @apply font-bold text-xl md:text-base;
         }
+        .actions {
+          @apply flex justify-center py-2;
+        }
+        div {
+          @apply px-3 md:table-cell;
+        }
+      }
+    }
+  }
+  .tw-flex-table {
+    @apply flex flex-row md:table;
 
+    thead {
+      @apply hidden md:table-header-group;
     }
-    .tw-flex-table{
-        @apply flex flex-row md:table;
+    tbody {
+      @apply w-full;
+    }
+    tr.item {
+      @apply flex flex-col text-center py-5 mb-5 bg-slate-100 md:text-left md:py-0 md:table-row;
+    }
+    th {
+      @apply py-3 px-5 bg-slate-300;
+    }
+    td {
+      @apply px-5 md:py-3;
+    }
+    td.actions {
+      @apply flex gap-5 justify-center h-full w-full items-center;
 
-        thead{
-            @apply hidden md:table-header-group;
-        }
-        tbody{
-            @apply w-full;
-        }
-        tr.item{
-            @apply flex flex-col text-center py-5 mb-5 bg-slate-100 md:text-left md:py-0 md:table-row ;
-        }
-        th{
-            @apply py-3 px-5 bg-slate-300;
-        }
-        td{
-            @apply px-5 md:py-3;
-        }
-        td.actions{
-            @apply flex gap-5 justify-center h-full w-full items-center;
+      form {
+        @apply inline;
+      }
+    }
+  }
+  .tw-table {
+    @apply flex flex-row md:table;
 
-            form{
-                @apply inline;
-            }
-        }
+    thead {
+      @apply hidden md:table-header-group;
     }
-    .tw-table{
-        @apply flex flex-row md:table;
+    tbody {
+      @apply w-full;
+    }
+    tr.item {
+      @apply flex flex-col text-center py-5 mb-5 bg-slate-100 md:text-left md:py-0 md:table-row;
+    }
+    th {
+      @apply py-3 ps-5 bg-slate-300;
+    }
+    td {
+      @apply md:py-3;
+    }
+    td.actions {
+      @apply flex gap-5 justify-center h-full w-full items-center;
 
-        thead{
-            @apply hidden md:table-header-group;
-        }
-        tbody{
-            @apply w-full;
-        }
-        tr.item{
-            @apply flex flex-col text-center py-5 mb-5 bg-slate-100 md:text-left md:py-0 md:table-row ;
-        }
-        th{
-            @apply py-3 ps-5 bg-slate-300;
-        }
-        td{
-            @apply md:py-3;
-        }
-        td.actions{
-            @apply flex gap-5 justify-center h-full w-full items-center;
+      form {
+        @apply inline;
+      }
+    }
+  }
+  .card {
+    @apply bg-slate-200 flex flex-col justify-between shadow mb-5;
 
-            form{
-                @apply inline;
-            }
-        }
+    .card-body {
+      @apply p-5;
     }
-    .card{
-        @apply bg-slate-200 flex flex-col justify-between shadow mb-5;
+    .card-footer {
+      @apply flex justify-between p-3 bg-slate-300;
+    }
+  }
+  .card-show {
+    @apply bg-slate-200 py-5 flex flex-col items-center shadow-xl md:w-3/4 gap-5 mx-auto justify-center;
 
-        .card-body{
-            @apply p-5;
-        }
-        .card-footer{
-            @apply flex justify-between p-3 bg-slate-300;;
-        }
+    p {
+      @apply mb-3;
     }
-    .card-show{
-        @apply bg-slate-200 py-5 flex flex-col items-center shadow-xl md:w-3/4 gap-5 mx-auto justify-center;
+    hr {
+      @apply border-slate-400 border my-3;
+    }
+  }
+  .nav-context {
+    @apply bg-slate-100 flex flex-col justify-between shadow mb-5;
 
-        p{
-            @apply mb-3;
-        }
-        hr{
-            @apply border-slate-400 border my-3;
-        }
-    }
-    .nav-context{
-        @apply bg-slate-100 flex flex-col justify-between shadow mb-5;
+    .parent {
+      @apply container max-w-screen-xl mx-auto flex justify-between items-center p-3;
 
-        .parent{
-            @apply container max-w-screen-xl mx-auto flex justify-between items-center p-3;
+      .right {
+        @apply container mx-auto flex justify-end;
+      }
+    }
+  }
+  .card-footer {
+    @apply flex justify-between p-3 bg-slate-300;
+  }
+  .btn {
+    @apply mt-5 text-xl text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+  }
+  .btn-secondary {
+    @apply mt-5 text-white bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+  }
+  .btn-danger {
+    @apply mt-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800;
+  }
+  .btn-warning {
+    @apply mt-5 text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800;
+  }
+  .btn-success {
+    @apply mt-5 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800;
+  }
+  #btn-create {
+    @apply container mx-auto flex justify-end mb-5;
+  }
 
-            .right{
-                @apply container mx-auto flex justify-end;
-            }
-        }
-    }
-    .card-footer{
-        @apply flex justify-between p-3 bg-slate-300;
-    }
-    .btn {
-        @apply mt-5 text-xl text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
-    }
-    .btn-secondary {
-        @apply mt-5 text-white bg-slate-500 hover:bg-slate-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
-    }
-    .btn-danger {
-        @apply mt-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800;
-    }
-    .btn-warning {
-        @apply mt-5 text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800;
-    }
-    .btn-success {
-        @apply mt-5 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800;
-    }
-    #btn-create{
-        @apply container mx-auto flex justify-end mb-5;
-    }
-
-    #navigation{
-        @apply font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700;
-    }
-    #navigation li a{
-        @apply block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent;
-    }
+  #navigation {
+    @apply font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700;
+  }
+  #navigation li a {
+    @apply block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent;
+  }
 }
-

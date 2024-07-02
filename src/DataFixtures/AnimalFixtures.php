@@ -24,6 +24,12 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         $this->createAnimal("Zibrou",'En très bonne forme', 'Zèbre', 'Savane', $manager);
         $this->createAnimal("Sheer Khan",'En très bonne forme', 'Tigre', 'Jungle', $manager);
         $this->createAnimal("Ceros",'En très bonne forme', 'Rhinocéros blanc', 'Jungle', $manager);
+        $this->createAnimal("Fifi",'En très bonne forme', "Éléphant d'Afrique", 'Jungle', $manager);
+        $this->createAnimal("Fanny",'En très bonne forme', "Éléphant d'Afrique", 'Jungle', $manager);
+        $this->createAnimal("Ibizou",'En très bonne forme', "Ibis", 'Marais', $manager);
+        $this->createAnimal("Biscus",'En très bonne forme', "Ibis", 'Marais', $manager);
+        $this->createAnimal("Aligato",'En très bonne forme', "Alligator", 'Marais', $manager);
+        $this->createAnimal("Alix",'En très bonne forme', "Alligator", 'Marais', $manager);
 
 
 

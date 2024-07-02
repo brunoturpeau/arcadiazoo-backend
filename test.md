@@ -1,0 +1,3 @@
+```bash
+symfony serve -d
+```

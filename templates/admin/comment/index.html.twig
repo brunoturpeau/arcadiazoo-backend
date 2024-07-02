@@ -32,25 +32,28 @@
                         </div>
                         <div class="flex justify-center">
                             {% if comment.visible %}
-                                <div class="btn-danger">
+                                <div class="btn-danger p-0">
                                     {{ include('admin/comment/_unpublish_form.html.twig') }}
                                 </div>
                             {% else %}
-                                <div class="btn-success">
+                                <div class="btn-success p-0">
                                     {{ include('admin/comment/_publish_form.html.twig') }}
                                 </div>
                             {% endif %}
                         </div>
                         <div class="actions">
-                            <a class="btn" href="{{ path('app_comment_show', {'id': comment.id}) }}">
-                                {{ include('_partials/icons/_eye.html.twig') }}
-                            </a>
-
-                            <div class="btn-danger">
+                            <div>
+                                <a href="{{ path('app_comment_show', {'id': comment.id}) }}">
+                                    {{ include('_partials/icons/_eye.html.twig') }}
+                                </a>
+                            </div>
+                            <div>
                                 {{ include('admin/comment/_delete_icon.html.twig') }}
                             </div>
                         </div>
                     </div>
+                {% else %}
+                    <div>Aucun résultat</div>
                 {% endfor %}
             </div>
         </div>
