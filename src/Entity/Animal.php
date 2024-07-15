@@ -19,8 +19,6 @@ use Doctrine\ORM\Mapping as ORM;
         new GetCollection(),
     ]
 )]
-
-
 class Animal
 {
     use SlugTrait;

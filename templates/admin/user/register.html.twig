@@ -4,12 +4,7 @@
 
 {% block body %}
     <div class="nav-context">
-        <div class="parent">
-            <a  href="{{ path('app_user_index') }}">
-                {{ include('_partials/icons/_left-circle.html.twig') }}
-            </a>
-            <div class="right"></div>
-        </div>
+        <div class="parent"></div>
     </div>
 
     <div class="cont">
@@ -21,7 +16,7 @@
                 {{ form_start(registrationForm) }}
                     {{ form_row(registrationForm.email) }}
                     {{ form_row(registrationForm.firstname) }}
-                {{ form_row(registrationForm.lastname) }}
+                    {{ form_row(registrationForm.lastname) }}
 
                     {{ form_row(registrationForm.plainPassword, {
                         label: 'Mot de passe'

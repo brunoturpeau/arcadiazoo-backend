@@ -63,7 +63,7 @@ class ServiceController extends AbstractController
     #[Route('/{id}/edition', name: 'app_service_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Service $service,SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('SERVICE_EDIT', $service);
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
 
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);

@@ -1,3 +1,3 @@
 ```bash
-symfony serve -d
+php bin/console security:hash-password
 ```
