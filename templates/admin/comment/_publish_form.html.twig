@@ -1,4 +1,6 @@
-<form method="post" action="{{ path('app_comment_publish', {'id': comment.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir publier ce commentaire ?');">
+<form method="post" action="{{ path('app_comment_publish', {'id': comment.id}) }}"
+      onsubmit="return confirm('Êtes-vous sûr de vouloir publier ce commentaire ?');"
+>
     <input type="hidden" name="_token" value="{{ csrf_token('publish' ~ comment.id) }}">
     <button>
         {{ include('_partials/icons/_check.html.twig') }}

@@ -52,7 +52,6 @@ class SecurityController extends AbstractController
     ): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -75,7 +74,7 @@ class SecurityController extends AbstractController
 
                 // send mail
                 $mail->send(
-                    'no-reply@e-commerce.fr',
+                    'no-reply@arcadiazoo.fr',
                     $user->getEmail(),
                     'Réinitialisation de mot de passe',
                     'password_reset',

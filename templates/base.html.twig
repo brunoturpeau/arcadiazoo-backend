@@ -8,12 +8,11 @@
         {% block stylesheets %}
         {% endblock %}
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-        <script src="{{ asset('assets/js/lib/ckeditor.js') }}" defer></script>
+        <script defer src="{{ asset('assets/js/lib/ckeditor.js') }}" ></script>
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    {# @todo CKEditor - interpreter le html en lecture #}
     <body>
         {% if app.user %}
             {{ include('/_partials/_nav.html.twig') }}

@@ -59,7 +59,7 @@ class CommentController extends AbstractController
     #[Route('/{id}/edition', name: 'app_comment_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('COMMENT_EDIT', $comment);
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -94,20 +94,19 @@ class CommentController extends AbstractController
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }
 
+
     #[Route('/{id}/publier', name: 'app_comment_publish', methods: ['POST'])]
     public function publish(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
-
         if ($this->isCsrfTokenValid('publish'.$comment->getId(), $request->getPayload()->get('_token'))) {
-
             $comment->setVisible(1);
             $entityManager->persist($comment);
             $entityManager->flush();
+            $this->addFlash('success', 'Commentaire publié avec succès.');
+        }else{
+            $this->addFlash('danger', 'Une erreur est survenue.');
         }
-
-        $this->addFlash('success', 'Commentaire publié avec succès.');
-
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }
     #[Route('/{id}/brouillon', name: 'app_comment_unpublish', methods: ['POST'])]
@@ -116,13 +115,13 @@ class CommentController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
 
         if ($this->isCsrfTokenValid('publish'.$comment->getId(), $request->getPayload()->get('_token'))) {
-
             $comment->setVisible(0);
             $entityManager->persist($comment);
             $entityManager->flush();
+            $this->addFlash('success', 'Commentaire invalidé avec succès.');
+        }else{
+            $this->addFlash('danger', 'Une erreur est survenue.');
         }
-
-        $this->addFlash('success', 'Commentaire invalidé avec succès.');
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }

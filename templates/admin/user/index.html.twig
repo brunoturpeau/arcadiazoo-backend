@@ -15,24 +15,25 @@
 
     <div class="cont">
         <h1>Utilisateurs</h1>
-        <table class="tw-table">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Nom et prénom</th>
-                <th>E-mail</th>
-                <th>Rôle</th>
-                <th>Statut</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.id }}</td>
-                    <td><b>{{ user.lastname }} {{ user.firstname }}</b></td>
-                    <td>{{  user.email }}</td>
-                    <td>
+        <div class="card-to-table">
+            <div class="thead">
+                <div class="row">
+                    <div>N°</div>
+                    <div>Nom et prénom</div>
+                    <div>E-mail</div>
+                    <div>Rôle</div>
+                    <div>Statut</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="tbody">
+                {% for user in users %}
+                <div class="item">
+                    <div>{{ user.id }}</div>
+                    <div><b>{{ user.lastname }} {{ user.firstname }}</b></div>
+                    <div>{{  user.email }}</div>
+                    <div>
+                        <span class="md:hidden">Rôle : </span>
                         {% if 'ROLE_ADMIN' in user.roles %}
                             Administrateur
                         {% elseif 'ROLE_VETERINAIRE' in user.roles %}
@@ -40,26 +41,31 @@
                         {% elseif 'ROLE_EMPLOYE' in user.roles %}
                             Employé(e)
                         {% endif %}
-                    </td>
-                    <td>
+                    </div>
+                    <div>
+                        <span class="md:hidden">Statut : </span>
                         {{ user.isVerified ? 'Vérifié' : 'Non vérifié' }}
-                    </td>
-                    <td class="actions">
-                        <a href="{{ path('app_user_show', {'id': user.id}) }}">
-                            {{ include('_partials/icons/_eye.html.twig') }}
-                        </a>
-                        <a href="{{ path('app_user_edit', {'id': user.id}) }}">
-                            {{ include('_partials/icons/_edit.html.twig') }}
-                        </a>
+                    </div>
+                    <div class="actions">
+                        <div>
+                            <a href="{{ path('app_user_show', {'id': user.id}) }}">
+                                {{ include('_partials/icons/_eye.html.twig') }}
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ path('app_user_edit', {'id': user.id}) }}">
+                                {{ include('_partials/icons/_edit.html.twig') }}
+                            </a>
+                        </div>
                         <div>
                             {{ include('admin/user/_delete_icon.html.twig') }}
                         </div>
-                    </td>
-                </tr>
-            {% else %}
-                <tr colspan="6">Aucun résultat</tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    </div>
+                </div>
+                {% else %}
+                    <div>Aucun résultat</div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

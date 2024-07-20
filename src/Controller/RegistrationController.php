@@ -82,7 +82,6 @@ class RegistrationController extends AbstractController
     public function registerEmp(Request $request,JWTService $jwt, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager, SendMailService $mail): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -190,7 +189,7 @@ class RegistrationController extends AbstractController
         $mail->send(
             'no-reply@monsite.net',
             $user->getEmail(),
-            'Activation de votre compte sur le site e-commerce',
+            'Activation de votre compte sur le site Arcadia zoo',
             'register',
             compact('user', 'token')
         );

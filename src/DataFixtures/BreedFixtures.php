@@ -33,7 +33,7 @@ class BreedFixtures extends Fixture
         $this->createBreed("Alligator","", $manager);
         $this->createBreed("Tortue de Floride","", $manager);
         $this->createBreed("Héron cendré","", $manager);
-        // $this->createBreed("Ibis","", $manager);
+        $this->createBreed("Ibis","", $manager);
         // $this->createBreed("Rat musqué","", $manager);
         // $this->createBreed("Grenouille taureau","", $manager);
         // $this->createBreed("Serpent d'eau","", $manager);
@@ -41,9 +41,6 @@ class BreedFixtures extends Fixture
         // $this->createBreed("Canard colvert","", $manager);
 
         $faker = Faker\Factory::create('fr_FR');
-
-
-
         $manager->flush();
     }
     public function createBreed(string $name, string $detail, ObjectManager $manager)

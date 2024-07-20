@@ -72,7 +72,7 @@ class HabitatController extends AbstractController
     #[Route('/{id}/edition', name: 'app_habitat_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Habitat $habitat,SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('HABITAT_EDIT', $habitat);
+        $this->denyAccessUnlessGranted('ROLE_VETERINAIRE');
 
         $form = $this->createForm(HabitatType::class, $habitat);
         $form->handleRequest($request);

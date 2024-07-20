@@ -94,7 +94,7 @@ class AnimalController extends AbstractController
     #[Route('/{id}/edition', name: 'app_animal_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request,SluggerInterface $slugger, Animal $animal, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('ANIMAL_EDIT', $animal);
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
@@ -139,14 +139,11 @@ class AnimalController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->getPayload()->get('_token'))) {
 
-
-
             $this->addFlash('success', "L'image a été supprimée avec succès.");
 
             $entityManager->remove($image);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
     }
 }

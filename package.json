@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "apache": "^0.1.0",
     "flowbite": "^2.3.0"
   }
 }
